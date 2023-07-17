@@ -3,7 +3,11 @@ from pyqchem.tools import rotate_coordinates
 from scipy.optimize import minimize
 from itertools import product
 from pyqchem.structure import atom_data
-from pyqchem.units import ANGSTROM_TO_AU, AMU_TO_ELECTRONMASS, BOHR_TO_CM, SPEEDOFLIGHT_AU, AU_TO_EV, KB_EV
+from pyqchem.units import (ANGSTROM_TO_AU,
+                           AMU_TO_ELECTRONMASS,
+                           BOHR_TO_CM,
+                           SPEEDOFLIGHT_AU,
+                           AU_TO_EV, KB_EV, KB_AU)
 import warnings
 
 
@@ -238,7 +242,10 @@ class VibrationalState:
         return np.sum(self.vector_rep)
 
     def get_vib_energy(self):
-        return np.sum(self.frequencies * self.vector_rep) * AU_TO_EV
+        return np.dot(self.frequencies,self.vector_rep) * AU_TO_EV
+    
+    def __str__(self) -> str:
+        return f"State {self.get_label()} with the energy {self.get_vib_energy()} eV"
 
 
 class VibrationalTransition:
@@ -757,6 +764,233 @@ class Duschinsky:
         transition_list.sort(key=lambda x: x.energy, reverse=False)
 
         return transition_list
+
+    def get_transitions_efficient(self,
+                        temp = 300,
+                        boltzman_threshold = 0.01,
+                        max_vib_origin=2,
+                        max_vib_target=2,
+                        excitation_energy=0.0,
+                        reorganization_energy=0.0,
+                        add_hot_bands=False,
+                        q_index_origin=0,
+                        q_index_target=1
+                        ):
+
+        freq_origin, freq_target = self._get_frequencies()
+        s = self.get_s_matrix()
+        assert np.abs(np.linalg.det(s)) > 1e-2
+
+        q = self.get_q_matrix()
+        p = self.get_p_matrix()
+        r = self.get_r_matrix()
+        dt = self.get_dt_vector()
+        n_modes = len(s)
+
+        # compute FCF <0|0>
+        freq_rel_prod = np.product(np.divide(freq_origin, freq_target))
+        exponential = np.exp(-1 / 2 * np.dot(dt, np.dot(np.identity(n_modes) - p, dt)))
+        pre_factor = 2**(n_modes / 2) / np.sqrt(abs(np.linalg.det(s)))
+        fcf_00 = pre_factor * freq_rel_prod ** (-1 / 4) * np.sqrt(np.linalg.det(q)) * exponential
+
+        # evaluate pre-factor for FCF matrices
+        ompd = np.sqrt(2) * np.dot(np.identity(n_modes) - p, dt)
+        tpmo = 2 * self.get_p_matrix() - np.identity(len(self.get_p_matrix()))
+        tqmo = 2 * self.get_q_matrix() - np.identity(len(self.get_p_matrix()))
+        tr = 2 * self.get_r_matrix()
+        rd = np.sqrt(2) * np.dot(r, dt)
+
+        # cache function to accelarate FCF
+        def cache_fcf(func):
+            cache = {}
+            def wrapper(v1, k1, v2, k2):
+                key = (tuple(v1), k1, tuple(v2), k2)
+                if key not in cache:
+                    cache[key] = func(v1, k1, v2, k2)
+                return cache[key]
+
+            return wrapper
+
+        @cache_fcf
+        def evalSingleFCFpy(origin_vector, k_origin, target_vector, k_target):
+
+            if np.sum(origin_vector) == 0 and np.sum(target_vector) == 0:
+                return fcf_00
+
+            if k_origin == 0:
+                ksi = 0
+                while target_vector[ksi] == 0:
+                    ksi = ksi + 1
+                target_vector[ksi] -= 1
+
+                fcf = ompd[ksi] * evalSingleFCFpy(origin_vector, 0, target_vector, k_target - 1)
+
+                if k_target > 1:
+                    for theta in range(ksi, n_modes):
+                        if target_vector[theta] > 0:
+                            tmp_dbl = tpmo[ksi, theta] * np.sqrt(target_vector[theta])
+                            target_vector[theta] -= 1
+                            tmp_dbl *= evalSingleFCFpy(origin_vector, 0, target_vector, k_target - 2)
+                            fcf += tmp_dbl
+                            target_vector[theta] += 1
+                fcf /= np.sqrt(target_vector[ksi] + 1)
+                target_vector[ksi] += 1
+
+            else:
+                ksi = 0
+                while origin_vector[ksi] == 0:
+                    ksi = ksi + 1
+
+                origin_vector[ksi] -= 1
+                fcf = -rd[ksi] * evalSingleFCFpy(origin_vector, k_origin - 1, target_vector, k_target)
+
+                for theta in range(ksi, n_modes):
+                    if origin_vector[theta] > 0:
+                        tmp_dbl = tqmo[ksi, theta] * np.sqrt(origin_vector[theta])
+                        origin_vector[theta] -= 1
+                        tmp_dbl *= evalSingleFCFpy(origin_vector, k_origin - 2, target_vector, k_target)
+                        fcf += tmp_dbl
+                        origin_vector[theta] += 1
+
+                if k_target > 0:
+                    for theta in range(0, n_modes):
+                        if target_vector[theta] > 0:
+                            tmp_dbl = tr[ksi, theta] * np.sqrt(target_vector[theta])
+                            target_vector[theta] -= 1
+                            tmp_dbl *= evalSingleFCFpy(origin_vector, k_origin - 1, target_vector, k_target - 1)
+                            fcf += tmp_dbl
+                            target_vector[theta] += 1
+
+                fcf /= np.sqrt(origin_vector[ksi] + 1)
+                origin_vector[ksi] += 1
+
+            return fcf
+
+        def generate_configurations(n, restrict_list=None):
+            """
+            generate vector configuration of lengh n_modes and filled with total quanta == n
+            :param n: total quanta
+            :param restrict_list: list of allowed vibrational modes
+            :return:
+            """
+
+            def transform(conf, n_modes):
+                new_conf = np.zeros((n_modes), dtype=int)
+                for i, j in enumerate(restrict_list):
+                    new_conf[j] = conf[i]
+                return new_conf
+
+            if restrict_list is None:
+                for conf in product(range(0, n + 1), repeat=n_modes):
+                    if np.sum(conf) == n:
+                        yield conf
+            else:
+                for conf in product(range(0, n + 1), repeat=len(restrict_list)):
+                    if np.sum(conf) == n:
+                        yield transform(conf, n_modes)
+
+        def get_state_list(n, q_index, frequencies=(), restrict_list=None):
+            state_list = []
+            for conf in generate_configurations(n, restrict_list):
+                state_list.append(VibrationalState(q_index=q_index,
+                                                   vector_rep=list(conf),
+                                                   frequencies=frequencies))
+
+            return state_list
+
+        def get_mother_states(states):
+            mother_states = {}
+            for state in states:
+                vec_rep = state.vector_rep
+                nonzero = tuple(np.nonzero(vec_rep)[0])
+                if nonzero in mother_states.keys():
+                    VibrationalState()
+                    mother_states[nonzero] = VibrationalState(state.q_index,
+                                                              np.maximum(mother_states[nonzero].vector_rep,vec_rep),
+                                                              state.frequencies)
+                else :
+                    mother_states[nonzero] = VibrationalState(state.q_index,
+                                                              vec_rep,
+                                                              state.frequencies)
+            return mother_states.values()
+        
+        def get_daughter_states(mother_state):
+            daughter_vectors = product(*[range(i+1) for i in mother_state.vector_rep])
+            for vector in daughter_vectors:
+                 yield VibrationalState(mother_state.q_index,
+                                                vector,
+                                                mother_state.frequencies)
+
+        def get_boltzman_states(temp=temp,p=boltzman_threshold,freq_origin = freq_origin):
+            limit_energy = -KB_EV*temp*np.log(p) # in eV
+            lim_quantas = np.ceil([limit_energy/(freq*AU_TO_EV) for freq in freq_origin]).astype('int')
+            print(lim_quantas)
+            states = get_daughter_states(VibrationalState(q_index_origin,lim_quantas,freq_origin))
+            print(limit_energy)
+            for state in states:
+                if state.get_vib_energy() <= limit_energy:
+                    yield state
+
+        s0_origin = VibrationalState(q_index=q_index_origin, vector_rep=[0] * n_modes, frequencies=freq_origin)
+        s0_target = VibrationalState(q_index=q_index_target, vector_rep=[0] * n_modes, frequencies=freq_target)
+
+        # (0)->(0) transition
+        transition_list = [VibrationalTransition(s0_origin, s0_target,
+                                                 fcf=fcf_00,
+                                                 excitation_energy=excitation_energy,
+                                                 reorganization_energy=reorganization_energy)]
+
+
+        # (0)<->(n) transitions
+        for i in range(0, max_vib_target):
+            state_list = get_state_list(i + 1, q_index=q_index_target, frequencies=freq_target, restrict_list=self._modes_target_indices)
+            for target_state in state_list:
+
+                fcf = evalSingleFCFpy(s0_origin.vector_rep, 0, target_state.vector_rep, i+1)
+                transition_list.append(VibrationalTransition(s0_origin, target_state,
+                                                             fcf=fcf,
+                                                             excitation_energy=excitation_energy,
+                                                             reorganization_energy=reorganization_energy))
+
+        # (n)<->(0) transitions
+        for i in range(0, max_vib_origin):
+            state_list = get_state_list(i + 1, q_index=q_index_origin, frequencies=freq_origin, restrict_list=self._modes_origin_indices)
+            for origin_state in state_list:
+
+                fcf = evalSingleFCFpy(origin_state.vector_rep, i+1, s0_target.vector_rep, 0)
+                transition_list.append(VibrationalTransition(origin_state, s0_target,
+                                                             fcf=fcf,
+                                                             excitation_energy=excitation_energy,
+                                                             reorganization_energy=reorganization_energy))
+
+        if add_hot_bands:
+            # (m)<->(n) transitions [Hot bands]
+            state_list_origin = []
+            for i in range(0, max_vib_origin):
+                state_list_origin += get_state_list(i + 1, q_index=q_index_origin, frequencies=freq_origin, restrict_list=self._modes_origin_indices)
+
+            state_list_target = []
+            for i in range(0, max_vib_target):
+                state_list_target += get_state_list(i + 1, q_index=q_index_target, frequencies=freq_target, restrict_list=self._modes_target_indices)
+
+            for origin_state in state_list_origin:
+                for target_state in state_list_target:
+                    # print(origin_state.get_label(), ' - ', target_state.get_label())
+
+                    k_origin = origin_state.total_quanta()
+                    k_target = target_state.total_quanta()
+
+                    fcf = evalSingleFCFpy(origin_state.vector_rep, k_origin, target_state.vector_rep, k_target)
+                    transition_list.append(VibrationalTransition(origin_state, target_state,
+                                                                 fcf=fcf,
+                                                                 excitation_energy=excitation_energy,
+                                                                 reorganization_energy=reorganization_energy))
+
+        # sort transition list by energy
+        transition_list.sort(key=lambda x: x.energy, reverse=False)
+
+        return transition_list
+    
 
     def get_huang_rys(self):
         freq_origin, freq_target = self._get_frequencies()
