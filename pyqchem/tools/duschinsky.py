@@ -1,13 +1,14 @@
 import numpy as np
 from pyqchem.tools import rotate_coordinates
 from scipy.optimize import minimize
-from itertools import product
+from itertools import product, groupby
+from collections import OrderedDict
 from pyqchem.structure import atom_data
 from pyqchem.units import (ANGSTROM_TO_AU,
                            AMU_TO_ELECTRONMASS,
                            BOHR_TO_CM,
                            SPEEDOFLIGHT_AU,
-                           AU_TO_EV, KB_EV, KB_AU)
+                           AU_TO_EV, KB_EV)
 import warnings
 
 
@@ -242,10 +243,16 @@ class VibrationalState:
         return np.sum(self.vector_rep)
 
     def get_vib_energy(self):
-        return np.dot(self.frequencies,self.vector_rep) * AU_TO_EV
+        return np.dot(self.frequencies,self.vector_rep)*AU_TO_EV
     
+    def excited_modes(self):
+        return tuple(np.nonzero(self.vector_rep)[0])
+        
     def __str__(self) -> str:
         return f"State {self.get_label()} with the energy {self.get_vib_energy()} eV"
+    
+    def __repr__(self) -> str:
+        return f"{self.get_label()}"
 
 
 class VibrationalTransition:
@@ -779,6 +786,7 @@ class Duschinsky:
 
         freq_origin, freq_target = self._get_frequencies()
         s = self.get_s_matrix()
+        d = self.get_d_vector()
         assert np.abs(np.linalg.det(s)) > 1e-2
 
         q = self.get_q_matrix()
@@ -898,21 +906,43 @@ class Duschinsky:
 
             return state_list
 
-        def get_mother_states(states):
-            mother_states = {}
+        def sort_classes(states):
+            """sorts states into classes. Returns a dictionary"""
+            _states = {}
             for state in states:
                 vec_rep = state.vector_rep
-                nonzero = tuple(np.nonzero(vec_rep)[0])
+                nonzero = state.excited_modes()
+                if nonzero not in _states:
+                    _states[nonzero] = []
+                _states[nonzero].append(VibrationalState(state.q_index,
+                                                            vec_rep,
+                                                            state.frequencies))
+            grouped = {}
+            states_sorted = OrderedDict(sorted(_states.items(),key=lambda x: len(x[0])))
+            for k, grp in groupby(states_sorted, key=lambda x: len(x)):
+                grouped[k] = [states_sorted[key] for key in grp]
+            return grouped
+        
+        def get_mother_states(states):
+            """Returns mother states grouped in classes as a dictionary"""
+            mother_states = {}
+            grouped = {}
+            for state in states:
+                vec_rep = state.vector_rep
+                nonzero = state.excited_modes()
                 if nonzero in mother_states.keys():
                     VibrationalState()
                     mother_states[nonzero] = VibrationalState(state.q_index,
-                                                              np.maximum(mother_states[nonzero].vector_rep,vec_rep),
-                                                              state.frequencies)
+                                                            np.maximum(mother_states[nonzero].vector_rep,vec_rep),
+                                                            state.frequencies)
                 else :
                     mother_states[nonzero] = VibrationalState(state.q_index,
-                                                              vec_rep,
-                                                              state.frequencies)
-            return mother_states.values()
+                                                            vec_rep,
+                                                            state.frequencies)
+            mother_states_sorted = OrderedDict(sorted(mother_states.items(),key=lambda x: len(x[0])))
+            for k, grp in groupby(mother_states_sorted, key=lambda x: len(x)):
+                grouped[k] = [mother_states_sorted[key] for key in grp]
+            return grouped
         
         def get_daughter_states(mother_state):
             daughter_vectors = product(*[range(i+1) for i in mother_state.vector_rep])
@@ -930,6 +960,13 @@ class Duschinsky:
             for state in states:
                 if state.get_vib_energy() <= limit_energy:
                     yield state
+        
+        def get_important_modes(state,tolerance=0.1):
+            non_zero_modes = np.nonzero(state.vector_rep)
+            summed = np.abs(s[non_zero_modes]).sum(axis=0)
+            core = np.nonzero(summed > tolerance)[0]
+            complementary = np.array(set(range(0,summed.shape[0]))-set(core))
+            return core, complementary
 
         s0_origin = VibrationalState(q_index=q_index_origin, vector_rep=[0] * n_modes, frequencies=freq_origin)
         s0_target = VibrationalState(q_index=q_index_target, vector_rep=[0] * n_modes, frequencies=freq_target)
