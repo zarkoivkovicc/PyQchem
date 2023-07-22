@@ -1,7 +1,6 @@
 from scipy.optimize import minimize
 from scipy.special import binom
-from itertools import product, groupby, combinations
-from collections import OrderedDict
+from itertools import product, combinations
 from pyqchem.tools import rotate_coordinates
 from pyqchem.structure import atom_data
 from pyqchem.units import (
@@ -1069,34 +1068,37 @@ class Duschinsky:
                     )
 
             fc2 = np.zeros((n_modes, n_modes, np.max(w_max)))
-            for k in range(n_modes):
-                for l in range(n_modes):
-                    if k != l:
-                        vector = np.zeros(n_modes).astype("int")
-                        for q in range(max(w_max[k], w_max[l])):
-                            if (
-                                q > min_q
-                                and np.abs(np.max(fc2[k, l, q - min_q : q])) <= eps2
-                            ):
-                                break
-                            vector[k] = q + 1
-                            vector[l] = q + 1
-                            fc2[k, l, q] = evalSingleFCFpy(
-                                initial_vec, 0, vector, vector[k] + vector[l]
-                            ) - fc1[k, q] * fc1[l, q] / (fcf_00 * fcf_00)
-                            c2_transitions.append(
-                                VibrationalTransition(
-                                    ground_state,
-                                    VibrationalState(
-                                        q_index_origin, vector.copy(), freq_origin
-                                    ),
-                                    fcf=evalSingleFCFpy(
-                                        initial_vec, 0, vector, vector[k] + vector[l]
-                                    ),
-                                    excitation_energy=excitation_energy,
-                                    reorganization_energy=reorganization_energy,
-                                )
+            for k, l in combinations(range(n_modes), 2):
+                vector = np.zeros(n_modes).astype("int")
+                for p in range(1, w_max[k]):
+                    vector[k] = p
+                    for q in range(1, w_max[l]):
+                        vector[l] = q
+                        fcf = evalSingleFCFpy(
+                            initial_vec, 0, vector, vector[k] + vector[l]
+                        )
+                        if p == q:
+                            fc2[k, l, p] = fcf - fc1[k, q] * fc1[l, q] / (
+                                fcf_00 * fcf_00
                             )
+                        c2_transitions.append(
+                            VibrationalTransition(
+                                ground_state,
+                                VibrationalState(
+                                    q_index_target, vector.copy(), freq_target
+                                ),
+                                fcf=fcf,
+                                excitation_energy=excitation_energy,
+                                reorganization_energy=reorganization_energy,
+                            )
+                        )
+                        if (
+                            q > min_q
+                            and np.abs(np.max(fc2[k, l, q - min_q : q])) <= eps2
+                        ):
+                            break
+                    if p > min_q and np.abs(np.max(fc2[k, l, p - min_q : p])) <= eps2:
+                        break
             return fc1, c1_transitions, fc2, c2_transitions
 
         def get_relevant_f_states(state, tolerance=0.1, n_total=n_total):
@@ -1171,14 +1173,12 @@ class Duschinsky:
         n = 3
         n_max = 7
         V = np.sum([transition.fcf * transition.fcf for transition in transition_list])
-        while n <= n_max and V <= 2:  # V should be <= 0.95, but here something is wrong
+        while n <= n_max and V <= 0.95:
             while estimate_ni(n, w) > n_total:
                 eps1 *= 1.05
                 eps2 *= 1.05
                 w = find_w(eps1, eps2, fc1_0, fc2_0)
-            class_n = compute_class(n, w)
-            transition_list.extend(class_n)
-            class_n = compute_class(n, w)
+            class_n = list(compute_class(n, w))
             n += 1
             V = V + np.sum([transition.fcf * transition.fcf for transition in class_n])
         # Compute non-zero temperature part
