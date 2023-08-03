@@ -634,7 +634,7 @@ class Duschinsky:
     ):
         freq_origin, freq_target = self._get_frequencies()
         s = self.get_s_matrix()
-        assert np.abs(np.linalg.det(s)) > 1e-2
+        assert np.abs(np.linalg.det(s)) > 1e-6
 
         q = self.get_q_matrix()
         p = self.get_p_matrix()
@@ -894,15 +894,14 @@ class Duschinsky:
     ):
         freq_origin, freq_target = self._get_frequencies()
         s = self.get_s_matrix()
-        assert np.abs(np.linalg.det(s)) > 1e-2
+        assert np.abs(np.linalg.det(s)) > 1e-6
 
         q = self.get_q_matrix()
         p = self.get_p_matrix()
         r = self.get_r_matrix()
         dt = self.get_dt_vector()
         n_modes = len(s)
-        ground_state = VibrationalState(q_index_origin, [0] * n_modes, freq_origin)
-
+        ground_vec = np.zeros(n_modes)
         # compute FCF <0|0>
         freq_rel_prod = np.prod(np.divide(freq_origin, freq_target))
         exponential = np.exp(-1 / 2 * np.dot(dt, np.dot(np.identity(n_modes) - p, dt)))
@@ -941,7 +940,7 @@ class Duschinsky:
             if k_origin == 0:
                 ksi = 0
                 while target_vector[ksi] == 0:
-                    ksi = ksi + 1
+                    ksi += 1
                 target_vector[ksi] -= 1
 
                 fcf = ompd[ksi] * evalSingleFCFpy(
@@ -964,7 +963,7 @@ class Duschinsky:
             else:
                 ksi = 0
                 while origin_vector[ksi] == 0:
-                    ksi = ksi + 1
+                    ksi += 1
 
                 origin_vector[ksi] -= 1
                 fcf = -rd[ksi] * evalSingleFCFpy(
@@ -1001,19 +1000,11 @@ class Duschinsky:
             """Returns mother states from a list of states"""
             mother_states = {}
             for state in states:
-                vec_rep = state.vector_rep
-                nonzero = state.excited_modes()
+                nonzero = tuple(np.nonzero(state)[0])
                 if nonzero in mother_states:
-                    VibrationalState()
-                    mother_states[nonzero] = VibrationalState(
-                        state.q_index,
-                        np.maximum(mother_states[nonzero].vector_rep, vec_rep),
-                        state.frequencies,
-                    )
+                    mother_states[nonzero] = np.maximum(mother_states[nonzero], state)
                 else:
-                    mother_states[nonzero] = VibrationalState(
-                        state.q_index, vec_rep, state.frequencies
-                    )
+                    mother_states[nonzero] = state
             return list(mother_states.values())
 
         def get_daughter_states(mother_state, same_class=False):
@@ -1022,54 +1013,36 @@ class Duschinsky:
 
             if not same_class:
                 helper = lambda x: range(x + 1)
-            daughter_vectors = product(*[helper(i) for i in mother_state.vector_rep])
-            for vector in daughter_vectors:
-                yield VibrationalState(
-                    mother_state.q_index, list(vector), mother_state.frequencies
-                )
+            for state in product(*[helper(i) for i in mother_state]):
+                yield np.array(state)
 
-        def get_boltzman_states(
-            temp=temp, p=boltzman_threshold, freq_origin=freq_origin
-        ):
+        def get_boltzman_states(temp=temp, p=boltzman_threshold, freq=freq_origin):
             limit_energy = -KB_EV * temp * np.log(p)  # in eV
-            lim_quantas = np.ceil(
-                [limit_energy / (freq * AU_TO_EV) for freq in freq_origin]
+            lim_quantas = np.floor(
+                [limit_energy / (omega * AU_TO_EV) for omega in freq]
             ).astype("int")
-            states = get_daughter_states(
-                VibrationalState(q_index_origin, lim_quantas, freq_origin)
-            )
+            states = get_daughter_states(lim_quantas)
             next(states)  # Remove ground state from boltzman states
             for state in states:
-                if state.get_vib_energy() <= limit_energy:
+                if np.dot(state, freq) * AU_TO_EV <= limit_energy:
                     yield state
 
-        def get_fc1_fc2(state, eps1=1e-12, eps2=1e-12, w_max=[100] * n_modes, min_q=10):
-            initial_vec = state.vector_rep
+        def get_fc1(state, eps=1e-12, w_max=[100] * n_modes, min_q=10):
             fc1 = np.zeros((n_modes, np.max(w_max)))
-            c1_transitions = []
-            c2_transitions = []
+            c1 = []
             for mode in range(n_modes):
                 vector = np.zeros(n_modes).astype("int")
                 for q in range(w_max[mode]):
-                    if q > min_q and np.abs(np.max(fc1[mode, q - min_q : q])) <= eps1:
+                    if q > min_q and np.abs(np.max(fc1[mode, q - min_q : q])) <= eps:
                         break
                     vector[mode] = q + 1
-                    fc1[mode, q] = evalSingleFCFpy(
-                        initial_vec, state.total_quanta(), vector, q + 1
-                    )
-                    c1_transitions.append(
-                        VibrationalTransition(
-                            state,
-                            VibrationalState(
-                                q_index_target, vector.copy(), freq_target
-                            ),
-                            fcf=fc1[mode, q],
-                            excitation_energy=excitation_energy,
-                            reorganization_energy=reorganization_energy,
-                        )
-                    )
+                    fc1[mode, q] = evalSingleFCFpy(state, np.sum(state), vector, q + 1)
+                    c1.append(vector.copy())
+            return fc1, c1
 
+        def get_fc2(state, fc1, eps=1e-12, w_max=[100] * n_modes, min_q=10):
             fc2 = np.zeros((n_modes, n_modes, np.max(w_max)))
+            c2 = []
             for k, l in combinations(range(n_modes), 2):
                 vector = np.zeros(n_modes).astype("int")
                 for p in range(1, w_max[k]):
@@ -1077,8 +1050,8 @@ class Duschinsky:
                     for q in range(1, w_max[l]):
                         vector[l] = q
                         fcf = evalSingleFCFpy(
-                            initial_vec,
-                            state.total_quanta(),
+                            state,
+                            np.sum(state),
                             vector,
                             vector[k] + vector[l],
                         )
@@ -1086,25 +1059,15 @@ class Duschinsky:
                             fc2[k, l, p] = fcf * fcf - fc1[k, q] * fc1[l, q] / (
                                 fcf_00 * fcf_00
                             )
-                        c2_transitions.append(
-                            VibrationalTransition(
-                                state,
-                                VibrationalState(
-                                    q_index_target, vector.copy(), freq_target
-                                ),
-                                fcf=fcf,
-                                excitation_energy=excitation_energy,
-                                reorganization_energy=reorganization_energy,
-                            )
-                        )
+                        c2.append(vector.copy())
                         if (
                             q > min_q
-                            and np.abs(np.max(fc2[k, l, q - min_q : q])) <= eps2
+                            and np.abs(np.max(fc2[k, l, q - min_q : q])) <= eps
                         ):
                             break
-                    if p > min_q and np.abs(np.max(fc2[k, l, p - min_q : p])) <= eps2:
+                    if p > min_q and np.abs(np.max(fc2[k, l, p - min_q : p])) <= eps:
                         break
-            return fc1, c1_transitions, fc2, c2_transitions
+            return fc2, c2
 
         def find_w(eps1, eps2, fc1, fc2, fc1_0=None, fc2_0=None, w_min=[0] * n_modes):
             if fc1_0 is None or fc2_0 is None:
@@ -1129,10 +1092,20 @@ class Duschinsky:
                     and additional_condition(mode, q + 1)
                 ):
                     q += 1
-                w[mode] = q
+                w[mode] = q + 1
             return w
 
         def estimate_ni(n, w, advanced=False):
+            """Estimates the total number of integrals
+
+            Args:
+                n : Class of transitions
+                w : Maximum quantum numbers vector
+                advanced (bool, optional): Should it consider core modes. Defaults to False.
+
+            Returns:
+                int : number of integrals
+            """
             if advanced and n > m + n_0:
                 active = np.array(set(range(n_modes)) - core).astype("int")
                 em = m
@@ -1144,7 +1117,7 @@ class Duschinsky:
             )
 
         def get_important_modes(state, tolerance=0.1):
-            non_zero_modes = np.nonzero(state.vector_rep)
+            non_zero_modes = np.nonzero(state)
             summed = np.abs(s[non_zero_modes]).sum(axis=0)
             core = np.nonzero(summed > tolerance)[0]
             return core
@@ -1159,69 +1132,38 @@ class Duschinsky:
                 if 0 not in np.take(w, comb):
                     vec = np.zeros(n_modes).astype("int")
                     np.put(vec, comb, np.take(w, comb))
-                    yield from get_daughter_states(
-                        VibrationalState(q_index_target, vec, freq_target),
-                        same_class=True,
-                    )
+                    yield from get_daughter_states(vec, same_class=True)
 
-        transition_list = [
-            VibrationalTransition(
-                ground_state,
-                VibrationalState(q_index_target, [0] * n_modes, freq_target),
-                fcf=fcf_00,
-                excitation_energy=excitation_energy,
-                reorganization_energy=reorganization_energy,
-            )
-        ]
+        transition_list = [(ground_vec, ground_vec)]
+        fcf_list = [fcf_00]
         # Compute zero temperature part
-        fc1_0, c1_0, fc2_0, c2_0 = get_fc1_fc2(ground_state)
-        transition_list.extend(c1_0)
-        transition_list.extend(c2_0)
+        fc1_0, c1_0 = get_fc1(ground_vec)
+        fc2_0, c2_0 = get_fc2(ground_vec, fc1_0)
+        for c in c1_0:
+            fcf_list.append(evalSingleFCFpy(ground_vec, 0, c, np.sum(c)))
+            transition_list.append((ground_vec, c))
+        for c in c2_0:
+            fcf_list.append(evalSingleFCFpy(ground_vec, 0, c, np.sum(c)))
+            transition_list.append((ground_vec, c))
+
         eps1, eps2 = 1e-12, 1e-12
         w = find_w(eps1, eps2, fc1_0, fc2_0)
         n = 3
         n_max = 7
-        V = np.sum([transition.fcf * transition.fcf for transition in transition_list])
-        while n <= n_max and V <= 0.96:
+        V = np.sum(np.square(fcf_list))
+        while n <= n_max and V <= 0.90:
             while estimate_ni(n, w) > n_total:
                 eps1 *= 1.05
                 eps2 *= 1.05
                 w = find_w(eps1, eps2, fc1_0, fc2_0)
             class_n = list(gen_class(n, w))
-            V = V + np.sum(
-                [
-                    evalSingleFCFpy(
-                        ground_state.vector_rep,
-                        ground_state.total_quanta(),
-                        fin_state.vector_rep,
-                        fin_state.total_quanta(),
-                    )
-                    * evalSingleFCFpy(
-                        ground_state.vector_rep,
-                        ground_state.total_quanta(),
-                        fin_state.vector_rep,
-                        fin_state.total_quanta(),
-                    )
-                    for fin_state in class_n
-                ]
-            )
-            transition_list.extend(
-                [
-                    VibrationalTransition(
-                        ground_state,
-                        state,
-                        fcf=evalSingleFCFpy(
-                            [0] * n_modes,
-                            0,
-                            state.vector_rep,
-                            state.total_quanta(),
-                        ),
-                        excitation_energy=excitation_energy,
-                        reorganization_energy=reorganization_energy,
-                    )
-                    for state in class_n
-                ]
-            )
+            for c in class_n:
+                fcf_list.append(evalSingleFCFpy(ground_vec, 0, c, np.sum(c)))
+                transition_list.append((ground_vec, c))
+            V = np.sum(np.square(fcf_list))
+            print(n)
+            print(V)
+            print(w)
             n += 1
 
         # Compute non-zero temperature part
@@ -1231,24 +1173,28 @@ class Duschinsky:
         if hot_bands:
             eps1, eps2 = 1e-12, 1e-12
             boltzman_states = get_boltzman_states(
-                temp=temp, p=boltzman_threshold, freq_origin=freq_origin
+                temp=temp, p=boltzman_threshold, freq=freq_origin
             )
             mother_states = get_mother_states(boltzman_states)
             for state in mother_states:
-                relevant_states = [
-                    VibrationalState(q_index_target, [0] * n_modes, freq_target)
-                ]
+                fcf_states = [evalSingleFCFpy(state, np.sum(state), ground_vec, 0)]
                 core = get_important_modes(state, tolerance=0.1)
                 print(state)
                 print(f"Core : {core}")
                 complementary = np.array(list(set(range(n_modes)) - set(core)))
                 print(f"Complementary : {complementary}")
-                fc1, c1, fc2, c2 = get_fc1_fc2(state)
-                relevant_states.extend([c.target for c in c1])
-                relevant_states.extend([c.target for c in c2])
-                w_min = np.ceil(
-                    np.max(np.multiply(s * s, state.vector_rep), axis=0)
-                ).astype("int")
+                fc1, c1 = get_fc1(state)
+                fc2, c2 = get_fc2(state, fc1)
+                state_counter = 0
+                for i in get_daughter_states(state, same_class=True):
+                    state_counter += 1
+                    for c in c1:
+                        fcf_states.append(evalSingleFCFpy(i, np.sum(i), c, np.sum(c)))
+                        transition_list.append((i, c))
+                    for c in c2:
+                        fcf_states.append(evalSingleFCFpy(i, np.sum(i), c, np.sum(c)))
+                        transition_list.append((i, c))
+                w_min = np.ceil(np.max(np.multiply(s * s, state), axis=0)).astype("int")
                 print(f"w_min {w_min}")
                 w = find_w(eps1, eps2, fc1_0, fc2_0, fc1, fc2, w_min)
                 m = len(core)
@@ -1256,22 +1202,11 @@ class Duschinsky:
                 print(f"n_max = {n_max}")
                 ni_0 = 1
                 n = 3
-                V = np.sum(
-                    [
-                        evalSingleFCFpy(
-                            state.vector_rep,
-                            state.total_quanta(),
-                            fin_state.vector_rep,
-                            fin_state.total_quanta(),
-                        )
-                        ** 2
-                        for fin_state in relevant_states
-                    ]
-                )
+                V = np.sum(np.square(fcf_states)) / state_counter
                 print(n)
                 print(V)
                 print("AA")
-                while n <= n_max and V <= 0.96:
+                while n <= n_max and V <= 0.90:
                     if n > n_0:
                         np.put(w, core, np.take(w_, core))
                         ni_0 = np.prod(np.take(w_, core) + 1)
@@ -1287,51 +1222,33 @@ class Duschinsky:
                         class_n = list(gen_class(n, w))
                     else:
                         class_n = list(gen_class(n, w, advanced=True))
-                    relevant_states.extend(class_n)
+
+                    for i in get_daughter_states(state, same_class=True):
+                        for c in class_n:
+                            fcf_states.append(
+                                evalSingleFCFpy(i, np.sum(i), c, np.sum(c))
+                            )
+                            transition_list.append((i, c))
                     n += 1
-                    V = V + np.sum(
-                        [
-                            evalSingleFCFpy(
-                                state.vector_rep,
-                                state.total_quanta(),
-                                fin_state.vector_rep,
-                                fin_state.total_quanta(),
-                            )
-                            * evalSingleFCFpy(
-                                state.vector_rep,
-                                state.total_quanta(),
-                                fin_state.vector_rep,
-                                fin_state.total_quanta(),
-                            )
-                            for fin_state in class_n
-                        ]
-                    )
+                    V = np.sum(np.square(fcf_states)) / state_counter
                     print(n)
                     print(w)
                     print(V)
-                for f_state in relevant_states:
-                    for i_state in get_daughter_states(state):
-                        fcf = evalSingleFCFpy(
-                            i_state.vector_rep,
-                            i_state.total_quanta(),
-                            f_state.vector_rep,
-                            f_state.total_quanta(),
+                fcf_list.extend(fcf_states)
+            transitions = []
+            for i, trans in enumerate(transition_list):
+                if abs(fcf_list[i]) > 1e-4:
+                    transitions.append(
+                        VibrationalTransition(
+                            VibrationalState(q_index_origin, trans[0], freq_origin),
+                            VibrationalState(q_index_target, trans[1], freq_target),
+                            fcf=fcf_list[i],
+                            excitation_energy=excitation_energy,
+                            reorganization_energy=reorganization_energy,
                         )
-                        transition_list.append(
-                            VibrationalTransition(
-                                i_state,
-                                f_state,
-                                fcf=fcf,
-                                excitation_energy=excitation_energy,
-                                reorganization_energy=reorganization_energy,
-                            )
-                        )
+                    )
 
-        def unique(sequence):
-            seen = set()
-            return [x for x in sequence if not (x in seen or seen.add(x))]
-
-        return unique(transition_list)
+        return transitions
 
     def get_huang_rys(self):
         freq_origin, freq_target = self._get_frequencies()
