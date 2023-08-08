@@ -1,6 +1,6 @@
 from scipy.optimize import minimize
 from scipy.special import binom
-from itertools import product, combinations, chain
+from itertools import product, combinations
 from pyqchem.tools import rotate_coordinates
 from pyqchem.structure import atom_data
 from pyqchem.units import (
@@ -11,6 +11,8 @@ from pyqchem.units import (
     AU_TO_EV,
     KB_EV,
 )
+
+from pyqchem.cython_module.efficient_functions import evalSingleFCFpy, get_fc1, get_fc2
 import numpy as np
 import warnings
 
@@ -58,9 +60,7 @@ def get_reduced_mass(structure, modes, mass_weighted=True):
 
     mass_vector = []
     for m in structure.get_atomic_masses():
-        for _ in range(3):
-            mass_vector.append(m)
-
+        mass_vector.extend(m for _ in range(3))
     r_mass = []
     for mode in modes:
         mode = np.array(mode).flatten()
@@ -205,10 +205,7 @@ class NormalModes:
         self._reduced_mass = reduced_mass
 
     def trim_negative_frequency_modes(self):
-        trim_list = []
-        for i, f in enumerate(self._frequencies):
-            if f > 0:
-                trim_list.append(i)
+        trim_list = [i for i, f in enumerate(self._frequencies) if f > 0]
         self.trim_modes(trim_list)
 
 
@@ -920,82 +917,6 @@ class Duschinsky:
         tr = 2 * self.get_r_matrix()
         rd = np.sqrt(2) * np.dot(r, dt)
 
-        # cache function to accelarate FCF
-        def cache_fcf(func):
-            cache = {}
-
-            def wrapper(v1, k1, v2, k2):
-                key = (tuple(v1), k1, tuple(v2), k2)
-                if key not in cache:
-                    cache[key] = func(v1, k1, v2, k2)
-                return cache[key]
-
-            return wrapper
-
-        @cache_fcf
-        def evalSingleFCFpy(origin_vector, k_origin, target_vector, k_target):
-            if np.sum(origin_vector) == 0 and np.sum(target_vector) == 0:
-                return fcf_00
-
-            if k_origin == 0:
-                ksi = 0
-                while target_vector[ksi] == 0:
-                    ksi += 1
-                target_vector[ksi] -= 1
-
-                fcf = ompd[ksi] * evalSingleFCFpy(
-                    origin_vector, 0, target_vector, k_target - 1
-                )
-
-                if k_target > 1:
-                    for theta in range(ksi, n_modes):
-                        if target_vector[theta] > 0:
-                            tmp_dbl = tpmo[ksi, theta] * np.sqrt(target_vector[theta])
-                            target_vector[theta] -= 1
-                            tmp_dbl *= evalSingleFCFpy(
-                                origin_vector, 0, target_vector, k_target - 2
-                            )
-                            fcf += tmp_dbl
-                            target_vector[theta] += 1
-                fcf /= np.sqrt(target_vector[ksi] + 1)
-                target_vector[ksi] += 1
-
-            else:
-                ksi = 0
-                while origin_vector[ksi] == 0:
-                    ksi += 1
-
-                origin_vector[ksi] -= 1
-                fcf = -rd[ksi] * evalSingleFCFpy(
-                    origin_vector, k_origin - 1, target_vector, k_target
-                )
-
-                for theta in range(ksi, n_modes):
-                    if origin_vector[theta] > 0:
-                        tmp_dbl = tqmo[ksi, theta] * np.sqrt(origin_vector[theta])
-                        origin_vector[theta] -= 1
-                        tmp_dbl *= evalSingleFCFpy(
-                            origin_vector, k_origin - 2, target_vector, k_target
-                        )
-                        fcf += tmp_dbl
-                        origin_vector[theta] += 1
-
-                if k_target > 0:
-                    for theta in range(n_modes):
-                        if target_vector[theta] > 0:
-                            tmp_dbl = tr[ksi, theta] * np.sqrt(target_vector[theta])
-                            target_vector[theta] -= 1
-                            tmp_dbl *= evalSingleFCFpy(
-                                origin_vector, k_origin - 1, target_vector, k_target - 1
-                            )
-                            fcf += tmp_dbl
-                            target_vector[theta] += 1
-
-                fcf /= np.sqrt(origin_vector[ksi] + 1)
-                origin_vector[ksi] += 1
-
-            return fcf
-
         def get_mother_states(states):
             """Returns mother states from a list of states"""
             mother_states = {}
@@ -1026,48 +947,6 @@ class Duschinsky:
             for state in states:
                 if np.dot(state, freq) * AU_TO_EV <= limit_energy:
                     yield state
-
-        def get_fc1(state, eps=1e-12, w_max=[100] * n_modes, min_q=10):
-            fc1 = np.zeros((n_modes, np.max(w_max)))
-            c1 = []
-            for mode in range(n_modes):
-                vector = np.zeros(n_modes).astype("int")
-                for q in range(w_max[mode]):
-                    if q > min_q and np.abs(np.max(fc1[mode, q - min_q : q])) <= eps:
-                        break
-                    vector[mode] = q + 1
-                    fc1[mode, q] = evalSingleFCFpy(state, np.sum(state), vector, q + 1)
-                    c1.append(vector.copy())
-            return fc1, c1
-
-        def get_fc2(state, fc1, eps=1e-12, w_max=[100] * n_modes, min_q=10):
-            fc2 = np.zeros((n_modes, n_modes, np.max(w_max)))
-            c2 = []
-            for k, l in combinations(range(n_modes), 2):
-                vector = np.zeros(n_modes).astype("int")
-                for p in range(1, w_max[k]):
-                    vector[k] = p
-                    for q in range(1, w_max[l]):
-                        vector[l] = q
-                        fcf = evalSingleFCFpy(
-                            state,
-                            np.sum(state),
-                            vector,
-                            vector[k] + vector[l],
-                        )
-                        if p == q:
-                            fc2[k, l, p] = fcf * fcf - fc1[k, q] * fc1[l, q] / (
-                                fcf_00 * fcf_00
-                            )
-                        c2.append(vector.copy())
-                        if (
-                            q > min_q
-                            and np.abs(np.max(fc2[k, l, q - min_q : q])) <= eps
-                        ):
-                            break
-                    if p > min_q and np.abs(np.max(fc2[k, l, p - min_q : p])) <= eps:
-                        break
-            return fc2, c2
 
         def find_w(eps1, eps2, fc1, fc2, fc1_0=None, fc2_0=None, w_min=[0] * n_modes):
             if fc1_0 is None or fc2_0 is None:
@@ -1134,32 +1013,66 @@ class Duschinsky:
                     np.put(vec, comb, np.take(w, comb))
                     yield from get_daughter_states(vec, same_class=True)
 
+        def append_transitions(trans_list, fcf_list, t_class, state):
+            state_ex = np.sum(state)
+            for c in t_class:
+                fcf_list.append(
+                    evalSingleFCFpy(
+                        state,
+                        state_ex,
+                        c,
+                        np.sum(c),
+                        ompd,
+                        tpmo,
+                        tqmo,
+                        tr,
+                        rd,
+                        fcf_00,
+                    )
+                )
+                trans_list.append((state, c))
+
         transition_list = [(ground_vec, ground_vec)]
         fcf_list = [fcf_00]
         # Compute zero temperature part
-        fc1_0, c1_0 = get_fc1(ground_vec)
-        fc2_0, c2_0 = get_fc2(ground_vec, fc1_0)
-        for c in c1_0:
-            fcf_list.append(evalSingleFCFpy(ground_vec, 0, c, np.sum(c)))
-            transition_list.append((ground_vec, c))
-        for c in c2_0:
-            fcf_list.append(evalSingleFCFpy(ground_vec, 0, c, np.sum(c)))
-            transition_list.append((ground_vec, c))
-
+        fc1_0, c1_0 = get_fc1(
+            ground_vec,
+            ompd,
+            tpmo,
+            tqmo,
+            tr,
+            rd,
+            fcf_00,
+            eps=1e-12,
+            w_max=[100] * 200,
+            min_q=10,
+        )
+        fc2_0, c2_0 = get_fc2(
+            ground_vec,
+            fc1_0,
+            ompd,
+            tpmo,
+            tqmo,
+            tr,
+            rd,
+            fcf_00,
+            eps=1e-12,
+            w_max=[100] * 200,
+            min_q=10,
+        )
+        append_transitions(transition_list, fcf_list, c1_0 + c2_0, ground_vec)
         eps1, eps2 = 1e-12, 1e-12
         w = find_w(eps1, eps2, fc1_0, fc2_0)
         n = 3
         n_max = 7
         V = np.sum(np.square(fcf_list))
-        while n <= n_max and V <= 0.90:
+        while n <= n_max and V <= 0.88:
             while estimate_ni(n, w) > n_total:
                 eps1 *= 1.05
                 eps2 *= 1.05
                 w = find_w(eps1, eps2, fc1_0, fc2_0)
-            class_n = list(gen_class(n, w))
-            for c in class_n:
-                fcf_list.append(evalSingleFCFpy(ground_vec, 0, c, np.sum(c)))
-                transition_list.append((ground_vec, c))
+            class_n = gen_class(n, w)
+            append_transitions(transition_list, fcf_list, c1_0 + c2_0, ground_vec)
             V = np.sum(np.square(fcf_list))
             print(n)
             print(V)
@@ -1177,23 +1090,54 @@ class Duschinsky:
             )
             mother_states = get_mother_states(boltzman_states)
             for state in mother_states:
-                fcf_states = [evalSingleFCFpy(state, np.sum(state), ground_vec, 0)]
+                fcf_states = [
+                    evalSingleFCFpy(
+                        state,
+                        np.sum(state),
+                        ground_vec,
+                        0,
+                        ompd,
+                        tpmo,
+                        tqmo,
+                        tr,
+                        rd,
+                        fcf_00,
+                    )
+                ]
                 core = get_important_modes(state, tolerance=0.1)
                 print(state)
                 print(f"Core : {core}")
                 complementary = np.array(list(set(range(n_modes)) - set(core)))
                 print(f"Complementary : {complementary}")
-                fc1, c1 = get_fc1(state)
-                fc2, c2 = get_fc2(state, fc1)
+                fc1, c1 = get_fc1(
+                    state,
+                    ompd,
+                    tpmo,
+                    tqmo,
+                    tr,
+                    rd,
+                    fcf_00,
+                    eps=1e-12,
+                    w_max=[100] * 200,
+                    min_q=10,
+                )
+                fc2, c2 = get_fc2(
+                    state,
+                    fc1,
+                    ompd,
+                    tpmo,
+                    tqmo,
+                    tr,
+                    rd,
+                    fcf_00,
+                    eps=1e-12,
+                    w_max=[100] * 200,
+                    min_q=10,
+                )
                 state_counter = 0
                 for i in get_daughter_states(state, same_class=True):
                     state_counter += 1
-                    for c in c1:
-                        fcf_states.append(evalSingleFCFpy(i, np.sum(i), c, np.sum(c)))
-                        transition_list.append((i, c))
-                    for c in c2:
-                        fcf_states.append(evalSingleFCFpy(i, np.sum(i), c, np.sum(c)))
-                        transition_list.append((i, c))
+                    append_transitions(transition_list, fcf_states, c1 + c2, i)
                 w_min = np.ceil(np.max(np.multiply(s * s, state), axis=0)).astype("int")
                 print(f"w_min {w_min}")
                 w = find_w(eps1, eps2, fc1_0, fc2_0, fc1, fc2, w_min)
@@ -1205,8 +1149,8 @@ class Duschinsky:
                 V = np.sum(np.square(fcf_states)) / state_counter
                 print(n)
                 print(V)
-                print("AA")
-                while n <= n_max and V <= 0.90:
+                print("BB")
+                while n <= n_max and V <= 0.88:
                     if n > n_0:
                         np.put(w, core, np.take(w_, core))
                         ni_0 = np.prod(np.take(w_, core) + 1)
@@ -1218,17 +1162,11 @@ class Duschinsky:
                         w = find_w(eps1, eps2, fc1_0, fc2_0, fc1, fc2, w_min)
                         if n > n_0:
                             np.put(w, core, np.take(w_, core))
-                    if n <= n_0:
-                        class_n = list(gen_class(n, w))
-                    else:
-                        class_n = list(gen_class(n, w, advanced=True))
+                    advanced = n > n_0
+                    class_n = gen_class(n, w, advanced)
 
                     for i in get_daughter_states(state, same_class=True):
-                        for c in class_n:
-                            fcf_states.append(
-                                evalSingleFCFpy(i, np.sum(i), c, np.sum(c))
-                            )
-                            transition_list.append((i, c))
+                        append_transitions(transition_list, fcf_states, class_n, i)
                     n += 1
                     V = np.sum(np.square(fcf_states)) / state_counter
                     print(n)
