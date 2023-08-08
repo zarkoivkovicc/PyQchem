@@ -1167,7 +1167,7 @@ class Duschinsky:
             n += 1
 
         # Compute non-zero temperature part
-        n_0 = 7
+        n_0 = 7 # ONly for debugging, here it should be n_0 = n
         print(f"n_0 = {n_0}")
 
         if hot_bands:
