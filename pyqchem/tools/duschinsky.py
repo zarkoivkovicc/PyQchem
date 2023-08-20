@@ -1,4 +1,4 @@
-from scipy.optimize import minimize
+from scipy.optimize import minimize, LinearConstraint
 from scipy.special import binom
 from itertools import product, combinations
 from pyqchem.tools import rotate_coordinates
@@ -898,7 +898,7 @@ class Duschinsky:
         mode_tolerance=0.01,
         eps1=1e-12,
         eps2=1e-12,
-        fcf_min=1e-4,
+        fcf_min=1e-6,
     ):
         freq_origin, freq_target = self._get_frequencies()
         s = self.get_s_matrix()
@@ -1012,23 +1012,32 @@ class Duschinsky:
             core = np.nonzero(summed / np.linalg.norm(summed) > tolerance)[0]
             return core
 
-        def gen_class(n, w, advanced=False):
+        def gen_class(n, w, core="all"):
             def excitation_gen(excit):
                 for i in excit:
                     yield np.concatenate((i, core))
 
-            if not advanced:
-                excitations = combinations(range(n_modes), n)
-            elif n > len(core):
-                excit = combinations(complementary, n - len(core))
-                excitations = excitation_gen(excit)
+            nonzero = list(np.nonzero(w))
+            nonzero = set(*nonzero)
+            if type(core) == str or n <= n_0:
+                excitations = combinations(nonzero, n)
+                if n > len(nonzero):
+                    return
             else:
-                excitations = combinations(core, n)
+                core_set = set(core)
+                complementary_set = set(range(n_modes)) - core_set
+                if n > len(core_set.intersection(nonzero)):
+                    excit = combinations(
+                        nonzero.intersection(complementary_set),
+                        n - len(core_set.intersection(nonzero)),
+                    )
+                    excitations = excitation_gen(excit)
+                else:
+                    excitations = combinations(core_set.intersection(nonzero), n)
             for comb in excitations:
-                if 0 not in np.take(w, comb):
-                    vec = np.zeros(n_modes).astype("int")
-                    np.put(vec, comb, np.take(w, comb))
-                    yield from get_daughter_states(vec, same_class=True)
+                vec = np.zeros(n_modes).astype("int")
+                np.put(vec, comb, np.take(w, comb))
+                yield from get_daughter_states(vec, same_class=True)
 
         transition_list = [(ground_vec, ground_vec)]
         fcf_list = [fcf_00]
@@ -1071,6 +1080,7 @@ class Duschinsky:
             tr,
             rd,
             fcf_00,
+            threshold=fcf_min,
         )
         _eps1, _eps2 = eps1, eps2
         w = find_w(_eps1, _eps2, fc1_0, fc2_0)
@@ -1081,6 +1091,13 @@ class Duschinsky:
                 _eps1 *= 1.05
                 _eps2 *= 1.05
                 w = find_w(_eps1, _eps2, fc1_0, fc2_0)
+                if (w == np.zeros(n_modes)).all():
+                    break
+            _eps1 /= 1.05
+            _eps2 /= 1.05
+            w = find_w(_eps1, _eps2, fc1_0, fc2_0)
+            print(w)
+            print(estimate_ni(n, w))
             class_n = gen_class(n, w)
             print(f"Generated class {n}")
             append_transitions(
@@ -1094,6 +1111,7 @@ class Duschinsky:
                 tr,
                 rd,
                 fcf_00,
+                threshold=fcf_min,
             )
             V = np.sum(np.square(fcf_list))
             print(n)
@@ -1102,7 +1120,7 @@ class Duschinsky:
             n += 1
         print("T=0 finished")
         # Compute non-zero temperature part
-        n_0 = n
+        n_0 = n - 1
         print(f"n_0 = {n_0}")
 
         if hot_bands:
@@ -1126,6 +1144,7 @@ class Duschinsky:
                         fcf_00,
                     )
                 ]
+                transition_list.append((state, ground_vec))
                 core = get_important_modes(state, tolerance=0.1)
                 print(f"Initial state : \n {state}")
                 print(f"Core modes : \n {core}")
@@ -1174,6 +1193,7 @@ class Duschinsky:
                         tr,
                         rd,
                         fcf_00,
+                        threshold=fcf_min,
                     )
                 w_min = np.ceil(np.max(np.multiply(s * s, state), axis=0)).astype("int")
                 print(f"w_min {w_min}")
@@ -1183,10 +1203,10 @@ class Duschinsky:
                 print(f"n_max = {n_max}")
                 ni_0 = 1
                 n = 3
-                print(state_counter)
                 V = np.sum(np.square(fcf_states)) / state_counter
                 print(n)
                 print(V)
+                _eps1, _eps2 = eps1, eps2
                 while n <= n_max and V <= V_threshold:
                     if n > n_0:
                         np.put(w, core, np.take(w_, core))
@@ -1194,18 +1214,20 @@ class Duschinsky:
                     elif n == n_0:
                         w_ = w
                     while estimate_ni(n, w, advanced=True) * ni_0 > n_total:
-                        eps1 *= 1.05
-                        eps2 *= 1.05
-                        w = find_w(eps1, eps2, fc1_0, fc2_0, fc1, fc2, w_min)
+                        _eps1 *= 1.05
+                        _eps2 *= 1.05
+                        w = find_w(_eps1, _eps2, fc1_0, fc2_0, fc1, fc2, w_min)
                         if n > n_0:
                             np.put(w, core, np.take(w_, core))
-                            if (w[complementary] == w_min[complementary]).all():
-                                print("Exit because of ...")
-                                w = w_
-                                break
-
-                    advanced = n > n_0
-                    class_n = gen_class(n, w, advanced)
+                        if (w[complementary] == w_min[complementary]).all():
+                            print("Exit because of ...")
+                            break
+                    _eps1 /= 1.05
+                    _eps2 /= 1.05
+                    w = find_w(_eps1, _eps2, fc1_0, fc2_0, w_min)
+                    if n > n_0:
+                        np.put(w, core, np.take(w_, core))
+                    class_n = gen_class(n, w, core)
                     print(f"Generated class {n}")
                     for i in get_daughter_states(state, same_class=True):
                         append_transitions(
@@ -1219,6 +1241,7 @@ class Duschinsky:
                             tr,
                             rd,
                             fcf_00,
+                            threshold=fcf_min,
                         )
                     n += 1
                     V = np.sum(np.square(fcf_states)) / state_counter
@@ -1228,16 +1251,15 @@ class Duschinsky:
                 fcf_list.extend(fcf_states)
         transitions = []
         for i, trans in enumerate(transition_list):
-            if abs(fcf_list[i]) > fcf_min:
-                transitions.append(
-                    VibrationalTransition(
-                        VibrationalState(q_index_origin, trans[0], freq_origin),
-                        VibrationalState(q_index_target, trans[1], freq_target),
-                        fcf=fcf_list[i],
-                        excitation_energy=excitation_energy,
-                        reorganization_energy=reorganization_energy,
-                    )
+            transitions.append(
+                VibrationalTransition(
+                    VibrationalState(q_index_origin, trans[0], freq_origin),
+                    VibrationalState(q_index_target, trans[1], freq_target),
+                    fcf=fcf_list[i],
+                    excitation_energy=excitation_energy,
+                    reorganization_energy=reorganization_energy,
                 )
+            )
 
         return transitions
 

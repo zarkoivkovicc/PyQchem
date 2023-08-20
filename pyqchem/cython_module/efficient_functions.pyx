@@ -242,11 +242,11 @@ def append_transitions(trans_list,
                         tqmo,
                         tr,
                         rd,
-                        fcf_00, ):
+                        fcf_00,
+                        threshold = 1e-6):
             state_ex = np.sum(state)
             for c in t_class:
-                fcf_list.append(
-                    evalSingleFCFpy(
+                fcf = evalSingleFCFpy(
                         state,
                         state_ex,
                         c,
@@ -258,5 +258,6 @@ def append_transitions(trans_list,
                         rd,
                         fcf_00,
                     )
-                )
-                trans_list.append((state, c))
+                if abs(fcf) >= threshold:
+                    fcf_list.append(fcf)
+                    trans_list.append((state, c))
