@@ -654,7 +654,6 @@ class Duschinsky:
             * np.sqrt(np.linalg.det(q))
             * exponential
         )
-
         # evaluate pre-factor for FCF matrices
         ompd = np.sqrt(2) * np.dot(np.identity(n_modes) - p, dt)
         tpmo = 2 * self.get_p_matrix() - np.identity(len(self.get_p_matrix()))
@@ -893,6 +892,13 @@ class Duschinsky:
         reorganization_energy=0.0,
         q_index_origin=0,
         q_index_target=1,
+        n_max=7,
+        q_min=5,
+        V_threshold=0.95,
+        mode_tolerance=0.01,
+        eps1=1e-12,
+        eps2=1e-12,
+        fcf_min=1e-4,
     ):
         freq_origin, freq_target = self._get_frequencies()
         s = self.get_s_matrix()
@@ -914,7 +920,10 @@ class Duschinsky:
             * np.sqrt(np.linalg.det(q))
             * exponential
         )
-
+        print(f"fcf_00 {fcf_00}")
+        print(f"pre_factor {pre_factor}")
+        print(f"freq_rel_prod {freq_rel_prod}")
+        print(f"exponential {exponential}")
         # evaluate pre-factor for FCF matrices
         ompd = np.sqrt(2) * np.dot(np.identity(n_modes) - p, dt)
         tpmo = 2 * self.get_p_matrix() - np.identity(len(self.get_p_matrix()))
@@ -997,7 +1006,7 @@ class Duschinsky:
                 binom(n_modes - em, n - em) * (np.average(np.take(w, active)) + 1) ** n
             )
 
-        def get_important_modes(state, tolerance=0.01):
+        def get_important_modes(state, tolerance=mode_tolerance):
             non_zero_modes = np.nonzero(state)
             summed = np.square(s[non_zero_modes]).sum(axis=0)
             core = np.nonzero(summed / np.linalg.norm(summed) > tolerance)[0]
@@ -1032,10 +1041,11 @@ class Duschinsky:
             tr,
             rd,
             fcf_00,
-            eps=1e-12,
+            eps=eps1,
             w_max=100,
-            min_q=5,
+            min_q=q_min,
         )
+        print("Fc1 computed at T=0")
         fc2_0, c2_0 = get_fc2(
             ground_vec,
             fc1_0,
@@ -1045,10 +1055,11 @@ class Duschinsky:
             tr,
             rd,
             fcf_00,
-            eps=1e-12,
+            eps=eps2,
             w_max=100,
             min_q=5,
         )
+        print("Fc2 computed at T=0")
         append_transitions(
             transition_list,
             fcf_list,
@@ -1061,17 +1072,17 @@ class Duschinsky:
             rd,
             fcf_00,
         )
-        eps1, eps2 = 1e-12, 1e-12
-        w = find_w(eps1, eps2, fc1_0, fc2_0)
+        _eps1, _eps2 = eps1, eps2
+        w = find_w(_eps1, _eps2, fc1_0, fc2_0)
         n = 3
-        n_max = 7
         V = np.sum(np.square(fcf_list))
-        while n <= n_max and V <= 0.95:
+        while n <= n_max and V <= V_threshold:
             while estimate_ni(n, w) > n_total:
-                eps1 *= 1.05
-                eps2 *= 1.05
-                w = find_w(eps1, eps2, fc1_0, fc2_0)
+                _eps1 *= 1.05
+                _eps2 *= 1.05
+                w = find_w(_eps1, _eps2, fc1_0, fc2_0)
             class_n = gen_class(n, w)
+            print(f"Generated class {n}")
             append_transitions(
                 transition_list,
                 fcf_list,
@@ -1089,13 +1100,13 @@ class Duschinsky:
             print(V)
             print(w)
             n += 1
-
+        print("T=0 finished")
         # Compute non-zero temperature part
         n_0 = n
         print(f"n_0 = {n_0}")
 
         if hot_bands:
-            eps1, eps2 = 1e-12, 1e-12
+            _eps1, _eps2 = eps1, eps2
             boltzman_states = get_boltzman_states(
                 temp=temp, p=boltzman_threshold, freq=freq_origin
             )
@@ -1116,12 +1127,12 @@ class Duschinsky:
                     )
                 ]
                 core = get_important_modes(state, tolerance=0.1)
-                print(state)
-                print(f"Core : {core}")
+                print(f"Initial state : \n {state}")
+                print(f"Core modes : \n {core}")
                 complementary = np.array(list(set(range(n_modes)) - set(core))).astype(
                     "int"
                 )
-                print(f"Complementary : {complementary}")
+                print(f"Complementary modes : \n {complementary}")
                 fc1, c1 = get_fc1(
                     state,
                     ompd,
@@ -1130,10 +1141,11 @@ class Duschinsky:
                     tr,
                     rd,
                     fcf_00,
-                    eps=1e-12,
+                    eps=eps1,
                     w_max=100,
-                    min_q=5,
+                    min_q=q_min,
                 )
+                print("Fc1 generated")
                 fc2, c2 = get_fc2(
                     state,
                     fc1,
@@ -1143,10 +1155,11 @@ class Duschinsky:
                     tr,
                     rd,
                     fcf_00,
-                    eps=1e-12,
+                    eps=eps2,
                     w_max=100,
-                    min_q=5,
+                    min_q=q_min,
                 )
+                print("Fc2 generated")
                 state_counter = 0
                 for i in get_daughter_states(state, same_class=True):
                     state_counter += 1
@@ -1174,8 +1187,7 @@ class Duschinsky:
                 V = np.sum(np.square(fcf_states)) / state_counter
                 print(n)
                 print(V)
-                print("BB")
-                while n <= n_max and V <= 0.95:
+                while n <= n_max and V <= V_threshold:
                     if n > n_0:
                         np.put(w, core, np.take(w_, core))
                         ni_0 = np.prod(np.take(w_, core) + 1)
@@ -1187,10 +1199,11 @@ class Duschinsky:
                         w = find_w(eps1, eps2, fc1_0, fc2_0, fc1, fc2, w_min)
                         if n > n_0:
                             np.put(w, core, np.take(w_, core))
-                            if (w[complementary] == w_min[complementary] + 1).all():
+                            if (w[complementary] == w_min[complementary]).all():
                                 print("Exit because of ...")
                                 w = w_
                                 break
+
                     advanced = n > n_0
                     class_n = gen_class(n, w, advanced)
                     print(f"Generated class {n}")
@@ -1215,7 +1228,7 @@ class Duschinsky:
                 fcf_list.extend(fcf_states)
         transitions = []
         for i, trans in enumerate(transition_list):
-            if abs(fcf_list[i]) > 1e-4:
+            if abs(fcf_list[i]) > fcf_min:
                 transitions.append(
                     VibrationalTransition(
                         VibrationalState(q_index_origin, trans[0], freq_origin),

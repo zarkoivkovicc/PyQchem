@@ -3,6 +3,7 @@ cimport numpy as cnp
 cimport cython
 cnp.import_array()
 from itertools import combinations, product
+from scipy.special import binom
 DTYPE_I = np.int64
 DTYPE_F = np.float64
 ctypedef cnp.int64_t DTYPE_I_t
@@ -230,6 +231,8 @@ cpdef get_fc2(
                 break
     return fc2, c2
 
+@cython.boundscheck(False)  # Deactivate bounds checking
+@cython.wraparound(False)   # Deactivate negative indexing.
 def append_transitions(trans_list,
                        fcf_list,
                         t_class,

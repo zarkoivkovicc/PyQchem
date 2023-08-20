@@ -20,7 +20,7 @@ setup(name='pyqchem',
       ext_modules=[
         Extension(
             'pyqchem.cython_module.efficient_functions',
-            sources=['pyqchem/cython_module/efficient_functions.py'],
+            sources=['pyqchem/cython_module/efficient_functions.pyx'],
         )],
       packages=['pyqchem', 'pyqchem.parsers', 'pyqchem.parsers.common','pyqchem.tools'],
       url='https://github.com/abelcarreras/PyQchem',

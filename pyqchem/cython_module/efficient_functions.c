@@ -1596,7 +1596,7 @@ typedef npy_double __pyx_t_5numpy_double_t;
  */
 typedef npy_longdouble __pyx_t_5numpy_longdouble_t;
 
-/* "pyqchem/cython_module/efficient_functions.pyx":8
+/* "pyqchem/cython_module/efficient_functions.pyx":9
  * DTYPE_I = np.int64
  * DTYPE_F = np.float64
  * ctypedef cnp.int64_t DTYPE_I_t             # <<<<<<<<<<<<<<
@@ -1605,7 +1605,7 @@ typedef npy_longdouble __pyx_t_5numpy_longdouble_t;
  */
 typedef __pyx_t_5numpy_int64_t __pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t;
 
-/* "pyqchem/cython_module/efficient_functions.pyx":9
+/* "pyqchem/cython_module/efficient_functions.pyx":10
  * DTYPE_F = np.float64
  * ctypedef cnp.int64_t DTYPE_I_t
  * ctypedef cnp.float64_t DTYPE_F_t             # <<<<<<<<<<<<<<
@@ -1681,7 +1681,7 @@ typedef npy_cdouble __pyx_t_5numpy_complex_t;
 struct __pyx_opt_args_7pyqchem_13cython_module_19efficient_functions_get_fc1;
 struct __pyx_opt_args_7pyqchem_13cython_module_19efficient_functions_get_fc2;
 
-/* "pyqchem/cython_module/efficient_functions.pyx":154
+/* "pyqchem/cython_module/efficient_functions.pyx":155
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * cpdef get_fc1(             # <<<<<<<<<<<<<<
@@ -1695,7 +1695,7 @@ struct __pyx_opt_args_7pyqchem_13cython_module_19efficient_functions_get_fc1 {
   int min_q;
 };
 
-/* "pyqchem/cython_module/efficient_functions.pyx":187
+/* "pyqchem/cython_module/efficient_functions.pyx":188
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * cpdef get_fc2(             # <<<<<<<<<<<<<<
@@ -1709,7 +1709,7 @@ struct __pyx_opt_args_7pyqchem_13cython_module_19efficient_functions_get_fc2 {
   int min_q;
 };
 
-/* "pyqchem/cython_module/efficient_functions.pyx":11
+/* "pyqchem/cython_module/efficient_functions.pyx":12
  * ctypedef cnp.float64_t DTYPE_F_t
  * # cache function to accelarate FCF
  * def cache_fcf(func):             # <<<<<<<<<<<<<<
@@ -2638,6 +2638,7 @@ static const char __pyx_k_sqrt[] = "sqrt";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_tpmo[] = "tpmo";
 static const char __pyx_k_tqmo[] = "tqmo";
+static const char __pyx_k_binom[] = "binom";
 static const char __pyx_k_cache[] = "cache";
 static const char __pyx_k_int64[] = "int64";
 static const char __pyx_k_min_q[] = "min_q";
@@ -2677,6 +2678,7 @@ static const char __pyx_k_initializing[] = "_initializing";
 static const char __pyx_k_is_coroutine[] = "_is_coroutine";
 static const char __pyx_k_class_getitem[] = "__class_getitem__";
 static const char __pyx_k_origin_vector[] = "origin_vector";
+static const char __pyx_k_scipy_special[] = "scipy.special";
 static const char __pyx_k_target_vector[] = "target_vector";
 static const char __pyx_k_evalSingleFCFpy[] = "evalSingleFCFpy";
 static const char __pyx_k_append_transitions[] = "append_transitions";
@@ -2773,6 +2775,7 @@ typedef struct {
   PyObject *__pyx_n_s_append_transitions;
   PyObject *__pyx_n_s_astype;
   PyObject *__pyx_n_s_asyncio_coroutines;
+  PyObject *__pyx_n_s_binom;
   PyObject *__pyx_n_s_c;
   PyObject *__pyx_n_s_cache;
   PyObject *__pyx_n_s_cache_fcf;
@@ -2824,6 +2827,7 @@ typedef struct {
   PyObject *__pyx_n_s_range;
   PyObject *__pyx_n_s_rd;
   PyObject *__pyx_n_s_repeat;
+  PyObject *__pyx_n_s_scipy_special;
   PyObject *__pyx_n_s_spec;
   PyObject *__pyx_n_s_sqrt;
   PyObject *__pyx_n_s_state;
@@ -2936,6 +2940,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_append_transitions);
   Py_CLEAR(clear_module_state->__pyx_n_s_astype);
   Py_CLEAR(clear_module_state->__pyx_n_s_asyncio_coroutines);
+  Py_CLEAR(clear_module_state->__pyx_n_s_binom);
   Py_CLEAR(clear_module_state->__pyx_n_s_c);
   Py_CLEAR(clear_module_state->__pyx_n_s_cache);
   Py_CLEAR(clear_module_state->__pyx_n_s_cache_fcf);
@@ -2987,6 +2992,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_range);
   Py_CLEAR(clear_module_state->__pyx_n_s_rd);
   Py_CLEAR(clear_module_state->__pyx_n_s_repeat);
+  Py_CLEAR(clear_module_state->__pyx_n_s_scipy_special);
   Py_CLEAR(clear_module_state->__pyx_n_s_spec);
   Py_CLEAR(clear_module_state->__pyx_n_s_sqrt);
   Py_CLEAR(clear_module_state->__pyx_n_s_state);
@@ -3077,6 +3083,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_append_transitions);
   Py_VISIT(traverse_module_state->__pyx_n_s_astype);
   Py_VISIT(traverse_module_state->__pyx_n_s_asyncio_coroutines);
+  Py_VISIT(traverse_module_state->__pyx_n_s_binom);
   Py_VISIT(traverse_module_state->__pyx_n_s_c);
   Py_VISIT(traverse_module_state->__pyx_n_s_cache);
   Py_VISIT(traverse_module_state->__pyx_n_s_cache_fcf);
@@ -3128,6 +3135,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_range);
   Py_VISIT(traverse_module_state->__pyx_n_s_rd);
   Py_VISIT(traverse_module_state->__pyx_n_s_repeat);
+  Py_VISIT(traverse_module_state->__pyx_n_s_scipy_special);
   Py_VISIT(traverse_module_state->__pyx_n_s_spec);
   Py_VISIT(traverse_module_state->__pyx_n_s_sqrt);
   Py_VISIT(traverse_module_state->__pyx_n_s_state);
@@ -3248,6 +3256,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_append_transitions __pyx_mstate_global->__pyx_n_s_append_transitions
 #define __pyx_n_s_astype __pyx_mstate_global->__pyx_n_s_astype
 #define __pyx_n_s_asyncio_coroutines __pyx_mstate_global->__pyx_n_s_asyncio_coroutines
+#define __pyx_n_s_binom __pyx_mstate_global->__pyx_n_s_binom
 #define __pyx_n_s_c __pyx_mstate_global->__pyx_n_s_c
 #define __pyx_n_s_cache __pyx_mstate_global->__pyx_n_s_cache
 #define __pyx_n_s_cache_fcf __pyx_mstate_global->__pyx_n_s_cache_fcf
@@ -3299,6 +3308,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_range __pyx_mstate_global->__pyx_n_s_range
 #define __pyx_n_s_rd __pyx_mstate_global->__pyx_n_s_rd
 #define __pyx_n_s_repeat __pyx_mstate_global->__pyx_n_s_repeat
+#define __pyx_n_s_scipy_special __pyx_mstate_global->__pyx_n_s_scipy_special
 #define __pyx_n_s_spec __pyx_mstate_global->__pyx_n_s_spec
 #define __pyx_n_s_sqrt __pyx_mstate_global->__pyx_n_s_sqrt
 #define __pyx_n_s_state __pyx_mstate_global->__pyx_n_s_state
@@ -4613,7 +4623,7 @@ static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObjec
   return __pyx_r;
 }
 
-/* "pyqchem/cython_module/efficient_functions.pyx":11
+/* "pyqchem/cython_module/efficient_functions.pyx":12
  * ctypedef cnp.float64_t DTYPE_F_t
  * # cache function to accelarate FCF
  * def cache_fcf(func):             # <<<<<<<<<<<<<<
@@ -4663,12 +4673,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_func)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 11, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 12, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "cache_fcf") < 0)) __PYX_ERR(0, 11, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "cache_fcf") < 0)) __PYX_ERR(0, 12, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -4679,7 +4689,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("cache_fcf", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 11, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("cache_fcf", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 12, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyqchem.cython_module.efficient_functions.cache_fcf", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4692,7 +4702,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-/* "pyqchem/cython_module/efficient_functions.pyx":14
+/* "pyqchem/cython_module/efficient_functions.pyx":15
  *     cache = {}
  * 
  *     def wrapper(cnp.ndarray[DTYPE_I_t, ndim=1] v1, int k1,cnp.ndarray[DTYPE_I_t, ndim=1] v2,int k2,             # <<<<<<<<<<<<<<
@@ -4769,75 +4779,75 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_v1)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 14, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_k1)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 14, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("wrapper", 1, 10, 10, 1); __PYX_ERR(0, 14, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("wrapper", 1, 10, 10, 1); __PYX_ERR(0, 15, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_v2)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 14, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("wrapper", 1, 10, 10, 2); __PYX_ERR(0, 14, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("wrapper", 1, 10, 10, 2); __PYX_ERR(0, 15, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_k2)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 14, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("wrapper", 1, 10, 10, 3); __PYX_ERR(0, 14, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("wrapper", 1, 10, 10, 3); __PYX_ERR(0, 15, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_ompd)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 14, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("wrapper", 1, 10, 10, 4); __PYX_ERR(0, 14, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("wrapper", 1, 10, 10, 4); __PYX_ERR(0, 15, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_tpmo)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 14, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("wrapper", 1, 10, 10, 5); __PYX_ERR(0, 14, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("wrapper", 1, 10, 10, 5); __PYX_ERR(0, 15, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_tqmo)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 14, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("wrapper", 1, 10, 10, 6); __PYX_ERR(0, 14, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("wrapper", 1, 10, 10, 6); __PYX_ERR(0, 15, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_tr)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 14, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("wrapper", 1, 10, 10, 7); __PYX_ERR(0, 14, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("wrapper", 1, 10, 10, 7); __PYX_ERR(0, 15, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
         if (likely((values[8] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_rd)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 14, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("wrapper", 1, 10, 10, 8); __PYX_ERR(0, 14, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("wrapper", 1, 10, 10, 8); __PYX_ERR(0, 15, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
         if (likely((values[9] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_fcf_00)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 14, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("wrapper", 1, 10, 10, 9); __PYX_ERR(0, 14, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("wrapper", 1, 10, 10, 9); __PYX_ERR(0, 15, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "wrapper") < 0)) __PYX_ERR(0, 14, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "wrapper") < 0)) __PYX_ERR(0, 15, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 10)) {
       goto __pyx_L5_argtuple_error;
@@ -4854,31 +4864,31 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       values[9] = __Pyx_Arg_FASTCALL(__pyx_args, 9);
     }
     __pyx_v_v1 = ((PyArrayObject *)values[0]);
-    __pyx_v_k1 = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_k1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 14, __pyx_L3_error)
+    __pyx_v_k1 = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_k1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L3_error)
     __pyx_v_v2 = ((PyArrayObject *)values[2]);
-    __pyx_v_k2 = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_k2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 14, __pyx_L3_error)
+    __pyx_v_k2 = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_k2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L3_error)
     __pyx_v_ompd = ((PyArrayObject *)values[4]);
     __pyx_v_tpmo = ((PyArrayObject *)values[5]);
     __pyx_v_tqmo = ((PyArrayObject *)values[6]);
     __pyx_v_tr = ((PyArrayObject *)values[7]);
     __pyx_v_rd = ((PyArrayObject *)values[8]);
-    __pyx_v_fcf_00 = __pyx_PyFloat_AsFloat(values[9]); if (unlikely((__pyx_v_fcf_00 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 20, __pyx_L3_error)
+    __pyx_v_fcf_00 = __pyx_PyFloat_AsFloat(values[9]); if (unlikely((__pyx_v_fcf_00 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 21, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("wrapper", 1, 10, 10, __pyx_nargs); __PYX_ERR(0, 14, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("wrapper", 1, 10, 10, __pyx_nargs); __PYX_ERR(0, 15, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyqchem.cython_module.efficient_functions.cache_fcf.wrapper", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_v1), __pyx_ptype_5numpy_ndarray, 1, "v1", 0))) __PYX_ERR(0, 14, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_v2), __pyx_ptype_5numpy_ndarray, 1, "v2", 0))) __PYX_ERR(0, 14, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ompd), __pyx_ptype_5numpy_ndarray, 1, "ompd", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tpmo), __pyx_ptype_5numpy_ndarray, 1, "tpmo", 0))) __PYX_ERR(0, 16, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tqmo), __pyx_ptype_5numpy_ndarray, 1, "tqmo", 0))) __PYX_ERR(0, 17, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tr), __pyx_ptype_5numpy_ndarray, 1, "tr", 0))) __PYX_ERR(0, 18, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rd), __pyx_ptype_5numpy_ndarray, 1, "rd", 0))) __PYX_ERR(0, 19, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_v1), __pyx_ptype_5numpy_ndarray, 1, "v1", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_v2), __pyx_ptype_5numpy_ndarray, 1, "v2", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ompd), __pyx_ptype_5numpy_ndarray, 1, "ompd", 0))) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tpmo), __pyx_ptype_5numpy_ndarray, 1, "tpmo", 0))) __PYX_ERR(0, 17, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tqmo), __pyx_ptype_5numpy_ndarray, 1, "tqmo", 0))) __PYX_ERR(0, 18, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tr), __pyx_ptype_5numpy_ndarray, 1, "tr", 0))) __PYX_ERR(0, 19, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rd), __pyx_ptype_5numpy_ndarray, 1, "rd", 0))) __PYX_ERR(0, 20, __pyx_L1_error)
   __pyx_r = __pyx_pf_7pyqchem_13cython_module_19efficient_functions_9cache_fcf_wrapper(__pyx_self, __pyx_v_v1, __pyx_v_k1, __pyx_v_v2, __pyx_v_k2, __pyx_v_ompd, __pyx_v_tpmo, __pyx_v_tqmo, __pyx_v_tr, __pyx_v_rd, __pyx_v_fcf_00);
 
   /* function exit code */
@@ -4954,56 +4964,56 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_9cache_
   __pyx_pybuffernd_rd.rcbuffer = &__pyx_pybuffer_rd;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_v1.rcbuffer->pybuffer, (PyObject*)__pyx_v_v1, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 14, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_v1.rcbuffer->pybuffer, (PyObject*)__pyx_v_v1, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 15, __pyx_L1_error)
   }
   __pyx_pybuffernd_v1.diminfo[0].strides = __pyx_pybuffernd_v1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_v1.diminfo[0].shape = __pyx_pybuffernd_v1.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_v2.rcbuffer->pybuffer, (PyObject*)__pyx_v_v2, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 14, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_v2.rcbuffer->pybuffer, (PyObject*)__pyx_v_v2, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 15, __pyx_L1_error)
   }
   __pyx_pybuffernd_v2.diminfo[0].strides = __pyx_pybuffernd_v2.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_v2.diminfo[0].shape = __pyx_pybuffernd_v2.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ompd.rcbuffer->pybuffer, (PyObject*)__pyx_v_ompd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 14, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ompd.rcbuffer->pybuffer, (PyObject*)__pyx_v_ompd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 15, __pyx_L1_error)
   }
   __pyx_pybuffernd_ompd.diminfo[0].strides = __pyx_pybuffernd_ompd.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ompd.diminfo[0].shape = __pyx_pybuffernd_ompd.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tpmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tpmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 14, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tpmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tpmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 15, __pyx_L1_error)
   }
   __pyx_pybuffernd_tpmo.diminfo[0].strides = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_tpmo.diminfo[0].shape = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_tpmo.diminfo[1].strides = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_tpmo.diminfo[1].shape = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tqmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tqmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 14, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tqmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tqmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 15, __pyx_L1_error)
   }
   __pyx_pybuffernd_tqmo.diminfo[0].strides = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_tqmo.diminfo[0].shape = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_tqmo.diminfo[1].strides = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_tqmo.diminfo[1].shape = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tr.rcbuffer->pybuffer, (PyObject*)__pyx_v_tr, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 14, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tr.rcbuffer->pybuffer, (PyObject*)__pyx_v_tr, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 15, __pyx_L1_error)
   }
   __pyx_pybuffernd_tr.diminfo[0].strides = __pyx_pybuffernd_tr.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_tr.diminfo[0].shape = __pyx_pybuffernd_tr.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_tr.diminfo[1].strides = __pyx_pybuffernd_tr.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_tr.diminfo[1].shape = __pyx_pybuffernd_tr.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_rd.rcbuffer->pybuffer, (PyObject*)__pyx_v_rd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 14, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_rd.rcbuffer->pybuffer, (PyObject*)__pyx_v_rd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 15, __pyx_L1_error)
   }
   __pyx_pybuffernd_rd.diminfo[0].strides = __pyx_pybuffernd_rd.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_rd.diminfo[0].shape = __pyx_pybuffernd_rd.rcbuffer->pybuffer.shape[0];
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":21
+  /* "pyqchem/cython_module/efficient_functions.pyx":22
  *     cnp.ndarray[DTYPE_F_t, ndim=1] rd,
  *     float fcf_00,):
  *         key = (tuple(v1), k1, tuple(v2), k2)             # <<<<<<<<<<<<<<
  *         if key not in cache:
  *             cache[key] = func(v1, k1, v2, k2, ompd, tpmo, tqmo, tr, rd, fcf_00)
  */
-  __pyx_t_1 = PySequence_Tuple(((PyObject *)__pyx_v_v1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_1 = PySequence_Tuple(((PyObject *)__pyx_v_v1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_k1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_k1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PySequence_Tuple(((PyObject *)__pyx_v_v2)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_3 = PySequence_Tuple(((PyObject *)__pyx_v_v2)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_k2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_k2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1);
@@ -5020,34 +5030,34 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_9cache_
   __pyx_v_key = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":22
+  /* "pyqchem/cython_module/efficient_functions.pyx":23
  *     float fcf_00,):
  *         key = (tuple(v1), k1, tuple(v2), k2)
  *         if key not in cache:             # <<<<<<<<<<<<<<
  *             cache[key] = func(v1, k1, v2, k2, ompd, tpmo, tqmo, tr, rd, fcf_00)
  *         return cache[key]
  */
-  if (unlikely(!__pyx_cur_scope->__pyx_v_cache)) { __Pyx_RaiseClosureNameError("cache"); __PYX_ERR(0, 22, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_v_cache)) { __Pyx_RaiseClosureNameError("cache"); __PYX_ERR(0, 23, __pyx_L1_error) }
   if (unlikely(__pyx_cur_scope->__pyx_v_cache == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 22, __pyx_L1_error)
+    __PYX_ERR(0, 23, __pyx_L1_error)
   }
-  __pyx_t_6 = (__Pyx_PyDict_ContainsTF(__pyx_v_key, __pyx_cur_scope->__pyx_v_cache, Py_NE)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PyDict_ContainsTF(__pyx_v_key, __pyx_cur_scope->__pyx_v_cache, Py_NE)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 23, __pyx_L1_error)
   if (__pyx_t_6) {
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":23
+    /* "pyqchem/cython_module/efficient_functions.pyx":24
  *         key = (tuple(v1), k1, tuple(v2), k2)
  *         if key not in cache:
  *             cache[key] = func(v1, k1, v2, k2, ompd, tpmo, tqmo, tr, rd, fcf_00)             # <<<<<<<<<<<<<<
  *         return cache[key]
  * 
  */
-    if (unlikely(!__pyx_cur_scope->__pyx_v_func)) { __Pyx_RaiseClosureNameError("func"); __PYX_ERR(0, 23, __pyx_L1_error) }
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_k1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)
+    if (unlikely(!__pyx_cur_scope->__pyx_v_func)) { __Pyx_RaiseClosureNameError("func"); __PYX_ERR(0, 24, __pyx_L1_error) }
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_k1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 24, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_k2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_k2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_fcf_00); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_fcf_00); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_cur_scope->__pyx_v_func);
     __pyx_t_1 = __pyx_cur_scope->__pyx_v_func; __pyx_t_7 = NULL;
@@ -5069,19 +5079,19 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_9cache_
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 23, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 24, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
-    if (unlikely(!__pyx_cur_scope->__pyx_v_cache)) { __Pyx_RaiseClosureNameError("cache"); __PYX_ERR(0, 23, __pyx_L1_error) }
+    if (unlikely(!__pyx_cur_scope->__pyx_v_cache)) { __Pyx_RaiseClosureNameError("cache"); __PYX_ERR(0, 24, __pyx_L1_error) }
     if (unlikely(__pyx_cur_scope->__pyx_v_cache == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 23, __pyx_L1_error)
+      __PYX_ERR(0, 24, __pyx_L1_error)
     }
-    if (unlikely((PyDict_SetItem(__pyx_cur_scope->__pyx_v_cache, __pyx_v_key, __pyx_t_5) < 0))) __PYX_ERR(0, 23, __pyx_L1_error)
+    if (unlikely((PyDict_SetItem(__pyx_cur_scope->__pyx_v_cache, __pyx_v_key, __pyx_t_5) < 0))) __PYX_ERR(0, 24, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":22
+    /* "pyqchem/cython_module/efficient_functions.pyx":23
  *     float fcf_00,):
  *         key = (tuple(v1), k1, tuple(v2), k2)
  *         if key not in cache:             # <<<<<<<<<<<<<<
@@ -5090,7 +5100,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_9cache_
  */
   }
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":24
+  /* "pyqchem/cython_module/efficient_functions.pyx":25
  *         if key not in cache:
  *             cache[key] = func(v1, k1, v2, k2, ompd, tpmo, tqmo, tr, rd, fcf_00)
  *         return cache[key]             # <<<<<<<<<<<<<<
@@ -5098,18 +5108,18 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_9cache_
  *     return wrapper
  */
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_cur_scope->__pyx_v_cache)) { __Pyx_RaiseClosureNameError("cache"); __PYX_ERR(0, 24, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_v_cache)) { __Pyx_RaiseClosureNameError("cache"); __PYX_ERR(0, 25, __pyx_L1_error) }
   if (unlikely(__pyx_cur_scope->__pyx_v_cache == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 24, __pyx_L1_error)
+    __PYX_ERR(0, 25, __pyx_L1_error)
   }
-  __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_cur_scope->__pyx_v_cache, __pyx_v_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_cur_scope->__pyx_v_cache, __pyx_v_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_r = __pyx_t_5;
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":14
+  /* "pyqchem/cython_module/efficient_functions.pyx":15
  *     cache = {}
  * 
  *     def wrapper(cnp.ndarray[DTYPE_I_t, ndim=1] v1, int k1,cnp.ndarray[DTYPE_I_t, ndim=1] v2,int k2,             # <<<<<<<<<<<<<<
@@ -5155,7 +5165,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_9cache_
   return __pyx_r;
 }
 
-/* "pyqchem/cython_module/efficient_functions.pyx":11
+/* "pyqchem/cython_module/efficient_functions.pyx":12
  * ctypedef cnp.float64_t DTYPE_F_t
  * # cache function to accelarate FCF
  * def cache_fcf(func):             # <<<<<<<<<<<<<<
@@ -5177,7 +5187,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_cache_f
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_7pyqchem_13cython_module_19efficient_functions___pyx_scope_struct__cache_fcf *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 11, __pyx_L1_error)
+    __PYX_ERR(0, 12, __pyx_L1_error)
   } else {
     __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
   }
@@ -5185,32 +5195,32 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_cache_f
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_func);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_func);
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":12
+  /* "pyqchem/cython_module/efficient_functions.pyx":13
  * # cache function to accelarate FCF
  * def cache_fcf(func):
  *     cache = {}             # <<<<<<<<<<<<<<
  * 
  *     def wrapper(cnp.ndarray[DTYPE_I_t, ndim=1] v1, int k1,cnp.ndarray[DTYPE_I_t, ndim=1] v2,int k2,
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_cur_scope->__pyx_v_cache = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":14
+  /* "pyqchem/cython_module/efficient_functions.pyx":15
  *     cache = {}
  * 
  *     def wrapper(cnp.ndarray[DTYPE_I_t, ndim=1] v1, int k1,cnp.ndarray[DTYPE_I_t, ndim=1] v2,int k2,             # <<<<<<<<<<<<<<
  *     cnp.ndarray[DTYPE_F_t, ndim=1] ompd,
  *     cnp.ndarray[DTYPE_F_t, ndim=2] tpmo,
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7pyqchem_13cython_module_19efficient_functions_9cache_fcf_1wrapper, 0, __pyx_n_s_cache_fcf_locals_wrapper, ((PyObject*)__pyx_cur_scope), __pyx_n_s_pyqchem_cython_module_efficient_2, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7pyqchem_13cython_module_19efficient_functions_9cache_fcf_1wrapper, 0, __pyx_n_s_cache_fcf_locals_wrapper, ((PyObject*)__pyx_cur_scope), __pyx_n_s_pyqchem_cython_module_efficient_2, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_wrapper = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":26
+  /* "pyqchem/cython_module/efficient_functions.pyx":27
  *         return cache[key]
  * 
  *     return wrapper             # <<<<<<<<<<<<<<
@@ -5222,7 +5232,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_cache_f
   __pyx_r = __pyx_v_wrapper;
   goto __pyx_L0;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":11
+  /* "pyqchem/cython_module/efficient_functions.pyx":12
  * ctypedef cnp.float64_t DTYPE_F_t
  * # cache function to accelarate FCF
  * def cache_fcf(func):             # <<<<<<<<<<<<<<
@@ -5243,7 +5253,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_cache_f
   return __pyx_r;
 }
 
-/* "pyqchem/cython_module/efficient_functions.pyx":28
+/* "pyqchem/cython_module/efficient_functions.pyx":29
  *     return wrapper
  * 
  * @cython.boundscheck(False)  # Deactivate bounds checking             # <<<<<<<<<<<<<<
@@ -5320,75 +5330,75 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_origin_vector)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 28, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_k_origin)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 28, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("evalSingleFCFpy", 1, 10, 10, 1); __PYX_ERR(0, 28, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("evalSingleFCFpy", 1, 10, 10, 1); __PYX_ERR(0, 29, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_target_vector)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 28, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("evalSingleFCFpy", 1, 10, 10, 2); __PYX_ERR(0, 28, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("evalSingleFCFpy", 1, 10, 10, 2); __PYX_ERR(0, 29, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_k_target)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 28, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("evalSingleFCFpy", 1, 10, 10, 3); __PYX_ERR(0, 28, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("evalSingleFCFpy", 1, 10, 10, 3); __PYX_ERR(0, 29, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_ompd)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 28, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("evalSingleFCFpy", 1, 10, 10, 4); __PYX_ERR(0, 28, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("evalSingleFCFpy", 1, 10, 10, 4); __PYX_ERR(0, 29, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_tpmo)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 28, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("evalSingleFCFpy", 1, 10, 10, 5); __PYX_ERR(0, 28, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("evalSingleFCFpy", 1, 10, 10, 5); __PYX_ERR(0, 29, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_tqmo)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 28, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("evalSingleFCFpy", 1, 10, 10, 6); __PYX_ERR(0, 28, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("evalSingleFCFpy", 1, 10, 10, 6); __PYX_ERR(0, 29, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_tr)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 28, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("evalSingleFCFpy", 1, 10, 10, 7); __PYX_ERR(0, 28, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("evalSingleFCFpy", 1, 10, 10, 7); __PYX_ERR(0, 29, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
         if (likely((values[8] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_rd)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 28, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("evalSingleFCFpy", 1, 10, 10, 8); __PYX_ERR(0, 28, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("evalSingleFCFpy", 1, 10, 10, 8); __PYX_ERR(0, 29, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
         if (likely((values[9] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_fcf_00)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 28, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("evalSingleFCFpy", 1, 10, 10, 9); __PYX_ERR(0, 28, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("evalSingleFCFpy", 1, 10, 10, 9); __PYX_ERR(0, 29, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "evalSingleFCFpy") < 0)) __PYX_ERR(0, 28, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "evalSingleFCFpy") < 0)) __PYX_ERR(0, 29, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 10)) {
       goto __pyx_L5_argtuple_error;
@@ -5405,31 +5415,31 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       values[9] = __Pyx_Arg_FASTCALL(__pyx_args, 9);
     }
     __pyx_v_origin_vector = ((PyArrayObject *)values[0]);
-    __pyx_v_k_origin = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_k_origin == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 33, __pyx_L3_error)
+    __pyx_v_k_origin = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_k_origin == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 34, __pyx_L3_error)
     __pyx_v_target_vector = ((PyArrayObject *)values[2]);
-    __pyx_v_k_target = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_k_target == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 35, __pyx_L3_error)
+    __pyx_v_k_target = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_k_target == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 36, __pyx_L3_error)
     __pyx_v_ompd = ((PyArrayObject *)values[4]);
     __pyx_v_tpmo = ((PyArrayObject *)values[5]);
     __pyx_v_tqmo = ((PyArrayObject *)values[6]);
     __pyx_v_tr = ((PyArrayObject *)values[7]);
     __pyx_v_rd = ((PyArrayObject *)values[8]);
-    __pyx_v_fcf_00 = __pyx_PyFloat_AsFloat(values[9]); if (unlikely((__pyx_v_fcf_00 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 41, __pyx_L3_error)
+    __pyx_v_fcf_00 = __pyx_PyFloat_AsFloat(values[9]); if (unlikely((__pyx_v_fcf_00 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 42, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("evalSingleFCFpy", 1, 10, 10, __pyx_nargs); __PYX_ERR(0, 28, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("evalSingleFCFpy", 1, 10, 10, __pyx_nargs); __PYX_ERR(0, 29, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyqchem.cython_module.efficient_functions.evalSingleFCFpy", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_origin_vector), __pyx_ptype_5numpy_ndarray, 1, "origin_vector", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_target_vector), __pyx_ptype_5numpy_ndarray, 1, "target_vector", 0))) __PYX_ERR(0, 34, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ompd), __pyx_ptype_5numpy_ndarray, 1, "ompd", 0))) __PYX_ERR(0, 36, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tpmo), __pyx_ptype_5numpy_ndarray, 1, "tpmo", 0))) __PYX_ERR(0, 37, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tqmo), __pyx_ptype_5numpy_ndarray, 1, "tqmo", 0))) __PYX_ERR(0, 38, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tr), __pyx_ptype_5numpy_ndarray, 1, "tr", 0))) __PYX_ERR(0, 39, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rd), __pyx_ptype_5numpy_ndarray, 1, "rd", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_origin_vector), __pyx_ptype_5numpy_ndarray, 1, "origin_vector", 0))) __PYX_ERR(0, 33, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_target_vector), __pyx_ptype_5numpy_ndarray, 1, "target_vector", 0))) __PYX_ERR(0, 35, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ompd), __pyx_ptype_5numpy_ndarray, 1, "ompd", 0))) __PYX_ERR(0, 37, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tpmo), __pyx_ptype_5numpy_ndarray, 1, "tpmo", 0))) __PYX_ERR(0, 38, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tqmo), __pyx_ptype_5numpy_ndarray, 1, "tqmo", 0))) __PYX_ERR(0, 39, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tr), __pyx_ptype_5numpy_ndarray, 1, "tr", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rd), __pyx_ptype_5numpy_ndarray, 1, "rd", 0))) __PYX_ERR(0, 41, __pyx_L1_error)
   __pyx_r = __pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSingleFCFpy(__pyx_self, __pyx_v_origin_vector, __pyx_v_k_origin, __pyx_v_target_vector, __pyx_v_k_target, __pyx_v_ompd, __pyx_v_tpmo, __pyx_v_tqmo, __pyx_v_tr, __pyx_v_rd, __pyx_v_fcf_00);
 
   /* function exit code */
@@ -5511,41 +5521,41 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
   __pyx_pybuffernd_rd.rcbuffer = &__pyx_pybuffer_rd;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_origin_vector.rcbuffer->pybuffer, (PyObject*)__pyx_v_origin_vector, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 28, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_origin_vector.rcbuffer->pybuffer, (PyObject*)__pyx_v_origin_vector, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 29, __pyx_L1_error)
   }
   __pyx_pybuffernd_origin_vector.diminfo[0].strides = __pyx_pybuffernd_origin_vector.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_origin_vector.diminfo[0].shape = __pyx_pybuffernd_origin_vector.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_target_vector.rcbuffer->pybuffer, (PyObject*)__pyx_v_target_vector, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 28, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_target_vector.rcbuffer->pybuffer, (PyObject*)__pyx_v_target_vector, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 29, __pyx_L1_error)
   }
   __pyx_pybuffernd_target_vector.diminfo[0].strides = __pyx_pybuffernd_target_vector.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_target_vector.diminfo[0].shape = __pyx_pybuffernd_target_vector.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ompd.rcbuffer->pybuffer, (PyObject*)__pyx_v_ompd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 28, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ompd.rcbuffer->pybuffer, (PyObject*)__pyx_v_ompd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 29, __pyx_L1_error)
   }
   __pyx_pybuffernd_ompd.diminfo[0].strides = __pyx_pybuffernd_ompd.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ompd.diminfo[0].shape = __pyx_pybuffernd_ompd.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tpmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tpmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 28, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tpmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tpmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 29, __pyx_L1_error)
   }
   __pyx_pybuffernd_tpmo.diminfo[0].strides = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_tpmo.diminfo[0].shape = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_tpmo.diminfo[1].strides = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_tpmo.diminfo[1].shape = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tqmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tqmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 28, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tqmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tqmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 29, __pyx_L1_error)
   }
   __pyx_pybuffernd_tqmo.diminfo[0].strides = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_tqmo.diminfo[0].shape = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_tqmo.diminfo[1].strides = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_tqmo.diminfo[1].shape = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tr.rcbuffer->pybuffer, (PyObject*)__pyx_v_tr, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 28, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tr.rcbuffer->pybuffer, (PyObject*)__pyx_v_tr, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 29, __pyx_L1_error)
   }
   __pyx_pybuffernd_tr.diminfo[0].strides = __pyx_pybuffernd_tr.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_tr.diminfo[0].shape = __pyx_pybuffernd_tr.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_tr.diminfo[1].strides = __pyx_pybuffernd_tr.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_tr.diminfo[1].shape = __pyx_pybuffernd_tr.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_rd.rcbuffer->pybuffer, (PyObject*)__pyx_v_rd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 28, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_rd.rcbuffer->pybuffer, (PyObject*)__pyx_v_rd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 29, __pyx_L1_error)
   }
   __pyx_pybuffernd_rd.diminfo[0].strides = __pyx_pybuffernd_rd.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_rd.diminfo[0].shape = __pyx_pybuffernd_rd.rcbuffer->pybuffer.shape[0];
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":45
+  /* "pyqchem/cython_module/efficient_functions.pyx":46
  *     cdef int ksi
  *     cdef int theta
  *     if k_origin == 0 and k_target == 0:             # <<<<<<<<<<<<<<
@@ -5563,7 +5573,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":46
+    /* "pyqchem/cython_module/efficient_functions.pyx":47
  *     cdef int theta
  *     if k_origin == 0 and k_target == 0:
  *         return fcf_00             # <<<<<<<<<<<<<<
@@ -5571,13 +5581,13 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
  *     if k_origin == 0:
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_fcf_00); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 46, __pyx_L1_error)
+    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_fcf_00); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_r = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L0;
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":45
+    /* "pyqchem/cython_module/efficient_functions.pyx":46
  *     cdef int ksi
  *     cdef int theta
  *     if k_origin == 0 and k_target == 0:             # <<<<<<<<<<<<<<
@@ -5586,7 +5596,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
  */
   }
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":48
+  /* "pyqchem/cython_module/efficient_functions.pyx":49
  *         return fcf_00
  * 
  *     if k_origin == 0:             # <<<<<<<<<<<<<<
@@ -5596,7 +5606,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
   __pyx_t_1 = (__pyx_v_k_origin == 0);
   if (__pyx_t_1) {
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":49
+    /* "pyqchem/cython_module/efficient_functions.pyx":50
  * 
  *     if k_origin == 0:
  *         ksi = 0             # <<<<<<<<<<<<<<
@@ -5605,7 +5615,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
  */
     __pyx_v_ksi = 0;
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":50
+    /* "pyqchem/cython_module/efficient_functions.pyx":51
  *     if k_origin == 0:
  *         ksi = 0
  *         while target_vector[ksi] == 0:             # <<<<<<<<<<<<<<
@@ -5617,7 +5627,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
       __pyx_t_1 = ((*__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_target_vector.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_target_vector.diminfo[0].strides)) == 0);
       if (!__pyx_t_1) break;
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":51
+      /* "pyqchem/cython_module/efficient_functions.pyx":52
  *         ksi = 0
  *         while target_vector[ksi] == 0:
  *             ksi += 1             # <<<<<<<<<<<<<<
@@ -5627,7 +5637,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
       __pyx_v_ksi = (__pyx_v_ksi + 1);
     }
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":52
+    /* "pyqchem/cython_module/efficient_functions.pyx":53
  *         while target_vector[ksi] == 0:
  *             ksi += 1
  *         target_vector[ksi] -= 1             # <<<<<<<<<<<<<<
@@ -5637,7 +5647,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
     __pyx_t_4 = __pyx_v_ksi;
     *__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_target_vector.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_target_vector.diminfo[0].strides) -= 1;
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":54
+    /* "pyqchem/cython_module/efficient_functions.pyx":55
  *         target_vector[ksi] -= 1
  * 
  *         fcf = ompd[ksi] * evalSingleFCFpy(             # <<<<<<<<<<<<<<
@@ -5645,29 +5655,29 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
  *             0,
  */
     __pyx_t_4 = __pyx_v_ksi;
-    __pyx_t_3 = PyFloat_FromDouble((*__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t *, __pyx_pybuffernd_ompd.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_ompd.diminfo[0].strides))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 54, __pyx_L1_error)
+    __pyx_t_3 = PyFloat_FromDouble((*__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t *, __pyx_pybuffernd_ompd.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_ompd.diminfo[0].strides))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_evalSingleFCFpy); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 54, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_evalSingleFCFpy); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":58
+    /* "pyqchem/cython_module/efficient_functions.pyx":59
  *             0,
  *             target_vector,
  *             k_target - 1,             # <<<<<<<<<<<<<<
  *             ompd,
  *             tpmo,
  */
-    __pyx_t_7 = __Pyx_PyInt_From_long((__pyx_v_k_target - 1)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyInt_From_long((__pyx_v_k_target - 1)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":64
+    /* "pyqchem/cython_module/efficient_functions.pyx":65
  *             tr,
  *             rd,
  *             fcf_00,             # <<<<<<<<<<<<<<
  *         )
  * 
  */
-    __pyx_t_8 = PyFloat_FromDouble(__pyx_v_fcf_00); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __pyx_t_8 = PyFloat_FromDouble(__pyx_v_fcf_00); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 65, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_9 = NULL;
     __pyx_t_10 = 0;
@@ -5687,26 +5697,26 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 54, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 55, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":54
+    /* "pyqchem/cython_module/efficient_functions.pyx":55
  *         target_vector[ksi] -= 1
  * 
  *         fcf = ompd[ksi] * evalSingleFCFpy(             # <<<<<<<<<<<<<<
  *             origin_vector,
  *             0,
  */
-    __pyx_t_6 = PyNumber_Multiply(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 54, __pyx_L1_error)
+    __pyx_t_6 = PyNumber_Multiply(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_fcf = __pyx_t_6;
     __pyx_t_6 = 0;
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":67
+    /* "pyqchem/cython_module/efficient_functions.pyx":68
  *         )
  * 
  *         if k_target > 1:             # <<<<<<<<<<<<<<
@@ -5716,19 +5726,19 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
     __pyx_t_1 = (__pyx_v_k_target > 1);
     if (__pyx_t_1) {
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":68
+      /* "pyqchem/cython_module/efficient_functions.pyx":69
  * 
  *         if k_target > 1:
  *             for theta in range(ksi, len(target_vector)):             # <<<<<<<<<<<<<<
  *                 if target_vector[theta] > 0:
  *                     tmp_dbl = tpmo[ksi, theta] * np.sqrt(target_vector[theta])
  */
-      __pyx_t_11 = PyObject_Length(((PyObject *)__pyx_v_target_vector)); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 68, __pyx_L1_error)
+      __pyx_t_11 = PyObject_Length(((PyObject *)__pyx_v_target_vector)); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 69, __pyx_L1_error)
       __pyx_t_12 = __pyx_t_11;
       for (__pyx_t_10 = __pyx_v_ksi; __pyx_t_10 < __pyx_t_12; __pyx_t_10+=1) {
         __pyx_v_theta = __pyx_t_10;
 
-        /* "pyqchem/cython_module/efficient_functions.pyx":69
+        /* "pyqchem/cython_module/efficient_functions.pyx":70
  *         if k_target > 1:
  *             for theta in range(ksi, len(target_vector)):
  *                 if target_vector[theta] > 0:             # <<<<<<<<<<<<<<
@@ -5739,7 +5749,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
         __pyx_t_1 = ((*__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_target_vector.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_target_vector.diminfo[0].strides)) > 0);
         if (__pyx_t_1) {
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":70
+          /* "pyqchem/cython_module/efficient_functions.pyx":71
  *             for theta in range(ksi, len(target_vector)):
  *                 if target_vector[theta] > 0:
  *                     tmp_dbl = tpmo[ksi, theta] * np.sqrt(target_vector[theta])             # <<<<<<<<<<<<<<
@@ -5748,15 +5758,15 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
  */
           __pyx_t_4 = __pyx_v_ksi;
           __pyx_t_13 = __pyx_v_theta;
-          __pyx_t_6 = PyFloat_FromDouble((*__Pyx_BufPtrStrided2d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t *, __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_tpmo.diminfo[0].strides, __pyx_t_13, __pyx_pybuffernd_tpmo.diminfo[1].strides))); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 70, __pyx_L1_error)
+          __pyx_t_6 = PyFloat_FromDouble((*__Pyx_BufPtrStrided2d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t *, __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_tpmo.diminfo[0].strides, __pyx_t_13, __pyx_pybuffernd_tpmo.diminfo[1].strides))); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 71, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_6);
-          __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 70, __pyx_L1_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 71, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 70, __pyx_L1_error)
+          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 71, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_13 = __pyx_v_theta;
-          __pyx_t_3 = __Pyx_PyInt_From_npy_int64((*__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_target_vector.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_target_vector.diminfo[0].strides))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 70, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyInt_From_npy_int64((*__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_target_vector.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_target_vector.diminfo[0].strides))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 71, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __pyx_t_7 = NULL;
           __pyx_t_14 = 0;
@@ -5775,18 +5785,18 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
             __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_8, __pyx_callargs+1-__pyx_t_14, 1+__pyx_t_14);
             __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-            if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 70, __pyx_L1_error)
+            if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 71, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_5);
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           }
-          __pyx_t_8 = PyNumber_Multiply(__pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 70, __pyx_L1_error)
+          __pyx_t_8 = PyNumber_Multiply(__pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 71, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF_SET(__pyx_v_tmp_dbl, __pyx_t_8);
           __pyx_t_8 = 0;
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":71
+          /* "pyqchem/cython_module/efficient_functions.pyx":72
  *                 if target_vector[theta] > 0:
  *                     tmp_dbl = tpmo[ksi, theta] * np.sqrt(target_vector[theta])
  *                     target_vector[theta] -= 1             # <<<<<<<<<<<<<<
@@ -5796,34 +5806,34 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
           __pyx_t_13 = __pyx_v_theta;
           *__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_target_vector.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_target_vector.diminfo[0].strides) -= 1;
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":72
+          /* "pyqchem/cython_module/efficient_functions.pyx":73
  *                     tmp_dbl = tpmo[ksi, theta] * np.sqrt(target_vector[theta])
  *                     target_vector[theta] -= 1
  *                     tmp_dbl *= evalSingleFCFpy(             # <<<<<<<<<<<<<<
  *                         origin_vector,
  *                         0,
  */
-          __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_evalSingleFCFpy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L1_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_evalSingleFCFpy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 73, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":76
+          /* "pyqchem/cython_module/efficient_functions.pyx":77
  *                         0,
  *                         target_vector,
  *                         k_target - 2,             # <<<<<<<<<<<<<<
  *                         ompd,
  *                         tpmo,
  */
-          __pyx_t_6 = __Pyx_PyInt_From_long((__pyx_v_k_target - 2)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 76, __pyx_L1_error)
+          __pyx_t_6 = __Pyx_PyInt_From_long((__pyx_v_k_target - 2)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 77, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_6);
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":82
+          /* "pyqchem/cython_module/efficient_functions.pyx":83
  *                         tr,
  *                         rd,
  *                         fcf_00,             # <<<<<<<<<<<<<<
  *                     )
  *                     fcf += tmp_dbl
  */
-          __pyx_t_3 = PyFloat_FromDouble(__pyx_v_fcf_00); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 82, __pyx_L1_error)
+          __pyx_t_3 = PyFloat_FromDouble(__pyx_v_fcf_00); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 83, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __pyx_t_7 = NULL;
           __pyx_t_14 = 0;
@@ -5843,37 +5853,37 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
             __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
             __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-            if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 72, __pyx_L1_error)
+            if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 73, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_8);
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           }
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":72
+          /* "pyqchem/cython_module/efficient_functions.pyx":73
  *                     tmp_dbl = tpmo[ksi, theta] * np.sqrt(target_vector[theta])
  *                     target_vector[theta] -= 1
  *                     tmp_dbl *= evalSingleFCFpy(             # <<<<<<<<<<<<<<
  *                         origin_vector,
  *                         0,
  */
-          __pyx_t_5 = PyNumber_InPlaceMultiply(__pyx_v_tmp_dbl, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L1_error)
+          __pyx_t_5 = PyNumber_InPlaceMultiply(__pyx_v_tmp_dbl, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 73, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_DECREF_SET(__pyx_v_tmp_dbl, __pyx_t_5);
           __pyx_t_5 = 0;
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":84
+          /* "pyqchem/cython_module/efficient_functions.pyx":85
  *                         fcf_00,
  *                     )
  *                     fcf += tmp_dbl             # <<<<<<<<<<<<<<
  *                     target_vector[theta] += 1
  *         fcf /= np.sqrt(target_vector[ksi] + 1)
  */
-          __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_fcf, __pyx_v_tmp_dbl); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 84, __pyx_L1_error)
+          __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_fcf, __pyx_v_tmp_dbl); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 85, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF_SET(__pyx_v_fcf, __pyx_t_5);
           __pyx_t_5 = 0;
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":85
+          /* "pyqchem/cython_module/efficient_functions.pyx":86
  *                     )
  *                     fcf += tmp_dbl
  *                     target_vector[theta] += 1             # <<<<<<<<<<<<<<
@@ -5883,7 +5893,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
           __pyx_t_13 = __pyx_v_theta;
           *__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_target_vector.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_target_vector.diminfo[0].strides) += 1;
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":69
+          /* "pyqchem/cython_module/efficient_functions.pyx":70
  *         if k_target > 1:
  *             for theta in range(ksi, len(target_vector)):
  *                 if target_vector[theta] > 0:             # <<<<<<<<<<<<<<
@@ -5893,7 +5903,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
         }
       }
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":67
+      /* "pyqchem/cython_module/efficient_functions.pyx":68
  *         )
  * 
  *         if k_target > 1:             # <<<<<<<<<<<<<<
@@ -5902,20 +5912,20 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
  */
     }
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":86
+    /* "pyqchem/cython_module/efficient_functions.pyx":87
  *                     fcf += tmp_dbl
  *                     target_vector[theta] += 1
  *         fcf /= np.sqrt(target_vector[ksi] + 1)             # <<<<<<<<<<<<<<
  *         target_vector[ksi] += 1
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 87, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 87, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __pyx_t_13 = __pyx_v_ksi;
-    __pyx_t_8 = __Pyx_PyInt_From_npy_int64(((*__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_target_vector.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_target_vector.diminfo[0].strides)) + 1)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyInt_From_npy_int64(((*__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_target_vector.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_target_vector.diminfo[0].strides)) + 1)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 87, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_6 = NULL;
     __pyx_t_10 = 0;
@@ -5934,17 +5944,17 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_10, 1+__pyx_t_10);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 86, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 87, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
-    __pyx_t_3 = __Pyx_PyNumber_InPlaceDivide(__pyx_v_fcf, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyNumber_InPlaceDivide(__pyx_v_fcf, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 87, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF_SET(__pyx_v_fcf, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":87
+    /* "pyqchem/cython_module/efficient_functions.pyx":88
  *                     target_vector[theta] += 1
  *         fcf /= np.sqrt(target_vector[ksi] + 1)
  *         target_vector[ksi] += 1             # <<<<<<<<<<<<<<
@@ -5954,7 +5964,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
     __pyx_t_13 = __pyx_v_ksi;
     *__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_target_vector.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_target_vector.diminfo[0].strides) += 1;
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":48
+    /* "pyqchem/cython_module/efficient_functions.pyx":49
  *         return fcf_00
  * 
  *     if k_origin == 0:             # <<<<<<<<<<<<<<
@@ -5964,7 +5974,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
     goto __pyx_L6;
   }
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":90
+  /* "pyqchem/cython_module/efficient_functions.pyx":91
  * 
  *     else:
  *         ksi = 0             # <<<<<<<<<<<<<<
@@ -5974,7 +5984,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
   /*else*/ {
     __pyx_v_ksi = 0;
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":91
+    /* "pyqchem/cython_module/efficient_functions.pyx":92
  *     else:
  *         ksi = 0
  *         while origin_vector[ksi] == 0:             # <<<<<<<<<<<<<<
@@ -5986,7 +5996,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
       __pyx_t_1 = ((*__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_origin_vector.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_origin_vector.diminfo[0].strides)) == 0);
       if (!__pyx_t_1) break;
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":92
+      /* "pyqchem/cython_module/efficient_functions.pyx":93
  *         ksi = 0
  *         while origin_vector[ksi] == 0:
  *             ksi += 1             # <<<<<<<<<<<<<<
@@ -5996,7 +6006,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
       __pyx_v_ksi = (__pyx_v_ksi + 1);
     }
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":94
+    /* "pyqchem/cython_module/efficient_functions.pyx":95
  *             ksi += 1
  * 
  *         origin_vector[ksi] -= 1             # <<<<<<<<<<<<<<
@@ -6006,7 +6016,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
     __pyx_t_13 = __pyx_v_ksi;
     *__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_origin_vector.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_origin_vector.diminfo[0].strides) -= 1;
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":95
+    /* "pyqchem/cython_module/efficient_functions.pyx":96
  * 
  *         origin_vector[ksi] -= 1
  *         fcf = -rd[ksi] * evalSingleFCFpy(             # <<<<<<<<<<<<<<
@@ -6014,39 +6024,39 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
  *             k_origin - 1,
  */
     __pyx_t_13 = __pyx_v_ksi;
-    __pyx_t_3 = PyFloat_FromDouble((-(*__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t *, __pyx_pybuffernd_rd.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_rd.diminfo[0].strides)))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_3 = PyFloat_FromDouble((-(*__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t *, __pyx_pybuffernd_rd.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_rd.diminfo[0].strides)))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_evalSingleFCFpy); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_evalSingleFCFpy); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":97
+    /* "pyqchem/cython_module/efficient_functions.pyx":98
  *         fcf = -rd[ksi] * evalSingleFCFpy(
  *             origin_vector,
  *             k_origin - 1,             # <<<<<<<<<<<<<<
  *             target_vector,
  *             k_target,
  */
-    __pyx_t_6 = __Pyx_PyInt_From_long((__pyx_v_k_origin - 1)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 97, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_From_long((__pyx_v_k_origin - 1)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 98, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":99
+    /* "pyqchem/cython_module/efficient_functions.pyx":100
  *             k_origin - 1,
  *             target_vector,
  *             k_target,             # <<<<<<<<<<<<<<
  *             ompd,
  *             tpmo,
  */
-    __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_k_target); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 99, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_k_target); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 100, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":105
+    /* "pyqchem/cython_module/efficient_functions.pyx":106
  *             tr,
  *             rd,
  *             fcf_00,             # <<<<<<<<<<<<<<
  *         )
  * 
  */
-    __pyx_t_9 = PyFloat_FromDouble(__pyx_v_fcf_00); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_9 = PyFloat_FromDouble(__pyx_v_fcf_00); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __pyx_t_15 = NULL;
     __pyx_t_10 = 0;
@@ -6067,38 +6077,38 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 95, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 96, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":95
+    /* "pyqchem/cython_module/efficient_functions.pyx":96
  * 
  *         origin_vector[ksi] -= 1
  *         fcf = -rd[ksi] * evalSingleFCFpy(             # <<<<<<<<<<<<<<
  *             origin_vector,
  *             k_origin - 1,
  */
-    __pyx_t_8 = PyNumber_Multiply(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_8 = PyNumber_Multiply(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_fcf = __pyx_t_8;
     __pyx_t_8 = 0;
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":108
+    /* "pyqchem/cython_module/efficient_functions.pyx":109
  *         )
  * 
  *         for theta in range(ksi, len(target_vector)):             # <<<<<<<<<<<<<<
  *             if origin_vector[theta] > 0:
  *                 tmp_dbl = tqmo[ksi, theta] * np.sqrt(origin_vector[theta])
  */
-    __pyx_t_11 = PyObject_Length(((PyObject *)__pyx_v_target_vector)); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 108, __pyx_L1_error)
+    __pyx_t_11 = PyObject_Length(((PyObject *)__pyx_v_target_vector)); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 109, __pyx_L1_error)
     __pyx_t_12 = __pyx_t_11;
     for (__pyx_t_10 = __pyx_v_ksi; __pyx_t_10 < __pyx_t_12; __pyx_t_10+=1) {
       __pyx_v_theta = __pyx_t_10;
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":109
+      /* "pyqchem/cython_module/efficient_functions.pyx":110
  * 
  *         for theta in range(ksi, len(target_vector)):
  *             if origin_vector[theta] > 0:             # <<<<<<<<<<<<<<
@@ -6109,7 +6119,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
       __pyx_t_1 = ((*__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_origin_vector.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_origin_vector.diminfo[0].strides)) > 0);
       if (__pyx_t_1) {
 
-        /* "pyqchem/cython_module/efficient_functions.pyx":110
+        /* "pyqchem/cython_module/efficient_functions.pyx":111
  *         for theta in range(ksi, len(target_vector)):
  *             if origin_vector[theta] > 0:
  *                 tmp_dbl = tqmo[ksi, theta] * np.sqrt(origin_vector[theta])             # <<<<<<<<<<<<<<
@@ -6118,15 +6128,15 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
  */
         __pyx_t_13 = __pyx_v_ksi;
         __pyx_t_4 = __pyx_v_theta;
-        __pyx_t_8 = PyFloat_FromDouble((*__Pyx_BufPtrStrided2d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t *, __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_tqmo.diminfo[0].strides, __pyx_t_4, __pyx_pybuffernd_tqmo.diminfo[1].strides))); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 110, __pyx_L1_error)
+        __pyx_t_8 = PyFloat_FromDouble((*__Pyx_BufPtrStrided2d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t *, __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_tqmo.diminfo[0].strides, __pyx_t_4, __pyx_pybuffernd_tqmo.diminfo[1].strides))); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 111, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 110, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 111, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 110, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 111, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_4 = __pyx_v_theta;
-        __pyx_t_3 = __Pyx_PyInt_From_npy_int64((*__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_origin_vector.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_origin_vector.diminfo[0].strides))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 110, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyInt_From_npy_int64((*__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_origin_vector.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_origin_vector.diminfo[0].strides))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 111, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __pyx_t_7 = NULL;
         __pyx_t_14 = 0;
@@ -6145,18 +6155,18 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
           __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_9, __pyx_callargs+1-__pyx_t_14, 1+__pyx_t_14);
           __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
+          if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 111, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         }
-        __pyx_t_9 = PyNumber_Multiply(__pyx_t_8, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 110, __pyx_L1_error)
+        __pyx_t_9 = PyNumber_Multiply(__pyx_t_8, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 111, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_XDECREF_SET(__pyx_v_tmp_dbl, __pyx_t_9);
         __pyx_t_9 = 0;
 
-        /* "pyqchem/cython_module/efficient_functions.pyx":111
+        /* "pyqchem/cython_module/efficient_functions.pyx":112
  *             if origin_vector[theta] > 0:
  *                 tmp_dbl = tqmo[ksi, theta] * np.sqrt(origin_vector[theta])
  *                 origin_vector[theta] -= 1             # <<<<<<<<<<<<<<
@@ -6166,44 +6176,44 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
         __pyx_t_4 = __pyx_v_theta;
         *__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_origin_vector.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_origin_vector.diminfo[0].strides) -= 1;
 
-        /* "pyqchem/cython_module/efficient_functions.pyx":112
+        /* "pyqchem/cython_module/efficient_functions.pyx":113
  *                 tmp_dbl = tqmo[ksi, theta] * np.sqrt(origin_vector[theta])
  *                 origin_vector[theta] -= 1
  *                 tmp_dbl *= evalSingleFCFpy(             # <<<<<<<<<<<<<<
  *                     origin_vector,
  *                     k_origin - 2,
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_evalSingleFCFpy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 112, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_evalSingleFCFpy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 113, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
 
-        /* "pyqchem/cython_module/efficient_functions.pyx":114
+        /* "pyqchem/cython_module/efficient_functions.pyx":115
  *                 tmp_dbl *= evalSingleFCFpy(
  *                     origin_vector,
  *                     k_origin - 2,             # <<<<<<<<<<<<<<
  *                     target_vector,
  *                     k_target,
  */
-        __pyx_t_8 = __Pyx_PyInt_From_long((__pyx_v_k_origin - 2)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 114, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyInt_From_long((__pyx_v_k_origin - 2)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 115, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
 
-        /* "pyqchem/cython_module/efficient_functions.pyx":116
+        /* "pyqchem/cython_module/efficient_functions.pyx":117
  *                     k_origin - 2,
  *                     target_vector,
  *                     k_target,             # <<<<<<<<<<<<<<
  *                     ompd,
  *                     tpmo,
  */
-        __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_k_target); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_k_target); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
 
-        /* "pyqchem/cython_module/efficient_functions.pyx":122
+        /* "pyqchem/cython_module/efficient_functions.pyx":123
  *                     tr,
  *                     rd,
  *                     fcf_00,             # <<<<<<<<<<<<<<
  *                 )
  *                 fcf += tmp_dbl
  */
-        __pyx_t_7 = PyFloat_FromDouble(__pyx_v_fcf_00); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 122, __pyx_L1_error)
+        __pyx_t_7 = PyFloat_FromDouble(__pyx_v_fcf_00); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 123, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __pyx_t_6 = NULL;
         __pyx_t_14 = 0;
@@ -6224,37 +6234,37 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-          if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 112, __pyx_L1_error)
+          if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 113, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         }
 
-        /* "pyqchem/cython_module/efficient_functions.pyx":112
+        /* "pyqchem/cython_module/efficient_functions.pyx":113
  *                 tmp_dbl = tqmo[ksi, theta] * np.sqrt(origin_vector[theta])
  *                 origin_vector[theta] -= 1
  *                 tmp_dbl *= evalSingleFCFpy(             # <<<<<<<<<<<<<<
  *                     origin_vector,
  *                     k_origin - 2,
  */
-        __pyx_t_5 = PyNumber_InPlaceMultiply(__pyx_v_tmp_dbl, __pyx_t_9); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 112, __pyx_L1_error)
+        __pyx_t_5 = PyNumber_InPlaceMultiply(__pyx_v_tmp_dbl, __pyx_t_9); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 113, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_DECREF_SET(__pyx_v_tmp_dbl, __pyx_t_5);
         __pyx_t_5 = 0;
 
-        /* "pyqchem/cython_module/efficient_functions.pyx":124
+        /* "pyqchem/cython_module/efficient_functions.pyx":125
  *                     fcf_00,
  *                 )
  *                 fcf += tmp_dbl             # <<<<<<<<<<<<<<
  *                 origin_vector[theta] += 1
  * 
  */
-        __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_fcf, __pyx_v_tmp_dbl); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 124, __pyx_L1_error)
+        __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_fcf, __pyx_v_tmp_dbl); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 125, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF_SET(__pyx_v_fcf, __pyx_t_5);
         __pyx_t_5 = 0;
 
-        /* "pyqchem/cython_module/efficient_functions.pyx":125
+        /* "pyqchem/cython_module/efficient_functions.pyx":126
  *                 )
  *                 fcf += tmp_dbl
  *                 origin_vector[theta] += 1             # <<<<<<<<<<<<<<
@@ -6264,7 +6274,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
         __pyx_t_4 = __pyx_v_theta;
         *__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_origin_vector.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_origin_vector.diminfo[0].strides) += 1;
 
-        /* "pyqchem/cython_module/efficient_functions.pyx":109
+        /* "pyqchem/cython_module/efficient_functions.pyx":110
  * 
  *         for theta in range(ksi, len(target_vector)):
  *             if origin_vector[theta] > 0:             # <<<<<<<<<<<<<<
@@ -6274,7 +6284,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
       }
     }
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":127
+    /* "pyqchem/cython_module/efficient_functions.pyx":128
  *                 origin_vector[theta] += 1
  * 
  *         if k_target > 0:             # <<<<<<<<<<<<<<
@@ -6284,19 +6294,19 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
     __pyx_t_1 = (__pyx_v_k_target > 0);
     if (__pyx_t_1) {
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":128
+      /* "pyqchem/cython_module/efficient_functions.pyx":129
  * 
  *         if k_target > 0:
  *             for theta in range(len(target_vector)):             # <<<<<<<<<<<<<<
  *                 if target_vector[theta] > 0:
  *                     tmp_dbl = tr[ksi, theta] * np.sqrt(target_vector[theta])
  */
-      __pyx_t_11 = PyObject_Length(((PyObject *)__pyx_v_target_vector)); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 128, __pyx_L1_error)
+      __pyx_t_11 = PyObject_Length(((PyObject *)__pyx_v_target_vector)); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 129, __pyx_L1_error)
       __pyx_t_12 = __pyx_t_11;
       for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_12; __pyx_t_10+=1) {
         __pyx_v_theta = __pyx_t_10;
 
-        /* "pyqchem/cython_module/efficient_functions.pyx":129
+        /* "pyqchem/cython_module/efficient_functions.pyx":130
  *         if k_target > 0:
  *             for theta in range(len(target_vector)):
  *                 if target_vector[theta] > 0:             # <<<<<<<<<<<<<<
@@ -6307,7 +6317,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
         __pyx_t_1 = ((*__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_target_vector.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_target_vector.diminfo[0].strides)) > 0);
         if (__pyx_t_1) {
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":130
+          /* "pyqchem/cython_module/efficient_functions.pyx":131
  *             for theta in range(len(target_vector)):
  *                 if target_vector[theta] > 0:
  *                     tmp_dbl = tr[ksi, theta] * np.sqrt(target_vector[theta])             # <<<<<<<<<<<<<<
@@ -6316,15 +6326,15 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
  */
           __pyx_t_4 = __pyx_v_ksi;
           __pyx_t_13 = __pyx_v_theta;
-          __pyx_t_5 = PyFloat_FromDouble((*__Pyx_BufPtrStrided2d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t *, __pyx_pybuffernd_tr.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_tr.diminfo[0].strides, __pyx_t_13, __pyx_pybuffernd_tr.diminfo[1].strides))); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __pyx_t_5 = PyFloat_FromDouble((*__Pyx_BufPtrStrided2d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t *, __pyx_pybuffernd_tr.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_tr.diminfo[0].strides, __pyx_t_13, __pyx_pybuffernd_tr.diminfo[1].strides))); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 131, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
-          __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 131, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
           __pyx_t_13 = __pyx_v_theta;
-          __pyx_t_7 = __Pyx_PyInt_From_npy_int64((*__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_target_vector.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_target_vector.diminfo[0].strides))); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyInt_From_npy_int64((*__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_target_vector.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_target_vector.diminfo[0].strides))); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 131, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           __pyx_t_8 = NULL;
           __pyx_t_14 = 0;
@@ -6343,18 +6353,18 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
             __pyx_t_9 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_14, 1+__pyx_t_14);
             __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
             __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-            if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 130, __pyx_L1_error)
+            if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 131, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_9);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           }
-          __pyx_t_3 = PyNumber_Multiply(__pyx_t_5, __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __pyx_t_3 = PyNumber_Multiply(__pyx_t_5, __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           __Pyx_XDECREF_SET(__pyx_v_tmp_dbl, __pyx_t_3);
           __pyx_t_3 = 0;
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":131
+          /* "pyqchem/cython_module/efficient_functions.pyx":132
  *                 if target_vector[theta] > 0:
  *                     tmp_dbl = tr[ksi, theta] * np.sqrt(target_vector[theta])
  *                     target_vector[theta] -= 1             # <<<<<<<<<<<<<<
@@ -6364,44 +6374,44 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
           __pyx_t_13 = __pyx_v_theta;
           *__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_target_vector.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_target_vector.diminfo[0].strides) -= 1;
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":132
+          /* "pyqchem/cython_module/efficient_functions.pyx":133
  *                     tmp_dbl = tr[ksi, theta] * np.sqrt(target_vector[theta])
  *                     target_vector[theta] -= 1
  *                     tmp_dbl *= evalSingleFCFpy(             # <<<<<<<<<<<<<<
  *                         origin_vector,
  *                         k_origin - 1,
  */
-          __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_evalSingleFCFpy); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 132, __pyx_L1_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_evalSingleFCFpy); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 133, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":134
+          /* "pyqchem/cython_module/efficient_functions.pyx":135
  *                     tmp_dbl *= evalSingleFCFpy(
  *                         origin_vector,
  *                         k_origin - 1,             # <<<<<<<<<<<<<<
  *                         target_vector,
  *                         k_target - 1,
  */
-          __pyx_t_5 = __Pyx_PyInt_From_long((__pyx_v_k_origin - 1)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 134, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PyInt_From_long((__pyx_v_k_origin - 1)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 135, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":136
+          /* "pyqchem/cython_module/efficient_functions.pyx":137
  *                         k_origin - 1,
  *                         target_vector,
  *                         k_target - 1,             # <<<<<<<<<<<<<<
  *                         ompd,
  *                         tpmo,
  */
-          __pyx_t_7 = __Pyx_PyInt_From_long((__pyx_v_k_target - 1)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 136, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyInt_From_long((__pyx_v_k_target - 1)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 137, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":142
+          /* "pyqchem/cython_module/efficient_functions.pyx":143
  *                         tr,
  *                         rd,
  *                         fcf_00,             # <<<<<<<<<<<<<<
  *                     )
  *                     fcf += tmp_dbl
  */
-          __pyx_t_8 = PyFloat_FromDouble(__pyx_v_fcf_00); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 142, __pyx_L1_error)
+          __pyx_t_8 = PyFloat_FromDouble(__pyx_v_fcf_00); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 143, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
           __pyx_t_6 = NULL;
           __pyx_t_14 = 0;
@@ -6422,37 +6432,37 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
             __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-            if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 132, __pyx_L1_error)
+            if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 133, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           }
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":132
+          /* "pyqchem/cython_module/efficient_functions.pyx":133
  *                     tmp_dbl = tr[ksi, theta] * np.sqrt(target_vector[theta])
  *                     target_vector[theta] -= 1
  *                     tmp_dbl *= evalSingleFCFpy(             # <<<<<<<<<<<<<<
  *                         origin_vector,
  *                         k_origin - 1,
  */
-          __pyx_t_9 = PyNumber_InPlaceMultiply(__pyx_v_tmp_dbl, __pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 132, __pyx_L1_error)
+          __pyx_t_9 = PyNumber_InPlaceMultiply(__pyx_v_tmp_dbl, __pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 133, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF_SET(__pyx_v_tmp_dbl, __pyx_t_9);
           __pyx_t_9 = 0;
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":144
+          /* "pyqchem/cython_module/efficient_functions.pyx":145
  *                         fcf_00,
  *                     )
  *                     fcf += tmp_dbl             # <<<<<<<<<<<<<<
  *                     target_vector[theta] += 1
  * 
  */
-          __pyx_t_9 = PyNumber_InPlaceAdd(__pyx_v_fcf, __pyx_v_tmp_dbl); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 144, __pyx_L1_error)
+          __pyx_t_9 = PyNumber_InPlaceAdd(__pyx_v_fcf, __pyx_v_tmp_dbl); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 145, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_DECREF_SET(__pyx_v_fcf, __pyx_t_9);
           __pyx_t_9 = 0;
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":145
+          /* "pyqchem/cython_module/efficient_functions.pyx":146
  *                     )
  *                     fcf += tmp_dbl
  *                     target_vector[theta] += 1             # <<<<<<<<<<<<<<
@@ -6462,7 +6472,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
           __pyx_t_13 = __pyx_v_theta;
           *__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_target_vector.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_target_vector.diminfo[0].strides) += 1;
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":129
+          /* "pyqchem/cython_module/efficient_functions.pyx":130
  *         if k_target > 0:
  *             for theta in range(len(target_vector)):
  *                 if target_vector[theta] > 0:             # <<<<<<<<<<<<<<
@@ -6472,7 +6482,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
         }
       }
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":127
+      /* "pyqchem/cython_module/efficient_functions.pyx":128
  *                 origin_vector[theta] += 1
  * 
  *         if k_target > 0:             # <<<<<<<<<<<<<<
@@ -6481,20 +6491,20 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
  */
     }
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":147
+    /* "pyqchem/cython_module/efficient_functions.pyx":148
  *                     target_vector[theta] += 1
  * 
  *         fcf /= np.sqrt(origin_vector[ksi] + 1)             # <<<<<<<<<<<<<<
  *         origin_vector[ksi] += 1
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 147, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 147, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_13 = __pyx_v_ksi;
-    __pyx_t_3 = __Pyx_PyInt_From_npy_int64(((*__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_origin_vector.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_origin_vector.diminfo[0].strides)) + 1)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 147, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_From_npy_int64(((*__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_origin_vector.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_origin_vector.diminfo[0].strides)) + 1)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_7 = NULL;
     __pyx_t_10 = 0;
@@ -6513,17 +6523,17 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
       __pyx_t_9 = __Pyx_PyObject_FastCall(__pyx_t_8, __pyx_callargs+1-__pyx_t_10, 1+__pyx_t_10);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 147, __pyx_L1_error)
+      if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 148, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
-    __pyx_t_8 = __Pyx_PyNumber_InPlaceDivide(__pyx_v_fcf, __pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 147, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyNumber_InPlaceDivide(__pyx_v_fcf, __pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF_SET(__pyx_v_fcf, __pyx_t_8);
     __pyx_t_8 = 0;
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":148
+    /* "pyqchem/cython_module/efficient_functions.pyx":149
  * 
  *         fcf /= np.sqrt(origin_vector[ksi] + 1)
  *         origin_vector[ksi] += 1             # <<<<<<<<<<<<<<
@@ -6535,7 +6545,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
   }
   __pyx_L6:;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":150
+  /* "pyqchem/cython_module/efficient_functions.pyx":151
  *         origin_vector[ksi] += 1
  * 
  *     return fcf             # <<<<<<<<<<<<<<
@@ -6547,7 +6557,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
   __pyx_r = __pyx_v_fcf;
   goto __pyx_L0;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":28
+  /* "pyqchem/cython_module/efficient_functions.pyx":29
  *     return wrapper
  * 
  * @cython.boundscheck(False)  # Deactivate bounds checking             # <<<<<<<<<<<<<<
@@ -6595,7 +6605,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_2evalSi
   return __pyx_r;
 }
 
-/* "pyqchem/cython_module/efficient_functions.pyx":154
+/* "pyqchem/cython_module/efficient_functions.pyx":155
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * cpdef get_fc1(             # <<<<<<<<<<<<<<
@@ -6714,62 +6724,62 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(
   __pyx_pybuffernd_rd.rcbuffer = &__pyx_pybuffer_rd;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_state.rcbuffer->pybuffer, (PyObject*)__pyx_v_state, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 154, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_state.rcbuffer->pybuffer, (PyObject*)__pyx_v_state, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 155, __pyx_L1_error)
   }
   __pyx_pybuffernd_state.diminfo[0].strides = __pyx_pybuffernd_state.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_state.diminfo[0].shape = __pyx_pybuffernd_state.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ompd.rcbuffer->pybuffer, (PyObject*)__pyx_v_ompd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 154, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ompd.rcbuffer->pybuffer, (PyObject*)__pyx_v_ompd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 155, __pyx_L1_error)
   }
   __pyx_pybuffernd_ompd.diminfo[0].strides = __pyx_pybuffernd_ompd.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ompd.diminfo[0].shape = __pyx_pybuffernd_ompd.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tpmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tpmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 154, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tpmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tpmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 155, __pyx_L1_error)
   }
   __pyx_pybuffernd_tpmo.diminfo[0].strides = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_tpmo.diminfo[0].shape = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_tpmo.diminfo[1].strides = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_tpmo.diminfo[1].shape = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tqmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tqmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 154, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tqmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tqmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 155, __pyx_L1_error)
   }
   __pyx_pybuffernd_tqmo.diminfo[0].strides = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_tqmo.diminfo[0].shape = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_tqmo.diminfo[1].strides = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_tqmo.diminfo[1].shape = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tr.rcbuffer->pybuffer, (PyObject*)__pyx_v_tr, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 154, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tr.rcbuffer->pybuffer, (PyObject*)__pyx_v_tr, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 155, __pyx_L1_error)
   }
   __pyx_pybuffernd_tr.diminfo[0].strides = __pyx_pybuffernd_tr.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_tr.diminfo[0].shape = __pyx_pybuffernd_tr.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_tr.diminfo[1].strides = __pyx_pybuffernd_tr.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_tr.diminfo[1].shape = __pyx_pybuffernd_tr.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_rd.rcbuffer->pybuffer, (PyObject*)__pyx_v_rd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 154, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_rd.rcbuffer->pybuffer, (PyObject*)__pyx_v_rd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 155, __pyx_L1_error)
   }
   __pyx_pybuffernd_rd.diminfo[0].strides = __pyx_pybuffernd_rd.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_rd.diminfo[0].shape = __pyx_pybuffernd_rd.rcbuffer->pybuffer.shape[0];
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":170
+  /* "pyqchem/cython_module/efficient_functions.pyx":171
  *     cdef cnp.ndarray[DTYPE_F_t, ndim=2] fc1
  *     cdef list c1
  *     n_modes = len(state)             # <<<<<<<<<<<<<<
  *     fc1 = np.zeros((n_modes, w_max))
  *     c1 = []
  */
-  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_state)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 170, __pyx_L1_error)
+  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_state)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 171, __pyx_L1_error)
   __pyx_v_n_modes = __pyx_t_1;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":171
+  /* "pyqchem/cython_module/efficient_functions.pyx":172
  *     cdef list c1
  *     n_modes = len(state)
  *     fc1 = np.zeros((n_modes, w_max))             # <<<<<<<<<<<<<<
  *     c1 = []
  *     for mode in range(n_modes):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_n_modes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_n_modes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_w_max); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_w_max); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_3);
@@ -6794,11 +6804,11 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 171, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 172, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
-  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 171, __pyx_L1_error)
+  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 172, __pyx_L1_error)
   __pyx_t_8 = ((PyArrayObject *)__pyx_t_2);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
@@ -6815,25 +6825,25 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(
       __pyx_t_9 = __pyx_t_10 = __pyx_t_11 = 0;
     }
     __pyx_pybuffernd_fc1.diminfo[0].strides = __pyx_pybuffernd_fc1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_fc1.diminfo[0].shape = __pyx_pybuffernd_fc1.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_fc1.diminfo[1].strides = __pyx_pybuffernd_fc1.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_fc1.diminfo[1].shape = __pyx_pybuffernd_fc1.rcbuffer->pybuffer.shape[1];
-    if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 171, __pyx_L1_error)
+    if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 172, __pyx_L1_error)
   }
   __pyx_t_8 = 0;
   __pyx_v_fc1 = ((PyArrayObject *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":172
+  /* "pyqchem/cython_module/efficient_functions.pyx":173
  *     n_modes = len(state)
  *     fc1 = np.zeros((n_modes, w_max))
  *     c1 = []             # <<<<<<<<<<<<<<
  *     for mode in range(n_modes):
  *         vector = np.zeros(n_modes).astype("int")
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_v_c1 = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":173
+  /* "pyqchem/cython_module/efficient_functions.pyx":174
  *     fc1 = np.zeros((n_modes, w_max))
  *     c1 = []
  *     for mode in range(n_modes):             # <<<<<<<<<<<<<<
@@ -6845,19 +6855,19 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(
   for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
     __pyx_v_mode = __pyx_t_13;
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":174
+    /* "pyqchem/cython_module/efficient_functions.pyx":175
  *     c1 = []
  *     for mode in range(n_modes):
  *         vector = np.zeros(n_modes).astype("int")             # <<<<<<<<<<<<<<
  *         for q in range(w_max):
  *             if q > min_q and np.abs(np.max(fc1[mode, q - min_q : q])) <= eps:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 174, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 175, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_zeros); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 174, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_zeros); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 175, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_n_modes); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 174, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_n_modes); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 175, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_3 = NULL;
     __pyx_t_14 = 0;
@@ -6876,11 +6886,11 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(
       __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_14, 1+__pyx_t_14);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 174, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 175, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_astype); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 174, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_astype); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 175, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_4 = NULL;
@@ -6899,11 +6909,11 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(
       PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_n_s_int};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_14, 1+__pyx_t_14);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 174, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 175, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
-    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 174, __pyx_L1_error)
+    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 175, __pyx_L1_error)
     __pyx_t_15 = ((PyArrayObject *)__pyx_t_2);
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
@@ -6920,13 +6930,13 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(
         __pyx_t_11 = __pyx_t_10 = __pyx_t_9 = 0;
       }
       __pyx_pybuffernd_vector.diminfo[0].strides = __pyx_pybuffernd_vector.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_vector.diminfo[0].shape = __pyx_pybuffernd_vector.rcbuffer->pybuffer.shape[0];
-      if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 174, __pyx_L1_error)
+      if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 175, __pyx_L1_error)
     }
     __pyx_t_15 = 0;
     __Pyx_XDECREF_SET(__pyx_v_vector, ((PyArrayObject *)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":175
+    /* "pyqchem/cython_module/efficient_functions.pyx":176
  *     for mode in range(n_modes):
  *         vector = np.zeros(n_modes).astype("int")
  *         for q in range(w_max):             # <<<<<<<<<<<<<<
@@ -6938,7 +6948,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(
     for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
       __pyx_v_q = __pyx_t_17;
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":176
+      /* "pyqchem/cython_module/efficient_functions.pyx":177
  *         vector = np.zeros(n_modes).astype("int")
  *         for q in range(w_max):
  *             if q > min_q and np.abs(np.max(fc1[mode, q - min_q : q])) <= eps:             # <<<<<<<<<<<<<<
@@ -6951,27 +6961,27 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(
         __pyx_t_18 = __pyx_t_19;
         goto __pyx_L8_bool_binop_done;
       }
-      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 176, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_abs); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 176, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_abs); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 176, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_max); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 176, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_max); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_mode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 176, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_mode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_20 = __Pyx_PyInt_From_int((__pyx_v_q - __pyx_v_min_q)); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 176, __pyx_L1_error)
+      __pyx_t_20 = __Pyx_PyInt_From_int((__pyx_v_q - __pyx_v_min_q)); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_20);
-      __pyx_t_21 = __Pyx_PyInt_From_int(__pyx_v_q); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 176, __pyx_L1_error)
+      __pyx_t_21 = __Pyx_PyInt_From_int(__pyx_v_q); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_21);
-      __pyx_t_22 = PySlice_New(__pyx_t_20, __pyx_t_21, Py_None); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 176, __pyx_L1_error)
+      __pyx_t_22 = PySlice_New(__pyx_t_20, __pyx_t_21, Py_None); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_22);
       __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
       __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
-      __pyx_t_21 = PyTuple_New(2); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 176, __pyx_L1_error)
+      __pyx_t_21 = PyTuple_New(2); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_21);
       __Pyx_GIVEREF(__pyx_t_6);
       PyTuple_SET_ITEM(__pyx_t_21, 0, __pyx_t_6);
@@ -6979,7 +6989,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(
       PyTuple_SET_ITEM(__pyx_t_21, 1, __pyx_t_22);
       __pyx_t_6 = 0;
       __pyx_t_22 = 0;
-      __pyx_t_22 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_fc1), __pyx_t_21); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 176, __pyx_L1_error)
+      __pyx_t_22 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_fc1), __pyx_t_21); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_22);
       __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
       __pyx_t_21 = NULL;
@@ -6999,7 +7009,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(
         __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_23, 1+__pyx_t_23);
         __Pyx_XDECREF(__pyx_t_21); __pyx_t_21 = 0;
         __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
-        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 176, __pyx_L1_error)
+        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 177, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
@@ -7020,22 +7030,22 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(
         __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_23, 1+__pyx_t_23);
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 176, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       }
-      __pyx_t_4 = PyFloat_FromDouble(__pyx_v_eps); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 176, __pyx_L1_error)
+      __pyx_t_4 = PyFloat_FromDouble(__pyx_v_eps); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = PyObject_RichCompare(__pyx_t_2, __pyx_t_4, Py_LE); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 176, __pyx_L1_error)
+      __pyx_t_5 = PyObject_RichCompare(__pyx_t_2, __pyx_t_4, Py_LE); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_19 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely((__pyx_t_19 < 0))) __PYX_ERR(0, 176, __pyx_L1_error)
+      __pyx_t_19 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely((__pyx_t_19 < 0))) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_18 = __pyx_t_19;
       __pyx_L8_bool_binop_done:;
       if (__pyx_t_18) {
 
-        /* "pyqchem/cython_module/efficient_functions.pyx":177
+        /* "pyqchem/cython_module/efficient_functions.pyx":178
  *         for q in range(w_max):
  *             if q > min_q and np.abs(np.max(fc1[mode, q - min_q : q])) <= eps:
  *                 break             # <<<<<<<<<<<<<<
@@ -7044,7 +7054,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(
  */
         goto __pyx_L6_break;
 
-        /* "pyqchem/cython_module/efficient_functions.pyx":176
+        /* "pyqchem/cython_module/efficient_functions.pyx":177
  *         vector = np.zeros(n_modes).astype("int")
  *         for q in range(w_max):
  *             if q > min_q and np.abs(np.max(fc1[mode, q - min_q : q])) <= eps:             # <<<<<<<<<<<<<<
@@ -7053,7 +7063,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(
  */
       }
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":178
+      /* "pyqchem/cython_module/efficient_functions.pyx":179
  *             if q > min_q and np.abs(np.max(fc1[mode, q - min_q : q])) <= eps:
  *                 break
  *             vector[mode] = q + 1             # <<<<<<<<<<<<<<
@@ -7063,26 +7073,26 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(
       __pyx_t_24 = __pyx_v_mode;
       *__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_vector.rcbuffer->pybuffer.buf, __pyx_t_24, __pyx_pybuffernd_vector.diminfo[0].strides) = (__pyx_v_q + 1);
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":179
+      /* "pyqchem/cython_module/efficient_functions.pyx":180
  *                 break
  *             vector[mode] = q + 1
  *             fc1[mode, q] = evalSingleFCFpy(             # <<<<<<<<<<<<<<
  *                 state, np.sum(state), vector, q + 1, ompd, tpmo, tqmo, tr, rd, fcf_00
  *             )
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_evalSingleFCFpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 179, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_evalSingleFCFpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 180, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":180
+      /* "pyqchem/cython_module/efficient_functions.pyx":181
  *             vector[mode] = q + 1
  *             fc1[mode, q] = evalSingleFCFpy(
  *                 state, np.sum(state), vector, q + 1, ompd, tpmo, tqmo, tr, rd, fcf_00             # <<<<<<<<<<<<<<
  *             )
  *             c1.append(vector.copy())
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 180, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_sum); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 180, __pyx_L1_error)
+      __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_sum); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_22);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_3 = NULL;
@@ -7101,13 +7111,13 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(
         PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v_state)};
         __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_22, __pyx_callargs+1-__pyx_t_23, 1+__pyx_t_23);
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 181, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
       }
-      __pyx_t_22 = __Pyx_PyInt_From_long((__pyx_v_q + 1)); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 180, __pyx_L1_error)
+      __pyx_t_22 = __Pyx_PyInt_From_long((__pyx_v_q + 1)); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_22);
-      __pyx_t_3 = PyFloat_FromDouble(__pyx_v_fcf_00); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 180, __pyx_L1_error)
+      __pyx_t_3 = PyFloat_FromDouble(__pyx_v_fcf_00); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_21 = NULL;
       __pyx_t_23 = 0;
@@ -7128,32 +7138,32 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 179, __pyx_L1_error)
+        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 180, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       }
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":179
+      /* "pyqchem/cython_module/efficient_functions.pyx":180
  *                 break
  *             vector[mode] = q + 1
  *             fc1[mode, q] = evalSingleFCFpy(             # <<<<<<<<<<<<<<
  *                 state, np.sum(state), vector, q + 1, ompd, tpmo, tqmo, tr, rd, fcf_00
  *             )
  */
-      __pyx_t_25 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_25 == ((npy_float64)-1)) && PyErr_Occurred())) __PYX_ERR(0, 179, __pyx_L1_error)
+      __pyx_t_25 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_25 == ((npy_float64)-1)) && PyErr_Occurred())) __PYX_ERR(0, 180, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_24 = __pyx_v_mode;
       __pyx_t_26 = __pyx_v_q;
       *__Pyx_BufPtrStrided2d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t *, __pyx_pybuffernd_fc1.rcbuffer->pybuffer.buf, __pyx_t_24, __pyx_pybuffernd_fc1.diminfo[0].strides, __pyx_t_26, __pyx_pybuffernd_fc1.diminfo[1].strides) = __pyx_t_25;
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":182
+      /* "pyqchem/cython_module/efficient_functions.pyx":183
  *                 state, np.sum(state), vector, q + 1, ompd, tpmo, tqmo, tr, rd, fcf_00
  *             )
  *             c1.append(vector.copy())             # <<<<<<<<<<<<<<
  *     return fc1, c1
  * 
  */
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_vector), __pyx_n_s_copy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 182, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_vector), __pyx_n_s_copy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 183, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_3 = NULL;
       __pyx_t_23 = 0;
@@ -7171,17 +7181,17 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(
         PyObject *__pyx_callargs[1] = {__pyx_t_3, };
         __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_23, 0+__pyx_t_23);
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 182, __pyx_L1_error)
+        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 183, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       }
-      __pyx_t_27 = __Pyx_PyList_Append(__pyx_v_c1, __pyx_t_5); if (unlikely(__pyx_t_27 == ((int)-1))) __PYX_ERR(0, 182, __pyx_L1_error)
+      __pyx_t_27 = __Pyx_PyList_Append(__pyx_v_c1, __pyx_t_5); if (unlikely(__pyx_t_27 == ((int)-1))) __PYX_ERR(0, 183, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
     __pyx_L6_break:;
   }
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":183
+  /* "pyqchem/cython_module/efficient_functions.pyx":184
  *             )
  *             c1.append(vector.copy())
  *     return fc1, c1             # <<<<<<<<<<<<<<
@@ -7189,7 +7199,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(
  * @cython.boundscheck(False)  # Deactivate bounds checking
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 183, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF((PyObject *)__pyx_v_fc1);
   __Pyx_GIVEREF((PyObject *)__pyx_v_fc1);
@@ -7201,7 +7211,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":154
+  /* "pyqchem/cython_module/efficient_functions.pyx":155
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * cpdef get_fc1(             # <<<<<<<<<<<<<<
@@ -7322,75 +7332,75 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_state)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_ompd)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_fc1", 0, 7, 10, 1); __PYX_ERR(0, 154, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_fc1", 0, 7, 10, 1); __PYX_ERR(0, 155, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_tpmo)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_fc1", 0, 7, 10, 2); __PYX_ERR(0, 154, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_fc1", 0, 7, 10, 2); __PYX_ERR(0, 155, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_tqmo)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_fc1", 0, 7, 10, 3); __PYX_ERR(0, 154, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_fc1", 0, 7, 10, 3); __PYX_ERR(0, 155, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_tr)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_fc1", 0, 7, 10, 4); __PYX_ERR(0, 154, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_fc1", 0, 7, 10, 4); __PYX_ERR(0, 155, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_rd)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_fc1", 0, 7, 10, 5); __PYX_ERR(0, 154, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_fc1", 0, 7, 10, 5); __PYX_ERR(0, 155, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_fcf_00)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_fc1", 0, 7, 10, 6); __PYX_ERR(0, 154, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_fc1", 0, 7, 10, 6); __PYX_ERR(0, 155, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_eps);
           if (value) { values[7] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_w_max);
           if (value) { values[8] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_min_q);
           if (value) { values[9] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_fc1") < 0)) __PYX_ERR(0, 154, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_fc1") < 0)) __PYX_ERR(0, 155, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -7417,37 +7427,37 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
     __pyx_v_tqmo = ((PyArrayObject *)values[3]);
     __pyx_v_tr = ((PyArrayObject *)values[4]);
     __pyx_v_rd = ((PyArrayObject *)values[5]);
-    __pyx_v_fcf_00 = __pyx_PyFloat_AsFloat(values[6]); if (unlikely((__pyx_v_fcf_00 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 161, __pyx_L3_error)
+    __pyx_v_fcf_00 = __pyx_PyFloat_AsFloat(values[6]); if (unlikely((__pyx_v_fcf_00 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 162, __pyx_L3_error)
     if (values[7]) {
-      __pyx_v_eps = __pyx_PyFloat_AsFloat(values[7]); if (unlikely((__pyx_v_eps == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 162, __pyx_L3_error)
+      __pyx_v_eps = __pyx_PyFloat_AsFloat(values[7]); if (unlikely((__pyx_v_eps == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 163, __pyx_L3_error)
     } else {
       __pyx_v_eps = ((float)1e-12);
     }
     if (values[8]) {
-      __pyx_v_w_max = __Pyx_PyInt_As_int(values[8]); if (unlikely((__pyx_v_w_max == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 163, __pyx_L3_error)
+      __pyx_v_w_max = __Pyx_PyInt_As_int(values[8]); if (unlikely((__pyx_v_w_max == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 164, __pyx_L3_error)
     } else {
       __pyx_v_w_max = ((int)0x64);
     }
     if (values[9]) {
-      __pyx_v_min_q = __Pyx_PyInt_As_int(values[9]); if (unlikely((__pyx_v_min_q == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 164, __pyx_L3_error)
+      __pyx_v_min_q = __Pyx_PyInt_As_int(values[9]); if (unlikely((__pyx_v_min_q == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 165, __pyx_L3_error)
     } else {
       __pyx_v_min_q = ((int)5);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_fc1", 0, 7, 10, __pyx_nargs); __PYX_ERR(0, 154, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_fc1", 0, 7, 10, __pyx_nargs); __PYX_ERR(0, 155, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyqchem.cython_module.efficient_functions.get_fc1", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_state), __pyx_ptype_5numpy_ndarray, 1, "state", 0))) __PYX_ERR(0, 155, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ompd), __pyx_ptype_5numpy_ndarray, 1, "ompd", 0))) __PYX_ERR(0, 156, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tpmo), __pyx_ptype_5numpy_ndarray, 1, "tpmo", 0))) __PYX_ERR(0, 157, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tqmo), __pyx_ptype_5numpy_ndarray, 1, "tqmo", 0))) __PYX_ERR(0, 158, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tr), __pyx_ptype_5numpy_ndarray, 1, "tr", 0))) __PYX_ERR(0, 159, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rd), __pyx_ptype_5numpy_ndarray, 1, "rd", 0))) __PYX_ERR(0, 160, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_state), __pyx_ptype_5numpy_ndarray, 1, "state", 0))) __PYX_ERR(0, 156, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ompd), __pyx_ptype_5numpy_ndarray, 1, "ompd", 0))) __PYX_ERR(0, 157, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tpmo), __pyx_ptype_5numpy_ndarray, 1, "tpmo", 0))) __PYX_ERR(0, 158, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tqmo), __pyx_ptype_5numpy_ndarray, 1, "tqmo", 0))) __PYX_ERR(0, 159, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tr), __pyx_ptype_5numpy_ndarray, 1, "tr", 0))) __PYX_ERR(0, 160, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rd), __pyx_ptype_5numpy_ndarray, 1, "rd", 0))) __PYX_ERR(0, 161, __pyx_L1_error)
   __pyx_r = __pyx_pf_7pyqchem_13cython_module_19efficient_functions_4get_fc1(__pyx_self, __pyx_v_state, __pyx_v_ompd, __pyx_v_tpmo, __pyx_v_tqmo, __pyx_v_tr, __pyx_v_rd, __pyx_v_fcf_00, __pyx_v_eps, __pyx_v_w_max, __pyx_v_min_q);
 
   /* function exit code */
@@ -7506,32 +7516,32 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_4get_fc
   __pyx_pybuffernd_rd.rcbuffer = &__pyx_pybuffer_rd;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_state.rcbuffer->pybuffer, (PyObject*)__pyx_v_state, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 154, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_state.rcbuffer->pybuffer, (PyObject*)__pyx_v_state, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 155, __pyx_L1_error)
   }
   __pyx_pybuffernd_state.diminfo[0].strides = __pyx_pybuffernd_state.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_state.diminfo[0].shape = __pyx_pybuffernd_state.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ompd.rcbuffer->pybuffer, (PyObject*)__pyx_v_ompd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 154, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ompd.rcbuffer->pybuffer, (PyObject*)__pyx_v_ompd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 155, __pyx_L1_error)
   }
   __pyx_pybuffernd_ompd.diminfo[0].strides = __pyx_pybuffernd_ompd.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ompd.diminfo[0].shape = __pyx_pybuffernd_ompd.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tpmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tpmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 154, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tpmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tpmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 155, __pyx_L1_error)
   }
   __pyx_pybuffernd_tpmo.diminfo[0].strides = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_tpmo.diminfo[0].shape = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_tpmo.diminfo[1].strides = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_tpmo.diminfo[1].shape = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tqmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tqmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 154, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tqmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tqmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 155, __pyx_L1_error)
   }
   __pyx_pybuffernd_tqmo.diminfo[0].strides = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_tqmo.diminfo[0].shape = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_tqmo.diminfo[1].strides = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_tqmo.diminfo[1].shape = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tr.rcbuffer->pybuffer, (PyObject*)__pyx_v_tr, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 154, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tr.rcbuffer->pybuffer, (PyObject*)__pyx_v_tr, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 155, __pyx_L1_error)
   }
   __pyx_pybuffernd_tr.diminfo[0].strides = __pyx_pybuffernd_tr.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_tr.diminfo[0].shape = __pyx_pybuffernd_tr.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_tr.diminfo[1].strides = __pyx_pybuffernd_tr.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_tr.diminfo[1].shape = __pyx_pybuffernd_tr.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_rd.rcbuffer->pybuffer, (PyObject*)__pyx_v_rd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 154, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_rd.rcbuffer->pybuffer, (PyObject*)__pyx_v_rd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 155, __pyx_L1_error)
   }
   __pyx_pybuffernd_rd.diminfo[0].strides = __pyx_pybuffernd_rd.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_rd.diminfo[0].shape = __pyx_pybuffernd_rd.rcbuffer->pybuffer.shape[0];
   __Pyx_XDECREF(__pyx_r);
@@ -7539,7 +7549,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_4get_fc
   __pyx_t_2.eps = __pyx_v_eps;
   __pyx_t_2.w_max = __pyx_v_w_max;
   __pyx_t_2.min_q = __pyx_v_min_q;
-  __pyx_t_1 = __pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(__pyx_v_state, __pyx_v_ompd, __pyx_v_tpmo, __pyx_v_tqmo, __pyx_v_tr, __pyx_v_rd, __pyx_v_fcf_00, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc1(__pyx_v_state, __pyx_v_ompd, __pyx_v_tpmo, __pyx_v_tqmo, __pyx_v_tr, __pyx_v_rd, __pyx_v_fcf_00, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -7575,7 +7585,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_4get_fc
   return __pyx_r;
 }
 
-/* "pyqchem/cython_module/efficient_functions.pyx":187
+/* "pyqchem/cython_module/efficient_functions.pyx":188
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * cpdef get_fc2(             # <<<<<<<<<<<<<<
@@ -7716,69 +7726,69 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
   __pyx_pybuffernd_rd.rcbuffer = &__pyx_pybuffer_rd;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_state.rcbuffer->pybuffer, (PyObject*)__pyx_v_state, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 187, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_state.rcbuffer->pybuffer, (PyObject*)__pyx_v_state, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 188, __pyx_L1_error)
   }
   __pyx_pybuffernd_state.diminfo[0].strides = __pyx_pybuffernd_state.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_state.diminfo[0].shape = __pyx_pybuffernd_state.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_fc1.rcbuffer->pybuffer, (PyObject*)__pyx_v_fc1, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 187, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_fc1.rcbuffer->pybuffer, (PyObject*)__pyx_v_fc1, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 188, __pyx_L1_error)
   }
   __pyx_pybuffernd_fc1.diminfo[0].strides = __pyx_pybuffernd_fc1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_fc1.diminfo[0].shape = __pyx_pybuffernd_fc1.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_fc1.diminfo[1].strides = __pyx_pybuffernd_fc1.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_fc1.diminfo[1].shape = __pyx_pybuffernd_fc1.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ompd.rcbuffer->pybuffer, (PyObject*)__pyx_v_ompd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 187, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ompd.rcbuffer->pybuffer, (PyObject*)__pyx_v_ompd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 188, __pyx_L1_error)
   }
   __pyx_pybuffernd_ompd.diminfo[0].strides = __pyx_pybuffernd_ompd.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ompd.diminfo[0].shape = __pyx_pybuffernd_ompd.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tpmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tpmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 187, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tpmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tpmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 188, __pyx_L1_error)
   }
   __pyx_pybuffernd_tpmo.diminfo[0].strides = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_tpmo.diminfo[0].shape = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_tpmo.diminfo[1].strides = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_tpmo.diminfo[1].shape = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tqmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tqmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 187, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tqmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tqmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 188, __pyx_L1_error)
   }
   __pyx_pybuffernd_tqmo.diminfo[0].strides = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_tqmo.diminfo[0].shape = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_tqmo.diminfo[1].strides = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_tqmo.diminfo[1].shape = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tr.rcbuffer->pybuffer, (PyObject*)__pyx_v_tr, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 187, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tr.rcbuffer->pybuffer, (PyObject*)__pyx_v_tr, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 188, __pyx_L1_error)
   }
   __pyx_pybuffernd_tr.diminfo[0].strides = __pyx_pybuffernd_tr.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_tr.diminfo[0].shape = __pyx_pybuffernd_tr.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_tr.diminfo[1].strides = __pyx_pybuffernd_tr.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_tr.diminfo[1].shape = __pyx_pybuffernd_tr.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_rd.rcbuffer->pybuffer, (PyObject*)__pyx_v_rd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 187, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_rd.rcbuffer->pybuffer, (PyObject*)__pyx_v_rd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 188, __pyx_L1_error)
   }
   __pyx_pybuffernd_rd.diminfo[0].strides = __pyx_pybuffernd_rd.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_rd.diminfo[0].shape = __pyx_pybuffernd_rd.rcbuffer->pybuffer.shape[0];
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":204
+  /* "pyqchem/cython_module/efficient_functions.pyx":205
  *     cdef cnp.ndarray[DTYPE_F_t, ndim=3] fc2
  *     cdef list c2
  *     n_modes = len(state)             # <<<<<<<<<<<<<<
  *     fc2 = np.zeros((n_modes, n_modes, w_max))
  *     c2 = []
  */
-  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_state)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 204, __pyx_L1_error)
+  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_state)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 205, __pyx_L1_error)
   __pyx_v_n_modes = __pyx_t_1;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":205
+  /* "pyqchem/cython_module/efficient_functions.pyx":206
  *     cdef list c2
  *     n_modes = len(state)
  *     fc2 = np.zeros((n_modes, n_modes, w_max))             # <<<<<<<<<<<<<<
  *     c2 = []
  *     for k, l in combinations(range(n_modes), 2):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_n_modes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_n_modes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_n_modes); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_n_modes); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_w_max); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_w_max); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3);
@@ -7806,11 +7816,11 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 205, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 206, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
-  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 205, __pyx_L1_error)
+  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 206, __pyx_L1_error)
   __pyx_t_9 = ((PyArrayObject *)__pyx_t_2);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
@@ -7827,36 +7837,36 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
       __pyx_t_10 = __pyx_t_11 = __pyx_t_12 = 0;
     }
     __pyx_pybuffernd_fc2.diminfo[0].strides = __pyx_pybuffernd_fc2.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_fc2.diminfo[0].shape = __pyx_pybuffernd_fc2.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_fc2.diminfo[1].strides = __pyx_pybuffernd_fc2.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_fc2.diminfo[1].shape = __pyx_pybuffernd_fc2.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_fc2.diminfo[2].strides = __pyx_pybuffernd_fc2.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_fc2.diminfo[2].shape = __pyx_pybuffernd_fc2.rcbuffer->pybuffer.shape[2];
-    if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 205, __pyx_L1_error)
+    if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 206, __pyx_L1_error)
   }
   __pyx_t_9 = 0;
   __pyx_v_fc2 = ((PyArrayObject *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":206
+  /* "pyqchem/cython_module/efficient_functions.pyx":207
  *     n_modes = len(state)
  *     fc2 = np.zeros((n_modes, n_modes, w_max))
  *     c2 = []             # <<<<<<<<<<<<<<
  *     for k, l in combinations(range(n_modes), 2):
  *         vector = np.zeros(n_modes).astype("int")
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_v_c2 = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":207
+  /* "pyqchem/cython_module/efficient_functions.pyx":208
  *     fc2 = np.zeros((n_modes, n_modes, w_max))
  *     c2 = []
  *     for k, l in combinations(range(n_modes), 2):             # <<<<<<<<<<<<<<
  *         vector = np.zeros(n_modes).astype("int")
  *         for p in range(1, w_max):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_combinations); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 207, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_combinations); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_n_modes); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 207, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_n_modes); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 207, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_7 = NULL;
@@ -7876,7 +7886,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 2+__pyx_t_8);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 207, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 208, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
@@ -7884,9 +7894,9 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
     __pyx_t_4 = __pyx_t_2; __Pyx_INCREF(__pyx_t_4); __pyx_t_1 = 0;
     __pyx_t_13 = NULL;
   } else {
-    __pyx_t_1 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 207, __pyx_L1_error)
+    __pyx_t_1 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 208, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_13 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 207, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 208, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   for (;;) {
@@ -7894,17 +7904,17 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
       if (likely(PyList_CheckExact(__pyx_t_4))) {
         if (__pyx_t_1 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_1); __Pyx_INCREF(__pyx_t_2); __pyx_t_1++; if (unlikely((0 < 0))) __PYX_ERR(0, 207, __pyx_L1_error)
+        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_1); __Pyx_INCREF(__pyx_t_2); __pyx_t_1++; if (unlikely((0 < 0))) __PYX_ERR(0, 208, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_4, __pyx_t_1); __pyx_t_1++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 207, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_4, __pyx_t_1); __pyx_t_1++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 208, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       } else {
         if (__pyx_t_1 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_1); __Pyx_INCREF(__pyx_t_2); __pyx_t_1++; if (unlikely((0 < 0))) __PYX_ERR(0, 207, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_1); __Pyx_INCREF(__pyx_t_2); __pyx_t_1++; if (unlikely((0 < 0))) __PYX_ERR(0, 208, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_4, __pyx_t_1); __pyx_t_1++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 207, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_4, __pyx_t_1); __pyx_t_1++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 208, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       }
@@ -7914,7 +7924,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 207, __pyx_L1_error)
+          else __PYX_ERR(0, 208, __pyx_L1_error)
         }
         break;
       }
@@ -7926,7 +7936,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 207, __pyx_L1_error)
+        __PYX_ERR(0, 208, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -7939,15 +7949,15 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
       __Pyx_INCREF(__pyx_t_6);
       __Pyx_INCREF(__pyx_t_7);
       #else
-      __pyx_t_6 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 207, __pyx_L1_error)
+      __pyx_t_6 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 208, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 207, __pyx_L1_error)
+      __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 208, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       #endif
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_5 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 207, __pyx_L1_error)
+      __pyx_t_5 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 208, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_14 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_5);
@@ -7955,7 +7965,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
       __Pyx_GOTREF(__pyx_t_6);
       index = 1; __pyx_t_7 = __pyx_t_14(__pyx_t_5); if (unlikely(!__pyx_t_7)) goto __pyx_L5_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_7);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_14(__pyx_t_5), 2) < 0) __PYX_ERR(0, 207, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_14(__pyx_t_5), 2) < 0) __PYX_ERR(0, 208, __pyx_L1_error)
       __pyx_t_14 = NULL;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       goto __pyx_L6_unpacking_done;
@@ -7963,29 +7973,29 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_14 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 207, __pyx_L1_error)
+      __PYX_ERR(0, 208, __pyx_L1_error)
       __pyx_L6_unpacking_done:;
     }
-    __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 207, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 208, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_15 = __Pyx_PyInt_As_int(__pyx_t_7); if (unlikely((__pyx_t_15 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 207, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_PyInt_As_int(__pyx_t_7); if (unlikely((__pyx_t_15 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 208, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_v_k = __pyx_t_8;
     __pyx_v_l = __pyx_t_15;
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":208
+    /* "pyqchem/cython_module/efficient_functions.pyx":209
  *     c2 = []
  *     for k, l in combinations(range(n_modes), 2):
  *         vector = np.zeros(n_modes).astype("int")             # <<<<<<<<<<<<<<
  *         for p in range(1, w_max):
  *             vector[k] = p
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 208, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 209, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_zeros); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 208, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_zeros); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 209, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_n_modes); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 208, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_n_modes); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 209, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_3 = NULL;
     __pyx_t_15 = 0;
@@ -8004,11 +8014,11 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
       __pyx_t_7 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_15, 1+__pyx_t_15);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 208, __pyx_L1_error)
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 209, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_astype); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 208, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_astype); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 209, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_7 = NULL;
@@ -8027,11 +8037,11 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
       PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_n_s_int};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_15, 1+__pyx_t_15);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 208, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 209, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
-    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 208, __pyx_L1_error)
+    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 209, __pyx_L1_error)
     __pyx_t_16 = ((PyArrayObject *)__pyx_t_2);
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
@@ -8048,13 +8058,13 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
         __pyx_t_12 = __pyx_t_11 = __pyx_t_10 = 0;
       }
       __pyx_pybuffernd_vector.diminfo[0].strides = __pyx_pybuffernd_vector.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_vector.diminfo[0].shape = __pyx_pybuffernd_vector.rcbuffer->pybuffer.shape[0];
-      if (unlikely((__pyx_t_15 < 0))) __PYX_ERR(0, 208, __pyx_L1_error)
+      if (unlikely((__pyx_t_15 < 0))) __PYX_ERR(0, 209, __pyx_L1_error)
     }
     __pyx_t_16 = 0;
     __Pyx_XDECREF_SET(__pyx_v_vector, ((PyArrayObject *)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":209
+    /* "pyqchem/cython_module/efficient_functions.pyx":210
  *     for k, l in combinations(range(n_modes), 2):
  *         vector = np.zeros(n_modes).astype("int")
  *         for p in range(1, w_max):             # <<<<<<<<<<<<<<
@@ -8066,7 +8076,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
     for (__pyx_t_17 = 1; __pyx_t_17 < __pyx_t_8; __pyx_t_17+=1) {
       __pyx_v_p = __pyx_t_17;
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":210
+      /* "pyqchem/cython_module/efficient_functions.pyx":211
  *         vector = np.zeros(n_modes).astype("int")
  *         for p in range(1, w_max):
  *             vector[k] = p             # <<<<<<<<<<<<<<
@@ -8076,7 +8086,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
       __pyx_t_18 = __pyx_v_k;
       *__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_vector.rcbuffer->pybuffer.buf, __pyx_t_18, __pyx_pybuffernd_vector.diminfo[0].strides) = __pyx_v_p;
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":211
+      /* "pyqchem/cython_module/efficient_functions.pyx":212
  *         for p in range(1, w_max):
  *             vector[k] = p
  *             vector[l] = p             # <<<<<<<<<<<<<<
@@ -8086,26 +8096,26 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
       __pyx_t_18 = __pyx_v_l;
       *__Pyx_BufPtrStrided1d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t *, __pyx_pybuffernd_vector.rcbuffer->pybuffer.buf, __pyx_t_18, __pyx_pybuffernd_vector.diminfo[0].strides) = __pyx_v_p;
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":212
+      /* "pyqchem/cython_module/efficient_functions.pyx":213
  *             vector[k] = p
  *             vector[l] = p
  *             fcf = evalSingleFCFpy(             # <<<<<<<<<<<<<<
  *                 state,
  *                 np.sum(state),
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_evalSingleFCFpy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 212, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_evalSingleFCFpy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 213, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":214
+      /* "pyqchem/cython_module/efficient_functions.pyx":215
  *             fcf = evalSingleFCFpy(
  *                 state,
  *                 np.sum(state),             # <<<<<<<<<<<<<<
  *                 vector,
  *                 2*p,
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 214, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 215, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_sum); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 214, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_sum); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 215, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_t_6 = NULL;
@@ -8124,29 +8134,29 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
         PyObject *__pyx_callargs[2] = {__pyx_t_6, ((PyObject *)__pyx_v_state)};
         __pyx_t_7 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_19, 1+__pyx_t_19);
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-        if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 214, __pyx_L1_error)
+        if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 215, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":216
+      /* "pyqchem/cython_module/efficient_functions.pyx":217
  *                 np.sum(state),
  *                 vector,
  *                 2*p,             # <<<<<<<<<<<<<<
  *                 ompd,
  *                 tpmo,
  */
-      __pyx_t_3 = __Pyx_PyInt_From_long((2 * __pyx_v_p)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 216, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_long((2 * __pyx_v_p)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 217, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":222
+      /* "pyqchem/cython_module/efficient_functions.pyx":223
  *                 tr,
  *                 rd,
  *                 fcf_00,             # <<<<<<<<<<<<<<
  *             )
  *             fc2[k, l, p] = fcf * fcf - fc1[k, p] * fc1[l, p] / (fcf_00 * fcf_00)
  */
-      __pyx_t_6 = PyFloat_FromDouble(__pyx_v_fcf_00); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 222, __pyx_L1_error)
+      __pyx_t_6 = PyFloat_FromDouble(__pyx_v_fcf_00); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 223, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __pyx_t_20 = NULL;
       __pyx_t_19 = 0;
@@ -8167,21 +8177,21 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 212, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 213, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       }
       __Pyx_XDECREF_SET(__pyx_v_fcf, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":224
+      /* "pyqchem/cython_module/efficient_functions.pyx":225
  *                 fcf_00,
  *             )
  *             fc2[k, l, p] = fcf * fcf - fc1[k, p] * fc1[l, p] / (fcf_00 * fcf_00)             # <<<<<<<<<<<<<<
  *             if p > min_q and np.abs(np.max(fc2[k, l, p - min_q : p])) <= eps:
  *                 for i in product(range(1, p+1),repeat=2):
  */
-      __pyx_t_2 = PyNumber_Multiply(__pyx_v_fcf, __pyx_v_fcf); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 224, __pyx_L1_error)
+      __pyx_t_2 = PyNumber_Multiply(__pyx_v_fcf, __pyx_v_fcf); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 225, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_18 = __pyx_v_k;
       __pyx_t_21 = __pyx_v_p;
@@ -8191,22 +8201,22 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
       __pyx_t_25 = (__pyx_v_fcf_00 * __pyx_v_fcf_00);
       if (unlikely(__pyx_t_25 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 224, __pyx_L1_error)
+        __PYX_ERR(0, 225, __pyx_L1_error)
       }
-      __pyx_t_5 = PyFloat_FromDouble((__pyx_t_24 / ((__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t)__pyx_t_25))); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 224, __pyx_L1_error)
+      __pyx_t_5 = PyFloat_FromDouble((__pyx_t_24 / ((__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t)__pyx_t_25))); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 225, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = PyNumber_Subtract(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 224, __pyx_L1_error)
+      __pyx_t_6 = PyNumber_Subtract(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 225, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_24 = __pyx_PyFloat_AsDouble(__pyx_t_6); if (unlikely((__pyx_t_24 == ((npy_float64)-1)) && PyErr_Occurred())) __PYX_ERR(0, 224, __pyx_L1_error)
+      __pyx_t_24 = __pyx_PyFloat_AsDouble(__pyx_t_6); if (unlikely((__pyx_t_24 == ((npy_float64)-1)) && PyErr_Occurred())) __PYX_ERR(0, 225, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_t_23 = __pyx_v_k;
       __pyx_t_22 = __pyx_v_l;
       __pyx_t_21 = __pyx_v_p;
       *__Pyx_BufPtrStrided3d(__pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t *, __pyx_pybuffernd_fc2.rcbuffer->pybuffer.buf, __pyx_t_23, __pyx_pybuffernd_fc2.diminfo[0].strides, __pyx_t_22, __pyx_pybuffernd_fc2.diminfo[1].strides, __pyx_t_21, __pyx_pybuffernd_fc2.diminfo[2].strides) = __pyx_t_24;
 
-      /* "pyqchem/cython_module/efficient_functions.pyx":225
+      /* "pyqchem/cython_module/efficient_functions.pyx":226
  *             )
  *             fc2[k, l, p] = fcf * fcf - fc1[k, p] * fc1[l, p] / (fcf_00 * fcf_00)
  *             if p > min_q and np.abs(np.max(fc2[k, l, p - min_q : p])) <= eps:             # <<<<<<<<<<<<<<
@@ -8219,29 +8229,29 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
         __pyx_t_26 = __pyx_t_27;
         goto __pyx_L10_bool_binop_done;
       }
-      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 225, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 226, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_abs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 225, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_abs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 225, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 226, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_max); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 225, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_max); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 226, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_k); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 225, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_k); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 226, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_20 = __Pyx_PyInt_From_int(__pyx_v_l); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 225, __pyx_L1_error)
+      __pyx_t_20 = __Pyx_PyInt_From_int(__pyx_v_l); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 226, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_20);
-      __pyx_t_28 = __Pyx_PyInt_From_int((__pyx_v_p - __pyx_v_min_q)); if (unlikely(!__pyx_t_28)) __PYX_ERR(0, 225, __pyx_L1_error)
+      __pyx_t_28 = __Pyx_PyInt_From_int((__pyx_v_p - __pyx_v_min_q)); if (unlikely(!__pyx_t_28)) __PYX_ERR(0, 226, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_28);
-      __pyx_t_29 = __Pyx_PyInt_From_int(__pyx_v_p); if (unlikely(!__pyx_t_29)) __PYX_ERR(0, 225, __pyx_L1_error)
+      __pyx_t_29 = __Pyx_PyInt_From_int(__pyx_v_p); if (unlikely(!__pyx_t_29)) __PYX_ERR(0, 226, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_29);
-      __pyx_t_30 = PySlice_New(__pyx_t_28, __pyx_t_29, Py_None); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 225, __pyx_L1_error)
+      __pyx_t_30 = PySlice_New(__pyx_t_28, __pyx_t_29, Py_None); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 226, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_30);
       __Pyx_DECREF(__pyx_t_28); __pyx_t_28 = 0;
       __Pyx_DECREF(__pyx_t_29); __pyx_t_29 = 0;
-      __pyx_t_29 = PyTuple_New(3); if (unlikely(!__pyx_t_29)) __PYX_ERR(0, 225, __pyx_L1_error)
+      __pyx_t_29 = PyTuple_New(3); if (unlikely(!__pyx_t_29)) __PYX_ERR(0, 226, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_29);
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_29, 0, __pyx_t_3);
@@ -8252,7 +8262,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
       __pyx_t_3 = 0;
       __pyx_t_20 = 0;
       __pyx_t_30 = 0;
-      __pyx_t_30 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_fc2), __pyx_t_29); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 225, __pyx_L1_error)
+      __pyx_t_30 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_fc2), __pyx_t_29); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 226, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_30);
       __Pyx_DECREF(__pyx_t_29); __pyx_t_29 = 0;
       __pyx_t_29 = NULL;
@@ -8272,7 +8282,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
         __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_7, __pyx_callargs+1-__pyx_t_19, 1+__pyx_t_19);
         __Pyx_XDECREF(__pyx_t_29); __pyx_t_29 = 0;
         __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
-        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 225, __pyx_L1_error)
+        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 226, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       }
@@ -8293,33 +8303,33 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
         __pyx_t_6 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_19, 1+__pyx_t_19);
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 225, __pyx_L1_error)
+        if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 226, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       }
-      __pyx_t_2 = PyFloat_FromDouble(__pyx_v_eps); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 225, __pyx_L1_error)
+      __pyx_t_2 = PyFloat_FromDouble(__pyx_v_eps); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_5 = PyObject_RichCompare(__pyx_t_6, __pyx_t_2, Py_LE); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 225, __pyx_L1_error)
+      __pyx_t_5 = PyObject_RichCompare(__pyx_t_6, __pyx_t_2, Py_LE); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 226, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_27 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely((__pyx_t_27 < 0))) __PYX_ERR(0, 225, __pyx_L1_error)
+      __pyx_t_27 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely((__pyx_t_27 < 0))) __PYX_ERR(0, 226, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_26 = __pyx_t_27;
       __pyx_L10_bool_binop_done:;
       if (__pyx_t_26) {
 
-        /* "pyqchem/cython_module/efficient_functions.pyx":226
+        /* "pyqchem/cython_module/efficient_functions.pyx":227
  *             fc2[k, l, p] = fcf * fcf - fc1[k, p] * fc1[l, p] / (fcf_00 * fcf_00)
  *             if p > min_q and np.abs(np.max(fc2[k, l, p - min_q : p])) <= eps:
  *                 for i in product(range(1, p+1),repeat=2):             # <<<<<<<<<<<<<<
  *                     vec = np.zeros(n_modes).astype("int")
  *                     np.put(vec, (k, l), i)
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_product); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 226, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_product); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 227, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_2 = __Pyx_PyInt_From_long((__pyx_v_p + 1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyInt_From_long((__pyx_v_p + 1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 226, __pyx_L1_error)
+        __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 227, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_INCREF(__pyx_int_1);
         __Pyx_GIVEREF(__pyx_int_1);
@@ -8327,18 +8337,18 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
         __Pyx_GIVEREF(__pyx_t_2);
         PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_2);
         __pyx_t_2 = 0;
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 226, __pyx_L1_error)
+        __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 227, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_GIVEREF(__pyx_t_2);
         PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_2);
         __pyx_t_2 = 0;
-        __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_repeat, __pyx_int_2) < 0) __PYX_ERR(0, 226, __pyx_L1_error)
-        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 226, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_repeat, __pyx_int_2) < 0) __PYX_ERR(0, 227, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 227, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -8347,9 +8357,9 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
           __pyx_t_2 = __pyx_t_7; __Pyx_INCREF(__pyx_t_2); __pyx_t_31 = 0;
           __pyx_t_32 = NULL;
         } else {
-          __pyx_t_31 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
+          __pyx_t_31 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
-          __pyx_t_32 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_32)) __PYX_ERR(0, 226, __pyx_L1_error)
+          __pyx_t_32 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_32)) __PYX_ERR(0, 227, __pyx_L1_error)
         }
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         for (;;) {
@@ -8357,17 +8367,17 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
             if (likely(PyList_CheckExact(__pyx_t_2))) {
               if (__pyx_t_31 >= PyList_GET_SIZE(__pyx_t_2)) break;
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-              __pyx_t_7 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_31); __Pyx_INCREF(__pyx_t_7); __pyx_t_31++; if (unlikely((0 < 0))) __PYX_ERR(0, 226, __pyx_L1_error)
+              __pyx_t_7 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_31); __Pyx_INCREF(__pyx_t_7); __pyx_t_31++; if (unlikely((0 < 0))) __PYX_ERR(0, 227, __pyx_L1_error)
               #else
-              __pyx_t_7 = PySequence_ITEM(__pyx_t_2, __pyx_t_31); __pyx_t_31++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 226, __pyx_L1_error)
+              __pyx_t_7 = PySequence_ITEM(__pyx_t_2, __pyx_t_31); __pyx_t_31++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 227, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_7);
               #endif
             } else {
               if (__pyx_t_31 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-              __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_31); __Pyx_INCREF(__pyx_t_7); __pyx_t_31++; if (unlikely((0 < 0))) __PYX_ERR(0, 226, __pyx_L1_error)
+              __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_31); __Pyx_INCREF(__pyx_t_7); __pyx_t_31++; if (unlikely((0 < 0))) __PYX_ERR(0, 227, __pyx_L1_error)
               #else
-              __pyx_t_7 = PySequence_ITEM(__pyx_t_2, __pyx_t_31); __pyx_t_31++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 226, __pyx_L1_error)
+              __pyx_t_7 = PySequence_ITEM(__pyx_t_2, __pyx_t_31); __pyx_t_31++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 227, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_7);
               #endif
             }
@@ -8377,7 +8387,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
               PyObject* exc_type = PyErr_Occurred();
               if (exc_type) {
                 if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                else __PYX_ERR(0, 226, __pyx_L1_error)
+                else __PYX_ERR(0, 227, __pyx_L1_error)
               }
               break;
             }
@@ -8386,19 +8396,19 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
           __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_7);
           __pyx_t_7 = 0;
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":227
+          /* "pyqchem/cython_module/efficient_functions.pyx":228
  *             if p > min_q and np.abs(np.max(fc2[k, l, p - min_q : p])) <= eps:
  *                 for i in product(range(1, p+1),repeat=2):
  *                     vec = np.zeros(n_modes).astype("int")             # <<<<<<<<<<<<<<
  *                     np.put(vec, (k, l), i)
  *                     c2.append(vec)
  */
-          __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 227, __pyx_L1_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 228, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
-          __pyx_t_30 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 227, __pyx_L1_error)
+          __pyx_t_30 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 228, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_30);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_n_modes); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 227, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_n_modes); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 228, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           __pyx_t_29 = NULL;
           __pyx_t_19 = 0;
@@ -8417,11 +8427,11 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
             __pyx_t_6 = __Pyx_PyObject_FastCall(__pyx_t_30, __pyx_callargs+1-__pyx_t_19, 1+__pyx_t_19);
             __Pyx_XDECREF(__pyx_t_29); __pyx_t_29 = 0;
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-            if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 227, __pyx_L1_error)
+            if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 228, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_6);
             __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
           }
-          __pyx_t_30 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_astype); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 227, __pyx_L1_error)
+          __pyx_t_30 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_astype); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 228, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_30);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           __pyx_t_6 = NULL;
@@ -8440,11 +8450,11 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
             PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_n_s_int};
             __pyx_t_7 = __Pyx_PyObject_FastCall(__pyx_t_30, __pyx_callargs+1-__pyx_t_19, 1+__pyx_t_19);
             __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-            if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 227, __pyx_L1_error)
+            if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 228, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
             __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
           }
-          if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 227, __pyx_L1_error)
+          if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 228, __pyx_L1_error)
           __pyx_t_16 = ((PyArrayObject *)__pyx_t_7);
           {
             __Pyx_BufFmt_StackElem __pyx_stack[1];
@@ -8461,29 +8471,29 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
               __pyx_t_10 = __pyx_t_11 = __pyx_t_12 = 0;
             }
             __pyx_pybuffernd_vec.diminfo[0].strides = __pyx_pybuffernd_vec.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_vec.diminfo[0].shape = __pyx_pybuffernd_vec.rcbuffer->pybuffer.shape[0];
-            if (unlikely((__pyx_t_19 < 0))) __PYX_ERR(0, 227, __pyx_L1_error)
+            if (unlikely((__pyx_t_19 < 0))) __PYX_ERR(0, 228, __pyx_L1_error)
           }
           __pyx_t_16 = 0;
           __Pyx_XDECREF_SET(__pyx_v_vec, ((PyArrayObject *)__pyx_t_7));
           __pyx_t_7 = 0;
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":228
+          /* "pyqchem/cython_module/efficient_functions.pyx":229
  *                 for i in product(range(1, p+1),repeat=2):
  *                     vec = np.zeros(n_modes).astype("int")
  *                     np.put(vec, (k, l), i)             # <<<<<<<<<<<<<<
  *                     c2.append(vec)
  *                 break
  */
-          __Pyx_GetModuleGlobalName(__pyx_t_30, __pyx_n_s_np); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 228, __pyx_L1_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_30, __pyx_n_s_np); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 229, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_30);
-          __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_30, __pyx_n_s_put); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 228, __pyx_L1_error)
+          __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_30, __pyx_n_s_put); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 229, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
-          __pyx_t_30 = __Pyx_PyInt_From_int(__pyx_v_k); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 228, __pyx_L1_error)
+          __pyx_t_30 = __Pyx_PyInt_From_int(__pyx_v_k); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 229, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_30);
-          __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_l); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 228, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_l); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 229, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
-          __pyx_t_29 = PyTuple_New(2); if (unlikely(!__pyx_t_29)) __PYX_ERR(0, 228, __pyx_L1_error)
+          __pyx_t_29 = PyTuple_New(2); if (unlikely(!__pyx_t_29)) __PYX_ERR(0, 229, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_29);
           __Pyx_GIVEREF(__pyx_t_30);
           PyTuple_SET_ITEM(__pyx_t_29, 0, __pyx_t_30);
@@ -8508,22 +8518,22 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
             __pyx_t_7 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_19, 3+__pyx_t_19);
             __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
             __Pyx_DECREF(__pyx_t_29); __pyx_t_29 = 0;
-            if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 228, __pyx_L1_error)
+            if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 229, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
             __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           }
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":229
+          /* "pyqchem/cython_module/efficient_functions.pyx":230
  *                     vec = np.zeros(n_modes).astype("int")
  *                     np.put(vec, (k, l), i)
  *                     c2.append(vec)             # <<<<<<<<<<<<<<
  *                 break
  *     return fc2, c2
  */
-          __pyx_t_33 = __Pyx_PyList_Append(__pyx_v_c2, ((PyObject *)__pyx_v_vec)); if (unlikely(__pyx_t_33 == ((int)-1))) __PYX_ERR(0, 229, __pyx_L1_error)
+          __pyx_t_33 = __Pyx_PyList_Append(__pyx_v_c2, ((PyObject *)__pyx_v_vec)); if (unlikely(__pyx_t_33 == ((int)-1))) __PYX_ERR(0, 230, __pyx_L1_error)
 
-          /* "pyqchem/cython_module/efficient_functions.pyx":226
+          /* "pyqchem/cython_module/efficient_functions.pyx":227
  *             fc2[k, l, p] = fcf * fcf - fc1[k, p] * fc1[l, p] / (fcf_00 * fcf_00)
  *             if p > min_q and np.abs(np.max(fc2[k, l, p - min_q : p])) <= eps:
  *                 for i in product(range(1, p+1),repeat=2):             # <<<<<<<<<<<<<<
@@ -8533,7 +8543,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
         }
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "pyqchem/cython_module/efficient_functions.pyx":230
+        /* "pyqchem/cython_module/efficient_functions.pyx":231
  *                     np.put(vec, (k, l), i)
  *                     c2.append(vec)
  *                 break             # <<<<<<<<<<<<<<
@@ -8542,7 +8552,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
  */
         goto __pyx_L8_break;
 
-        /* "pyqchem/cython_module/efficient_functions.pyx":225
+        /* "pyqchem/cython_module/efficient_functions.pyx":226
  *             )
  *             fc2[k, l, p] = fcf * fcf - fc1[k, p] * fc1[l, p] / (fcf_00 * fcf_00)
  *             if p > min_q and np.abs(np.max(fc2[k, l, p - min_q : p])) <= eps:             # <<<<<<<<<<<<<<
@@ -8553,7 +8563,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
     }
     __pyx_L8_break:;
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":207
+    /* "pyqchem/cython_module/efficient_functions.pyx":208
  *     fc2 = np.zeros((n_modes, n_modes, w_max))
  *     c2 = []
  *     for k, l in combinations(range(n_modes), 2):             # <<<<<<<<<<<<<<
@@ -8563,7 +8573,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":231
+  /* "pyqchem/cython_module/efficient_functions.pyx":232
  *                     c2.append(vec)
  *                 break
  *     return fc2, c2             # <<<<<<<<<<<<<<
@@ -8571,7 +8581,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
  * def append_transitions(trans_list,
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 231, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 232, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF((PyObject *)__pyx_v_fc2);
   __Pyx_GIVEREF((PyObject *)__pyx_v_fc2);
@@ -8583,7 +8593,7 @@ static PyObject *__pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":187
+  /* "pyqchem/cython_module/efficient_functions.pyx":188
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * cpdef get_fc2(             # <<<<<<<<<<<<<<
@@ -8716,82 +8726,82 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_state)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 188, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_fc1)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 188, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_fc2", 0, 8, 11, 1); __PYX_ERR(0, 187, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_fc2", 0, 8, 11, 1); __PYX_ERR(0, 188, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_ompd)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 188, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_fc2", 0, 8, 11, 2); __PYX_ERR(0, 187, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_fc2", 0, 8, 11, 2); __PYX_ERR(0, 188, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_tpmo)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 188, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_fc2", 0, 8, 11, 3); __PYX_ERR(0, 187, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_fc2", 0, 8, 11, 3); __PYX_ERR(0, 188, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_tqmo)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 188, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_fc2", 0, 8, 11, 4); __PYX_ERR(0, 187, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_fc2", 0, 8, 11, 4); __PYX_ERR(0, 188, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_tr)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 188, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_fc2", 0, 8, 11, 5); __PYX_ERR(0, 187, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_fc2", 0, 8, 11, 5); __PYX_ERR(0, 188, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_rd)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 188, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_fc2", 0, 8, 11, 6); __PYX_ERR(0, 187, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_fc2", 0, 8, 11, 6); __PYX_ERR(0, 188, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_fcf_00)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 188, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_fc2", 0, 8, 11, 7); __PYX_ERR(0, 187, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_fc2", 0, 8, 11, 7); __PYX_ERR(0, 188, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_eps);
           if (value) { values[8] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 188, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_w_max);
           if (value) { values[9] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 188, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 10:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_min_q);
           if (value) { values[10] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 188, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_fc2") < 0)) __PYX_ERR(0, 187, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_fc2") < 0)) __PYX_ERR(0, 188, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -8820,38 +8830,38 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
     __pyx_v_tqmo = ((PyArrayObject *)values[4]);
     __pyx_v_tr = ((PyArrayObject *)values[5]);
     __pyx_v_rd = ((PyArrayObject *)values[6]);
-    __pyx_v_fcf_00 = __pyx_PyFloat_AsFloat(values[7]); if (unlikely((__pyx_v_fcf_00 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L3_error)
+    __pyx_v_fcf_00 = __pyx_PyFloat_AsFloat(values[7]); if (unlikely((__pyx_v_fcf_00 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 196, __pyx_L3_error)
     if (values[8]) {
-      __pyx_v_eps = __pyx_PyFloat_AsFloat(values[8]); if (unlikely((__pyx_v_eps == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 196, __pyx_L3_error)
+      __pyx_v_eps = __pyx_PyFloat_AsFloat(values[8]); if (unlikely((__pyx_v_eps == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 197, __pyx_L3_error)
     } else {
       __pyx_v_eps = ((float)1e-12);
     }
     if (values[9]) {
-      __pyx_v_w_max = __Pyx_PyInt_As_int(values[9]); if (unlikely((__pyx_v_w_max == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 197, __pyx_L3_error)
+      __pyx_v_w_max = __Pyx_PyInt_As_int(values[9]); if (unlikely((__pyx_v_w_max == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 198, __pyx_L3_error)
     } else {
       __pyx_v_w_max = ((int)0x64);
     }
     if (values[10]) {
-      __pyx_v_min_q = __Pyx_PyInt_As_int(values[10]); if (unlikely((__pyx_v_min_q == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 198, __pyx_L3_error)
+      __pyx_v_min_q = __Pyx_PyInt_As_int(values[10]); if (unlikely((__pyx_v_min_q == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 199, __pyx_L3_error)
     } else {
       __pyx_v_min_q = ((int)5);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_fc2", 0, 8, 11, __pyx_nargs); __PYX_ERR(0, 187, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_fc2", 0, 8, 11, __pyx_nargs); __PYX_ERR(0, 188, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyqchem.cython_module.efficient_functions.get_fc2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_state), __pyx_ptype_5numpy_ndarray, 1, "state", 0))) __PYX_ERR(0, 188, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fc1), __pyx_ptype_5numpy_ndarray, 1, "fc1", 0))) __PYX_ERR(0, 189, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ompd), __pyx_ptype_5numpy_ndarray, 1, "ompd", 0))) __PYX_ERR(0, 190, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tpmo), __pyx_ptype_5numpy_ndarray, 1, "tpmo", 0))) __PYX_ERR(0, 191, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tqmo), __pyx_ptype_5numpy_ndarray, 1, "tqmo", 0))) __PYX_ERR(0, 192, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tr), __pyx_ptype_5numpy_ndarray, 1, "tr", 0))) __PYX_ERR(0, 193, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rd), __pyx_ptype_5numpy_ndarray, 1, "rd", 0))) __PYX_ERR(0, 194, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_state), __pyx_ptype_5numpy_ndarray, 1, "state", 0))) __PYX_ERR(0, 189, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fc1), __pyx_ptype_5numpy_ndarray, 1, "fc1", 0))) __PYX_ERR(0, 190, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ompd), __pyx_ptype_5numpy_ndarray, 1, "ompd", 0))) __PYX_ERR(0, 191, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tpmo), __pyx_ptype_5numpy_ndarray, 1, "tpmo", 0))) __PYX_ERR(0, 192, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tqmo), __pyx_ptype_5numpy_ndarray, 1, "tqmo", 0))) __PYX_ERR(0, 193, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tr), __pyx_ptype_5numpy_ndarray, 1, "tr", 0))) __PYX_ERR(0, 194, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rd), __pyx_ptype_5numpy_ndarray, 1, "rd", 0))) __PYX_ERR(0, 195, __pyx_L1_error)
   __pyx_r = __pyx_pf_7pyqchem_13cython_module_19efficient_functions_6get_fc2(__pyx_self, __pyx_v_state, __pyx_v_fc1, __pyx_v_ompd, __pyx_v_tpmo, __pyx_v_tqmo, __pyx_v_tr, __pyx_v_rd, __pyx_v_fcf_00, __pyx_v_eps, __pyx_v_w_max, __pyx_v_min_q);
 
   /* function exit code */
@@ -8916,37 +8926,37 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_6get_fc
   __pyx_pybuffernd_rd.rcbuffer = &__pyx_pybuffer_rd;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_state.rcbuffer->pybuffer, (PyObject*)__pyx_v_state, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 187, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_state.rcbuffer->pybuffer, (PyObject*)__pyx_v_state, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_I_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 188, __pyx_L1_error)
   }
   __pyx_pybuffernd_state.diminfo[0].strides = __pyx_pybuffernd_state.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_state.diminfo[0].shape = __pyx_pybuffernd_state.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_fc1.rcbuffer->pybuffer, (PyObject*)__pyx_v_fc1, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 187, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_fc1.rcbuffer->pybuffer, (PyObject*)__pyx_v_fc1, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 188, __pyx_L1_error)
   }
   __pyx_pybuffernd_fc1.diminfo[0].strides = __pyx_pybuffernd_fc1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_fc1.diminfo[0].shape = __pyx_pybuffernd_fc1.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_fc1.diminfo[1].strides = __pyx_pybuffernd_fc1.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_fc1.diminfo[1].shape = __pyx_pybuffernd_fc1.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ompd.rcbuffer->pybuffer, (PyObject*)__pyx_v_ompd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 187, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ompd.rcbuffer->pybuffer, (PyObject*)__pyx_v_ompd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 188, __pyx_L1_error)
   }
   __pyx_pybuffernd_ompd.diminfo[0].strides = __pyx_pybuffernd_ompd.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ompd.diminfo[0].shape = __pyx_pybuffernd_ompd.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tpmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tpmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 187, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tpmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tpmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 188, __pyx_L1_error)
   }
   __pyx_pybuffernd_tpmo.diminfo[0].strides = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_tpmo.diminfo[0].shape = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_tpmo.diminfo[1].strides = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_tpmo.diminfo[1].shape = __pyx_pybuffernd_tpmo.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tqmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tqmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 187, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tqmo.rcbuffer->pybuffer, (PyObject*)__pyx_v_tqmo, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 188, __pyx_L1_error)
   }
   __pyx_pybuffernd_tqmo.diminfo[0].strides = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_tqmo.diminfo[0].shape = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_tqmo.diminfo[1].strides = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_tqmo.diminfo[1].shape = __pyx_pybuffernd_tqmo.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tr.rcbuffer->pybuffer, (PyObject*)__pyx_v_tr, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 187, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_tr.rcbuffer->pybuffer, (PyObject*)__pyx_v_tr, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 188, __pyx_L1_error)
   }
   __pyx_pybuffernd_tr.diminfo[0].strides = __pyx_pybuffernd_tr.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_tr.diminfo[0].shape = __pyx_pybuffernd_tr.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_tr.diminfo[1].strides = __pyx_pybuffernd_tr.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_tr.diminfo[1].shape = __pyx_pybuffernd_tr.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_rd.rcbuffer->pybuffer, (PyObject*)__pyx_v_rd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 187, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_rd.rcbuffer->pybuffer, (PyObject*)__pyx_v_rd, &__Pyx_TypeInfo_nn___pyx_t_7pyqchem_13cython_module_19efficient_functions_DTYPE_F_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 188, __pyx_L1_error)
   }
   __pyx_pybuffernd_rd.diminfo[0].strides = __pyx_pybuffernd_rd.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_rd.diminfo[0].shape = __pyx_pybuffernd_rd.rcbuffer->pybuffer.shape[0];
   __Pyx_XDECREF(__pyx_r);
@@ -8954,7 +8964,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_6get_fc
   __pyx_t_2.eps = __pyx_v_eps;
   __pyx_t_2.w_max = __pyx_v_w_max;
   __pyx_t_2.min_q = __pyx_v_min_q;
-  __pyx_t_1 = __pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(__pyx_v_state, __pyx_v_fc1, __pyx_v_ompd, __pyx_v_tpmo, __pyx_v_tqmo, __pyx_v_tr, __pyx_v_rd, __pyx_v_fcf_00, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_7pyqchem_13cython_module_19efficient_functions_get_fc2(__pyx_v_state, __pyx_v_fc1, __pyx_v_ompd, __pyx_v_tpmo, __pyx_v_tqmo, __pyx_v_tr, __pyx_v_rd, __pyx_v_fcf_00, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -8992,7 +9002,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_6get_fc
   return __pyx_r;
 }
 
-/* "pyqchem/cython_module/efficient_functions.pyx":233
+/* "pyqchem/cython_module/efficient_functions.pyx":234
  *     return fc2, c2
  * 
  * def append_transitions(trans_list,             # <<<<<<<<<<<<<<
@@ -9069,75 +9079,75 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_trans_list)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 233, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 234, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_fcf_list)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 233, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 234, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("append_transitions", 1, 10, 10, 1); __PYX_ERR(0, 233, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("append_transitions", 1, 10, 10, 1); __PYX_ERR(0, 234, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_t_class)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 233, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 234, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("append_transitions", 1, 10, 10, 2); __PYX_ERR(0, 233, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("append_transitions", 1, 10, 10, 2); __PYX_ERR(0, 234, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_state)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 233, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 234, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("append_transitions", 1, 10, 10, 3); __PYX_ERR(0, 233, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("append_transitions", 1, 10, 10, 3); __PYX_ERR(0, 234, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_ompd)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 233, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 234, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("append_transitions", 1, 10, 10, 4); __PYX_ERR(0, 233, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("append_transitions", 1, 10, 10, 4); __PYX_ERR(0, 234, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_tpmo)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 233, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 234, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("append_transitions", 1, 10, 10, 5); __PYX_ERR(0, 233, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("append_transitions", 1, 10, 10, 5); __PYX_ERR(0, 234, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_tqmo)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 233, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 234, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("append_transitions", 1, 10, 10, 6); __PYX_ERR(0, 233, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("append_transitions", 1, 10, 10, 6); __PYX_ERR(0, 234, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_tr)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 233, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 234, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("append_transitions", 1, 10, 10, 7); __PYX_ERR(0, 233, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("append_transitions", 1, 10, 10, 7); __PYX_ERR(0, 234, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
         if (likely((values[8] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_rd)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 233, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 234, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("append_transitions", 1, 10, 10, 8); __PYX_ERR(0, 233, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("append_transitions", 1, 10, 10, 8); __PYX_ERR(0, 234, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
         if (likely((values[9] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_fcf_00)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 233, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 234, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("append_transitions", 1, 10, 10, 9); __PYX_ERR(0, 233, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("append_transitions", 1, 10, 10, 9); __PYX_ERR(0, 234, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "append_transitions") < 0)) __PYX_ERR(0, 233, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "append_transitions") < 0)) __PYX_ERR(0, 234, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 10)) {
       goto __pyx_L5_argtuple_error;
@@ -9166,7 +9176,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("append_transitions", 1, 10, 10, __pyx_nargs); __PYX_ERR(0, 233, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("append_transitions", 1, 10, 10, __pyx_nargs); __PYX_ERR(0, 234, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyqchem.cython_module.efficient_functions.append_transitions", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -9199,16 +9209,16 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_8append
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("append_transitions", 0);
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":243
+  /* "pyqchem/cython_module/efficient_functions.pyx":244
  *                         rd,
  *                         fcf_00, ):
  *             state_ex = np.sum(state)             # <<<<<<<<<<<<<<
  *             for c in t_class:
  *                 fcf_list.append(
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 243, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 244, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sum); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 243, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sum); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 244, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -9227,14 +9237,14 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_8append
     PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_state};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 243, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 244, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __pyx_v_state_ex = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":244
+  /* "pyqchem/cython_module/efficient_functions.pyx":245
  *                         fcf_00, ):
  *             state_ex = np.sum(state)
  *             for c in t_class:             # <<<<<<<<<<<<<<
@@ -9245,26 +9255,26 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_8append
     __pyx_t_1 = __pyx_v_t_class; __Pyx_INCREF(__pyx_t_1); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_t_class); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 244, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_t_class); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 245, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 244, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 245, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_6)) {
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 244, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 245, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 244, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 245, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 244, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely((0 < 0))) __PYX_ERR(0, 245, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 244, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 245, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -9274,7 +9284,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_8append
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 244, __pyx_L1_error)
+          else __PYX_ERR(0, 245, __pyx_L1_error)
         }
         break;
       }
@@ -9283,26 +9293,26 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_8append
     __Pyx_XDECREF_SET(__pyx_v_c, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":246
+    /* "pyqchem/cython_module/efficient_functions.pyx":247
  *             for c in t_class:
  *                 fcf_list.append(
  *                     evalSingleFCFpy(             # <<<<<<<<<<<<<<
  *                         state,
  *                         state_ex,
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_evalSingleFCFpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 246, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_evalSingleFCFpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 247, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":250
+    /* "pyqchem/cython_module/efficient_functions.pyx":251
  *                         state_ex,
  *                         c,
  *                         np.sum(c),             # <<<<<<<<<<<<<<
  *                         ompd,
  *                         tpmo,
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 250, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 251, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_sum); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 250, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_sum); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 251, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __pyx_t_8 = NULL;
@@ -9321,12 +9331,12 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_8append
       PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_v_c};
       __pyx_t_7 = __Pyx_PyObject_FastCall(__pyx_t_9, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 250, __pyx_L1_error)
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 251, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     }
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":256
+    /* "pyqchem/cython_module/efficient_functions.pyx":257
  *                         tr,
  *                         rd,
  *                         fcf_00,             # <<<<<<<<<<<<<<
@@ -9350,27 +9360,27 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_8append
       __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 10+__pyx_t_4);
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 246, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 247, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":245
+    /* "pyqchem/cython_module/efficient_functions.pyx":246
  *             state_ex = np.sum(state)
  *             for c in t_class:
  *                 fcf_list.append(             # <<<<<<<<<<<<<<
  *                     evalSingleFCFpy(
  *                         state,
  */
-    __pyx_t_10 = __Pyx_PyObject_Append(__pyx_v_fcf_list, __pyx_t_3); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 245, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_Append(__pyx_v_fcf_list, __pyx_t_3); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 246, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":259
+    /* "pyqchem/cython_module/efficient_functions.pyx":260
  *                     )
  *                 )
  *                 trans_list.append((state, c))             # <<<<<<<<<<<<<<
  */
-    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 259, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 260, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_v_state);
     __Pyx_GIVEREF(__pyx_v_state);
@@ -9378,10 +9388,10 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_8append
     __Pyx_INCREF(__pyx_v_c);
     __Pyx_GIVEREF(__pyx_v_c);
     PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_c);
-    __pyx_t_10 = __Pyx_PyObject_Append(__pyx_v_trans_list, __pyx_t_3); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 259, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_Append(__pyx_v_trans_list, __pyx_t_3); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 260, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "pyqchem/cython_module/efficient_functions.pyx":244
+    /* "pyqchem/cython_module/efficient_functions.pyx":245
  *                         fcf_00, ):
  *             state_ex = np.sum(state)
  *             for c in t_class:             # <<<<<<<<<<<<<<
@@ -9391,7 +9401,7 @@ static PyObject *__pyx_pf_7pyqchem_13cython_module_19efficient_functions_8append
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":233
+  /* "pyqchem/cython_module/efficient_functions.pyx":234
  *     return fc2, c2
  * 
  * def append_transitions(trans_list,             # <<<<<<<<<<<<<<
@@ -9609,6 +9619,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_append_transitions, __pyx_k_append_transitions, sizeof(__pyx_k_append_transitions), 0, 0, 1, 1},
     {&__pyx_n_s_astype, __pyx_k_astype, sizeof(__pyx_k_astype), 0, 0, 1, 1},
     {&__pyx_n_s_asyncio_coroutines, __pyx_k_asyncio_coroutines, sizeof(__pyx_k_asyncio_coroutines), 0, 0, 1, 1},
+    {&__pyx_n_s_binom, __pyx_k_binom, sizeof(__pyx_k_binom), 0, 0, 1, 1},
     {&__pyx_n_s_c, __pyx_k_c, sizeof(__pyx_k_c), 0, 0, 1, 1},
     {&__pyx_n_s_cache, __pyx_k_cache, sizeof(__pyx_k_cache), 0, 0, 1, 1},
     {&__pyx_n_s_cache_fcf, __pyx_k_cache_fcf, sizeof(__pyx_k_cache_fcf), 0, 0, 1, 1},
@@ -9660,6 +9671,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
     {&__pyx_n_s_rd, __pyx_k_rd, sizeof(__pyx_k_rd), 0, 0, 1, 1},
     {&__pyx_n_s_repeat, __pyx_k_repeat, sizeof(__pyx_k_repeat), 0, 0, 1, 1},
+    {&__pyx_n_s_scipy_special, __pyx_k_scipy_special, sizeof(__pyx_k_scipy_special), 0, 0, 1, 1},
     {&__pyx_n_s_spec, __pyx_k_spec, sizeof(__pyx_k_spec), 0, 0, 1, 1},
     {&__pyx_n_s_sqrt, __pyx_k_sqrt, sizeof(__pyx_k_sqrt), 0, 0, 1, 1},
     {&__pyx_n_s_state, __pyx_k_state, sizeof(__pyx_k_state), 0, 0, 1, 1},
@@ -9685,7 +9697,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
 }
 /* #### Code section: cached_builtins ### */
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 69, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 983, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -9719,83 +9731,83 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":14
+  /* "pyqchem/cython_module/efficient_functions.pyx":15
  *     cache = {}
  * 
  *     def wrapper(cnp.ndarray[DTYPE_I_t, ndim=1] v1, int k1,cnp.ndarray[DTYPE_I_t, ndim=1] v2,int k2,             # <<<<<<<<<<<<<<
  *     cnp.ndarray[DTYPE_F_t, ndim=1] ompd,
  *     cnp.ndarray[DTYPE_F_t, ndim=2] tpmo,
  */
-  __pyx_tuple__3 = PyTuple_Pack(11, __pyx_n_s_v1, __pyx_n_s_k1, __pyx_n_s_v2, __pyx_n_s_k2, __pyx_n_s_ompd, __pyx_n_s_tpmo, __pyx_n_s_tqmo, __pyx_n_s_tr, __pyx_n_s_rd, __pyx_n_s_fcf_00, __pyx_n_s_key); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(11, __pyx_n_s_v1, __pyx_n_s_k1, __pyx_n_s_v2, __pyx_n_s_k2, __pyx_n_s_ompd, __pyx_n_s_tpmo, __pyx_n_s_tqmo, __pyx_n_s_tr, __pyx_n_s_rd, __pyx_n_s_fcf_00, __pyx_n_s_key); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(10, 0, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pyqchem_cython_module_efficient, __pyx_n_s_wrapper, 14, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(10, 0, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pyqchem_cython_module_efficient, __pyx_n_s_wrapper, 15, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 15, __pyx_L1_error)
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":11
+  /* "pyqchem/cython_module/efficient_functions.pyx":12
  * ctypedef cnp.float64_t DTYPE_F_t
  * # cache function to accelarate FCF
  * def cache_fcf(func):             # <<<<<<<<<<<<<<
  *     cache = {}
  * 
  */
-  __pyx_tuple__7 = PyTuple_Pack(4, __pyx_n_s_func, __pyx_n_s_cache, __pyx_n_s_wrapper, __pyx_n_s_wrapper); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_tuple__7 = PyTuple_Pack(4, __pyx_n_s_func, __pyx_n_s_cache, __pyx_n_s_wrapper, __pyx_n_s_wrapper); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
-  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pyqchem_cython_module_efficient, __pyx_n_s_cache_fcf, 11, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pyqchem_cython_module_efficient, __pyx_n_s_cache_fcf, 12, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 12, __pyx_L1_error)
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":28
+  /* "pyqchem/cython_module/efficient_functions.pyx":29
  *     return wrapper
  * 
  * @cython.boundscheck(False)  # Deactivate bounds checking             # <<<<<<<<<<<<<<
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * @cache_fcf
  */
-  __pyx_tuple__9 = PyTuple_Pack(14, __pyx_n_s_origin_vector, __pyx_n_s_k_origin, __pyx_n_s_target_vector, __pyx_n_s_k_target, __pyx_n_s_ompd, __pyx_n_s_tpmo, __pyx_n_s_tqmo, __pyx_n_s_tr, __pyx_n_s_rd, __pyx_n_s_fcf_00, __pyx_n_s_ksi, __pyx_n_s_theta, __pyx_n_s_fcf, __pyx_n_s_tmp_dbl); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_tuple__9 = PyTuple_Pack(14, __pyx_n_s_origin_vector, __pyx_n_s_k_origin, __pyx_n_s_target_vector, __pyx_n_s_k_target, __pyx_n_s_ompd, __pyx_n_s_tpmo, __pyx_n_s_tqmo, __pyx_n_s_tr, __pyx_n_s_rd, __pyx_n_s_fcf_00, __pyx_n_s_ksi, __pyx_n_s_theta, __pyx_n_s_fcf, __pyx_n_s_tmp_dbl); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
-  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(10, 0, 0, 14, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pyqchem_cython_module_efficient, __pyx_n_s_evalSingleFCFpy, 28, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(10, 0, 0, 14, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pyqchem_cython_module_efficient, __pyx_n_s_evalSingleFCFpy, 29, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 29, __pyx_L1_error)
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":154
+  /* "pyqchem/cython_module/efficient_functions.pyx":155
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * cpdef get_fc1(             # <<<<<<<<<<<<<<
  *     cnp.ndarray[DTYPE_I_t, ndim=1] state,
  *     cnp.ndarray[DTYPE_F_t, ndim=1] ompd,
  */
-  __pyx_tuple__11 = PyTuple_Pack(10, __pyx_n_s_state, __pyx_n_s_ompd, __pyx_n_s_tpmo, __pyx_n_s_tqmo, __pyx_n_s_tr, __pyx_n_s_rd, __pyx_n_s_fcf_00, __pyx_n_s_eps, __pyx_n_s_w_max, __pyx_n_s_min_q); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_tuple__11 = PyTuple_Pack(10, __pyx_n_s_state, __pyx_n_s_ompd, __pyx_n_s_tpmo, __pyx_n_s_tqmo, __pyx_n_s_tr, __pyx_n_s_rd, __pyx_n_s_fcf_00, __pyx_n_s_eps, __pyx_n_s_w_max, __pyx_n_s_min_q); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
-  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(10, 0, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pyqchem_cython_module_efficient, __pyx_n_s_get_fc1, 154, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 154, __pyx_L1_error)
-  __pyx_tuple__13 = PyTuple_Pack(3, __pyx_float_1eneg_12, __pyx_int_100, __pyx_int_5); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(10, 0, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pyqchem_cython_module_efficient, __pyx_n_s_get_fc1, 155, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_tuple__13 = PyTuple_Pack(3, __pyx_float_1eneg_12, __pyx_int_100, __pyx_int_5); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":187
+  /* "pyqchem/cython_module/efficient_functions.pyx":188
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * cpdef get_fc2(             # <<<<<<<<<<<<<<
  *     cnp.ndarray[DTYPE_I_t, ndim=1] state,
  *     cnp.ndarray[DTYPE_F_t, ndim=2] fc1,
  */
-  __pyx_tuple__14 = PyTuple_Pack(11, __pyx_n_s_state, __pyx_n_s_fc1, __pyx_n_s_ompd, __pyx_n_s_tpmo, __pyx_n_s_tqmo, __pyx_n_s_tr, __pyx_n_s_rd, __pyx_n_s_fcf_00, __pyx_n_s_eps, __pyx_n_s_w_max, __pyx_n_s_min_q); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_tuple__14 = PyTuple_Pack(11, __pyx_n_s_state, __pyx_n_s_fc1, __pyx_n_s_ompd, __pyx_n_s_tpmo, __pyx_n_s_tqmo, __pyx_n_s_tr, __pyx_n_s_rd, __pyx_n_s_fcf_00, __pyx_n_s_eps, __pyx_n_s_w_max, __pyx_n_s_min_q); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(11, 0, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pyqchem_cython_module_efficient, __pyx_n_s_get_fc2, 187, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 187, __pyx_L1_error)
-  __pyx_tuple__16 = PyTuple_Pack(3, __pyx_float_1eneg_12, __pyx_int_100, __pyx_int_5); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(11, 0, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pyqchem_cython_module_efficient, __pyx_n_s_get_fc2, 188, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_tuple__16 = PyTuple_Pack(3, __pyx_float_1eneg_12, __pyx_int_100, __pyx_int_5); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":233
+  /* "pyqchem/cython_module/efficient_functions.pyx":234
  *     return fc2, c2
  * 
  * def append_transitions(trans_list,             # <<<<<<<<<<<<<<
  *                        fcf_list,
  *                         t_class,
  */
-  __pyx_tuple__17 = PyTuple_Pack(12, __pyx_n_s_trans_list, __pyx_n_s_fcf_list, __pyx_n_s_t_class, __pyx_n_s_state, __pyx_n_s_ompd, __pyx_n_s_tpmo, __pyx_n_s_tqmo, __pyx_n_s_tr, __pyx_n_s_rd, __pyx_n_s_fcf_00, __pyx_n_s_state_ex, __pyx_n_s_c); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_tuple__17 = PyTuple_Pack(12, __pyx_n_s_trans_list, __pyx_n_s_fcf_list, __pyx_n_s_t_class, __pyx_n_s_state, __pyx_n_s_ompd, __pyx_n_s_tpmo, __pyx_n_s_tqmo, __pyx_n_s_tr, __pyx_n_s_rd, __pyx_n_s_fcf_00, __pyx_n_s_state_ex, __pyx_n_s_c); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__17);
   __Pyx_GIVEREF(__pyx_tuple__17);
-  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(10, 0, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pyqchem_cython_module_efficient, __pyx_n_s_append_transitions, 233, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(10, 0, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pyqchem_cython_module_efficient, __pyx_n_s_append_transitions, 234, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -9863,15 +9875,15 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_7pyqchem_13cython_module_19efficient_functions___pyx_scope_struct__cache_fcf = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_7pyqchem_13cython_module_19efficient_functions___pyx_scope_struct__cache_fcf_spec, NULL); if (unlikely(!__pyx_ptype_7pyqchem_13cython_module_19efficient_functions___pyx_scope_struct__cache_fcf)) __PYX_ERR(0, 11, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_7pyqchem_13cython_module_19efficient_functions___pyx_scope_struct__cache_fcf_spec, __pyx_ptype_7pyqchem_13cython_module_19efficient_functions___pyx_scope_struct__cache_fcf) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_ptype_7pyqchem_13cython_module_19efficient_functions___pyx_scope_struct__cache_fcf = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_7pyqchem_13cython_module_19efficient_functions___pyx_scope_struct__cache_fcf_spec, NULL); if (unlikely(!__pyx_ptype_7pyqchem_13cython_module_19efficient_functions___pyx_scope_struct__cache_fcf)) __PYX_ERR(0, 12, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_7pyqchem_13cython_module_19efficient_functions___pyx_scope_struct__cache_fcf_spec, __pyx_ptype_7pyqchem_13cython_module_19efficient_functions___pyx_scope_struct__cache_fcf) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
   #else
   __pyx_ptype_7pyqchem_13cython_module_19efficient_functions___pyx_scope_struct__cache_fcf = &__pyx_type_7pyqchem_13cython_module_19efficient_functions___pyx_scope_struct__cache_fcf;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_7pyqchem_13cython_module_19efficient_functions___pyx_scope_struct__cache_fcf) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_7pyqchem_13cython_module_19efficient_functions___pyx_scope_struct__cache_fcf) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_7pyqchem_13cython_module_19efficient_functions___pyx_scope_struct__cache_fcf->tp_print = 0;
@@ -10248,7 +10260,7 @@ if (!__Pyx_RefNanny) {
  * cimport cython
  * cnp.import_array()             # <<<<<<<<<<<<<<
  * from itertools import combinations, product
- * DTYPE_I = np.int64
+ * from scipy.special import binom
  */
   __pyx_t_3 = __pyx_f_5numpy_import_array(); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 4, __pyx_L1_error)
 
@@ -10256,8 +10268,8 @@ if (!__Pyx_RefNanny) {
  * cimport cython
  * cnp.import_array()
  * from itertools import combinations, product             # <<<<<<<<<<<<<<
+ * from scipy.special import binom
  * DTYPE_I = np.int64
- * DTYPE_F = np.float64
  */
   __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -10283,115 +10295,136 @@ if (!__Pyx_RefNanny) {
   /* "pyqchem/cython_module/efficient_functions.pyx":6
  * cnp.import_array()
  * from itertools import combinations, product
- * DTYPE_I = np.int64             # <<<<<<<<<<<<<<
+ * from scipy.special import binom             # <<<<<<<<<<<<<<
+ * DTYPE_I = np.int64
  * DTYPE_F = np.float64
- * ctypedef cnp.int64_t DTYPE_I_t
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int64); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __Pyx_INCREF(__pyx_n_s_binom);
+  __Pyx_GIVEREF(__pyx_n_s_binom);
+  PyList_SET_ITEM(__pyx_t_4, 0, __pyx_n_s_binom);
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_scipy_special, __pyx_t_4, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DTYPE_I, __pyx_t_2) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_binom); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_binom, __pyx_t_4) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "pyqchem/cython_module/efficient_functions.pyx":7
  * from itertools import combinations, product
+ * from scipy.special import binom
+ * DTYPE_I = np.int64             # <<<<<<<<<<<<<<
+ * DTYPE_F = np.float64
+ * ctypedef cnp.int64_t DTYPE_I_t
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DTYPE_I, __pyx_t_4) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "pyqchem/cython_module/efficient_functions.pyx":8
+ * from scipy.special import binom
  * DTYPE_I = np.int64
  * DTYPE_F = np.float64             # <<<<<<<<<<<<<<
  * ctypedef cnp.int64_t DTYPE_I_t
  * ctypedef cnp.float64_t DTYPE_F_t
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DTYPE_F, __pyx_t_4) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_float64); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DTYPE_F, __pyx_t_2) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":11
+  /* "pyqchem/cython_module/efficient_functions.pyx":12
  * ctypedef cnp.float64_t DTYPE_F_t
  * # cache function to accelarate FCF
  * def cache_fcf(func):             # <<<<<<<<<<<<<<
  *     cache = {}
  * 
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_7pyqchem_13cython_module_19efficient_functions_1cache_fcf, 0, __pyx_n_s_cache_fcf, NULL, __pyx_n_s_pyqchem_cython_module_efficient_2, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 11, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_cache_fcf, __pyx_t_4) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7pyqchem_13cython_module_19efficient_functions_1cache_fcf, 0, __pyx_n_s_cache_fcf, NULL, __pyx_n_s_pyqchem_cython_module_efficient_2, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_cache_fcf, __pyx_t_2) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":30
+  /* "pyqchem/cython_module/efficient_functions.pyx":31
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * @cache_fcf             # <<<<<<<<<<<<<<
  * def evalSingleFCFpy(
  *     cnp.ndarray[DTYPE_I_t, ndim=1] origin_vector,
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_cache_fcf); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 30, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_cache_fcf); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":28
+  /* "pyqchem/cython_module/efficient_functions.pyx":29
  *     return wrapper
  * 
  * @cython.boundscheck(False)  # Deactivate bounds checking             # <<<<<<<<<<<<<<
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * @cache_fcf
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7pyqchem_13cython_module_19efficient_functions_3evalSingleFCFpy, 0, __pyx_n_s_evalSingleFCFpy, NULL, __pyx_n_s_pyqchem_cython_module_efficient_2, __pyx_d, ((PyObject *)__pyx_codeobj__10)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_7pyqchem_13cython_module_19efficient_functions_3evalSingleFCFpy, 0, __pyx_n_s_evalSingleFCFpy, NULL, __pyx_n_s_pyqchem_cython_module_efficient_2, __pyx_d, ((PyObject *)__pyx_codeobj__10)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":30
+  /* "pyqchem/cython_module/efficient_functions.pyx":31
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * @cache_fcf             # <<<<<<<<<<<<<<
  * def evalSingleFCFpy(
  *     cnp.ndarray[DTYPE_I_t, ndim=1] origin_vector,
  */
-  __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_evalSingleFCFpy, __pyx_t_5) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_evalSingleFCFpy, __pyx_t_5) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":154
+  /* "pyqchem/cython_module/efficient_functions.pyx":155
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * cpdef get_fc1(             # <<<<<<<<<<<<<<
  *     cnp.ndarray[DTYPE_I_t, ndim=1] state,
  *     cnp.ndarray[DTYPE_F_t, ndim=1] ompd,
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_7pyqchem_13cython_module_19efficient_functions_5get_fc1, 0, __pyx_n_s_get_fc1, NULL, __pyx_n_s_pyqchem_cython_module_efficient_2, __pyx_d, ((PyObject *)__pyx_codeobj__12)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_7pyqchem_13cython_module_19efficient_functions_5get_fc1, 0, __pyx_n_s_get_fc1, NULL, __pyx_n_s_pyqchem_cython_module_efficient_2, __pyx_d, ((PyObject *)__pyx_codeobj__12)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_5, __pyx_tuple__13);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_fc1, __pyx_t_5) < 0) __PYX_ERR(0, 154, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_fc1, __pyx_t_5) < 0) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":187
+  /* "pyqchem/cython_module/efficient_functions.pyx":188
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * cpdef get_fc2(             # <<<<<<<<<<<<<<
  *     cnp.ndarray[DTYPE_I_t, ndim=1] state,
  *     cnp.ndarray[DTYPE_F_t, ndim=2] fc1,
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_7pyqchem_13cython_module_19efficient_functions_7get_fc2, 0, __pyx_n_s_get_fc2, NULL, __pyx_n_s_pyqchem_cython_module_efficient_2, __pyx_d, ((PyObject *)__pyx_codeobj__15)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_7pyqchem_13cython_module_19efficient_functions_7get_fc2, 0, __pyx_n_s_get_fc2, NULL, __pyx_n_s_pyqchem_cython_module_efficient_2, __pyx_d, ((PyObject *)__pyx_codeobj__15)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_5, __pyx_tuple__16);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_fc2, __pyx_t_5) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_fc2, __pyx_t_5) < 0) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "pyqchem/cython_module/efficient_functions.pyx":233
+  /* "pyqchem/cython_module/efficient_functions.pyx":234
  *     return fc2, c2
  * 
  * def append_transitions(trans_list,             # <<<<<<<<<<<<<<
  *                        fcf_list,
  *                         t_class,
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_7pyqchem_13cython_module_19efficient_functions_9append_transitions, 0, __pyx_n_s_append_transitions, NULL, __pyx_n_s_pyqchem_cython_module_efficient_2, __pyx_d, ((PyObject *)__pyx_codeobj__18)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_7pyqchem_13cython_module_19efficient_functions_9append_transitions, 0, __pyx_n_s_append_transitions, NULL, __pyx_n_s_pyqchem_cython_module_efficient_2, __pyx_d, ((PyObject *)__pyx_codeobj__18)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_append_transitions, __pyx_t_5) < 0) __PYX_ERR(0, 233, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_append_transitions, __pyx_t_5) < 0) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
   /* "pyqchem/cython_module/efficient_functions.pyx":1
