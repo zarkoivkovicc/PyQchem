@@ -19,8 +19,8 @@ setup(name='pyqchem',
       author_email='abelcarreras83@gmail.com',
       ext_modules=[
         Extension(
-            'pyqchem.cython_module.efficient_functions',
-            sources=['pyqchem/cython_module/efficient_functions.pyx'],
+            'pyqchem.functions_cython.efficient_functions',
+            sources=['pyqchem/functions_cython/efficient_functions.pyx'],
         )],
       packages=['pyqchem', 'pyqchem.parsers', 'pyqchem.parsers.common','pyqchem.tools'],
       url='https://github.com/abelcarreras/PyQchem',

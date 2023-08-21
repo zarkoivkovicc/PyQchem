@@ -1,4 +1,4 @@
-from scipy.optimize import minimize, LinearConstraint
+from scipy.optimize import minimize
 from scipy.special import binom
 from itertools import product, combinations
 from pyqchem.tools import rotate_coordinates
@@ -12,7 +12,7 @@ from pyqchem.units import (
     KB_EV,
 )
 
-from pyqchem.cython_module.efficient_functions import (
+from pyqchem.functions_cython.efficient_functions import (
     evalSingleFCFpy,
     get_fc1,
     get_fc2,
@@ -996,8 +996,8 @@ class Duschinsky:
             Returns:
                 int : number of integrals
             """
-            if advanced and n > m + n_0:
-                active = np.array(set(range(n_modes)) - core).astype("int")
+            if advanced and n > n_0:
+                active = np.array(list(set(range(n_modes)) - set(core))).astype("int")
                 em = m
             else:
                 em = 0
@@ -1121,7 +1121,6 @@ class Duschinsky:
         print("T=0 finished")
         # Compute non-zero temperature part
         n_0 = n - 1
-        print(f"n_0 = {n_0}")
 
         if hot_bands:
             _eps1, _eps2 = eps1, eps2
@@ -1147,11 +1146,9 @@ class Duschinsky:
                 transition_list.append((state, ground_vec))
                 core = get_important_modes(state, tolerance=0.1)
                 print(f"Initial state : \n {state}")
-                print(f"Core modes : \n {core}")
                 complementary = np.array(list(set(range(n_modes)) - set(core))).astype(
                     "int"
                 )
-                print(f"Complementary modes : \n {complementary}")
                 fc1, c1 = get_fc1(
                     state,
                     ompd,
@@ -1196,11 +1193,10 @@ class Duschinsky:
                         threshold=fcf_min,
                     )
                 w_min = np.ceil(np.max(np.multiply(s * s, state), axis=0)).astype("int")
-                print(f"w_min {w_min}")
+                w_ = w_min
                 w = find_w(eps1, eps2, fc1_0, fc2_0, fc1, fc2, w_min)
                 m = len(core)
                 n_max = n_0 + m
-                print(f"n_max = {n_max}")
                 ni_0 = 1
                 n = 3
                 V = np.sum(np.square(fcf_states)) / state_counter
@@ -1208,11 +1204,11 @@ class Duschinsky:
                 print(V)
                 _eps1, _eps2 = eps1, eps2
                 while n <= n_max and V <= V_threshold:
-                    if n > n_0:
+                    if n == n_0:
+                        w_ = w
+                    elif n > n_0:
                         np.put(w, core, np.take(w_, core))
                         ni_0 = np.prod(np.take(w_, core) + 1)
-                    elif n == n_0:
-                        w_ = w
                     while estimate_ni(n, w, advanced=True) * ni_0 > n_total:
                         _eps1 *= 1.05
                         _eps2 *= 1.05
@@ -1220,7 +1216,6 @@ class Duschinsky:
                         if n > n_0:
                             np.put(w, core, np.take(w_, core))
                         if (w[complementary] == w_min[complementary]).all():
-                            print("Exit because of ...")
                             break
                     _eps1 /= 1.05
                     _eps2 /= 1.05
@@ -1245,9 +1240,7 @@ class Duschinsky:
                         )
                     n += 1
                     V = np.sum(np.square(fcf_states)) / state_counter
-                    print(n)
-                    print(w)
-                    print(V)
+                    print(f"Cumulative Recovery Rate up to class n {n} : {V}")
                 fcf_list.extend(fcf_states)
         transitions = []
         for i, trans in enumerate(transition_list):
